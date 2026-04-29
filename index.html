@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Growth Coach</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">GC</div>
+          <div>
+            <p class="eyebrow">Belongingness + competency</p>
+            <h1>Student growth coach backend test</h1>
+          </div>
+        </div>
+
+        <div class="top-controls">
+          <label class="field">
+            <span>Student</span>
+            <select id="studentSelect"></select>
+          </label>
+          <button class="button secondary" id="resetBtn" type="button">Reset demo</button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel hero-panel">
+          <div>
+            <p class="eyebrow">Current path</p>
+            <h2 id="pathTitle">Loading...</h2>
+            <p class="path-message" id="pathMessage"></p>
+          </div>
+
+          <div class="persona-grid" id="personaGrid"></div>
+        </section>
+
+        <section class="panel submission-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Test analysis</p>
+              <h2>Submit work against a module rubric</h2>
+            </div>
+            <label class="field small">
+              <span>Module</span>
+              <select id="moduleSelect"></select>
+            </label>
+          </div>
+
+          <textarea id="workInput" placeholder="Paste student work here..."></textarea>
+
+          <div class="checkin-grid">
+            <label class="slider-field">
+              <span>Confidence before feedback</span>
+              <input id="confidenceSlider" type="range" min="1" max="5" value="3" />
+              <strong id="confidenceValue">3</strong>
+            </label>
+            <label class="slider-field">
+              <span>Clarity after feedback</span>
+              <input id="claritySlider" type="range" min="1" max="5" value="4" />
+              <strong id="clarityValue">4</strong>
+            </label>
+            <label class="slider-field">
+              <span>I feel like this path fits me</span>
+              <input id="belongingSlider" type="range" min="1" max="5" value="4" />
+              <strong id="belongingValue">4</strong>
+            </label>
+          </div>
+
+          <div class="action-row">
+            <button class="button ghost" id="sampleBtn" type="button">Load module sample</button>
+            <button class="button primary" id="analyseBtn" type="button">Analyse and save growth</button>
+          </div>
+        </section>
+
+        <aside class="panel feedback-panel">
+          <div class="panel-header compact">
+            <div>
+              <p class="eyebrow">Latest feedback</p>
+              <h2>Rubric to growth evidence</h2>
+            </div>
+            <div class="feedback-badges">
+              <div class="brain-pill" id="brainMode">brain</div>
+              <div class="score-pill" id="latestScore">--</div>
+              <button
+                class="button mini"
+                id="feedbackToggle"
+                type="button"
+                aria-controls="feedbackContent"
+                aria-expanded="true"
+              >
+                Hide
+              </button>
+            </div>
+          </div>
+
+          <div id="feedbackContent" class="empty-state">No feedback yet. Analyse a submission to create the first record.</div>
+        </aside>
+
+        <section class="panel growth-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Personal growth chart</p>
+              <h2 id="growthTitle">Growth map</h2>
+            </div>
+            <div class="summary-metrics" id="summaryMetrics"></div>
+          </div>
+
+          <div class="chart-area" id="growthChart"></div>
+          <div class="skill-columns">
+            <section>
+              <h3>Core STEM</h3>
+              <div id="coreSkills" class="skill-list"></div>
+            </section>
+            <section>
+              <h3 id="pathSkillsTitle">Path skills</h3>
+              <div id="pathSkills" class="skill-list"></div>
+            </section>
+            <section>
+              <h3>Belongingness</h3>
+              <div id="belongingSkills" class="skill-list"></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="panel teacher-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Teacher view</p>
+              <h2>Common gaps across recorded feedback</h2>
+            </div>
+            <div class="teacher-meta" id="teacherMeta"></div>
+          </div>
+
+          <div class="teacher-grid" id="teacherGrid"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>

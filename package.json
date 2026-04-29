@@ -1,0 +1,11 @@
+{
+  "name": "student-feedback-growth-coach",
+  "version": "1.0.0",
+  "description": "Local backend and test interface for persona-based student feedback growth tracking.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check app.js"
+  },
+  "private": true
+}
