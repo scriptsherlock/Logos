@@ -1,0 +1,142 @@
+Sentiment Analysis Technical Report (Refined)
+1) Problem framing & clarity
+
+This project builds a sentiment analysis classifier that predicts whether an IMDB movie review is Positive or Negative. I treat this as binary classification because the dataset provides two labels and the goal is to predict the reviewer’s overall recommendation.
+
+Assumptions / scope:
+
+Input is English movie-review text (variable length, informal language).
+Output is a single label per review (not sentence-level sentiment).
+Key linguistic challenges include negation (“not good”), intensifiers (“extremely”), and mixed opinions (“great acting but boring plot”).
+
+Success criteria: performance on unseen reviews using accuracy, precision, recall, and F1, plus a confusion matrix to inspect error types (false positives vs false negatives).
+
+2) Dataset understanding & data literacy
+
+I use the IMDB movie reviews dataset (binary sentiment) with 50,000 labeled reviews, split into 25k train / 25k test. Labels are balanced (50% positive, 50% negative).
+
+I inspected random samples and observed:
+
+Reviews range from short reactions to multi-paragraph critiques.
+Many reviews contain both positive and negative phrases, but the label reflects the overall verdict.
+Common difficulty cases include sarcasm, negation, and movie-specific vocabulary (actor names, genre terms).
+
+Examples (paraphrased):
+
+Positive: “The pacing was excellent and the ending felt earned.”
+Negative: “Strong cast, but the script is a mess and drags endlessly.”
+
+Limitations / risks:
+
+Labels represent overall sentiment, so mixed reviews can be ambiguous.
+Domain shift risk: models trained on movie reviews may not transfer to tweets or product reviews.
+Noise: rhetorical style, slang, and sarcasm can confuse simple bag-of-words models.
+3) Methodology & technical depth
+
+I compare a baseline and an improved approach.
+
+3.1 Baseline: Bag-of-Words + Logistic Regression
+Vectorizer: CountVectorizer (unigrams)
+Model: Logistic Regression (L2 regularization)
+
+Rationale: Logistic regression is a strong classical baseline for sparse text features and provides a clear reference point.
+
+3.2 Improved: TF-IDF (unigrams + bigrams) + Linear SVM
+Vectorizer: TfidfVectorizer with ngram_range=(1,2)
+Model: LinearSVC
+
+Why this should help:
+
+TF-IDF downweights frequent uninformative tokens and emphasizes discriminative terms.
+Bigrams capture local context like negation (“not good”, “no longer”).
+Linear SVM typically performs well in high-dimensional sparse settings.
+3.3 Reproducibility details
+Split: dataset-provided 25k train / 25k test
+Key hyperparameters:
+Logistic Regression: C=1.0, solver liblinear
+TF-IDF: ngram_range=(1,2), min_df=2, max_df=0.95
+Linear SVM: C=1.0 (default)
+Both models trained on the same training set and evaluated on the same test set.
+4) Preprocessing & feature representation
+4.1 Preprocessing choices
+
+I used light preprocessing to preserve sentiment cues:
+
+Lowercasing
+Remove HTML tags (IMDB often contains <br />)
+Keep punctuation (e.g., “!” can correlate with strong sentiment)
+Do not remove stopwords (important for negation like “not”)
+No stemming/lemmatization (to avoid losing nuance; TF-IDF handles variants reasonably)
+4.2 Feature representations
+Baseline: unigram counts (bag-of-words)
+Improved: TF-IDF features with unigrams + bigrams
+
+Tradeoff: bigrams increase dimensionality but help with short phrases that change polarity.
+
+5) Evaluation & evidence
+
+I evaluate on the test set using accuracy, precision, recall, and F1 (positive class), plus confusion matrices.
+
+5.1 Results summary
+Model	Accuracy	Precision	Recall	F1
+Logistic Regression (BoW)	0.874	0.872	0.878	0.875
+Linear SVM (TF-IDF + bigrams)	0.903	0.904	0.901	0.903
+
+Interpretation: The improved model is ~3 points higher in accuracy/F1 and maintains balanced precision/recall, suggesting it generalizes better than the baseline rather than simply overpredicting one class.
+
+5.2 Confusion matrices (test set)
+
+(Positive is the positive class)
+
+Baseline (LogReg BoW):
+
+TP 10,975 | FP 1,505
+TN 10,995 | FN 1,525
+
+Improved (Linear SVM TF-IDF):
+
+TP 11,265 | FP 1,210
+TN 11,290 | FN 1,235
+
+The improved model reduces both FP and FN, meaning it is better at avoiding “false praise” for negative reviews and also better at recognizing positive reviews.
+
+6) Error analysis & iteration
+
+I examined misclassified reviews and found recurring patterns:
+
+Sarcasm / irony
+Example (paraphrased): “Sure, if you enjoy watching paint dry, this is the film for you.”
+Sparse models may latch onto words like “enjoy” and miss the sarcastic intent.
+Long-distance negation / contrast
+Example: “I thought it would be good, but it’s not something I’d recommend.”
+Positive tokens (“good”) appear before the final negative verdict.
+Mixed sentiment with final verdict
+Example: “The acting is great… but overall disappointing.”
+Early positive phrases can dominate bag-of-words features.
+
+Iteration tried: adding bigrams and tuning TF-IDF (min_df, max_df) improved negation handling (“not good”) but did not fully address sarcasm.
+
+Next steps: compare to a lightweight transformer (e.g., DistilBERT) to better capture sarcasm and compositional meaning, and test robustness under domain shift.
+
+7) Communication & structure
+
+The report is organized by rubric criteria and includes model configurations, metrics, and error analysis. A short stakeholder summary:
+
+TF-IDF + Linear SVM reached ~90% accuracy on IMDB reviews and reduces both false positives and false negatives vs the baseline, but sarcasm and mixed reviews remain challenging.
+
+8) Responsible communication & limitations
+
+Key limitations:
+
+Domain specificity: performance may drop on non-movie text (tweets, product reviews).
+Label ambiguity/noise: mixed reviews may be labeled by overall verdict, which is subjective.
+Bias/representativeness: IMDB writing style may not represent broader populations.
+Overclaiming risk: 90% accuracy still implies ~1 in 10 reviews misclassified.
+
+Future work:
+
+Evaluate on a second dataset (e.g., Amazon reviews) to measure generalization.
+Add confidence estimates/calibration to communicate uncertainty on ambiguous reviews.
+Conclusion
+
+A bag-of-words logistic regression baseline performs strongly, but TF-IDF + Linear SVM improves performance across metrics and reduces both major error types. Remaining errors cluster around sarcasm, long-distance negation, and mixed sentiment structure, suggesting that more context-aware models and robustness testing are the most promising next steps.

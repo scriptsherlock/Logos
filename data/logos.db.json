@@ -1,0 +1,2916 @@
+{
+  "skills": [
+    {
+      "id": "technical_understanding",
+      "name": "Technical understanding",
+      "category": "core_stem",
+      "stageLabels": [
+        "Emerging",
+        "Building",
+        "Confident",
+        "Strong"
+      ]
+    },
+    {
+      "id": "mathematical_reasoning",
+      "name": "Mathematical reasoning",
+      "category": "core_stem",
+      "stageLabels": [
+        "Emerging",
+        "Building",
+        "Confident",
+        "Strong"
+      ]
+    },
+    {
+      "id": "data_literacy",
+      "name": "Data literacy",
+      "category": "core_stem",
+      "stageLabels": [
+        "Emerging",
+        "Building",
+        "Confident",
+        "Strong"
+      ]
+    },
+    {
+      "id": "problem_decomposition",
+      "name": "Problem decomposition",
+      "category": "core_stem",
+      "stageLabels": [
+        "Emerging",
+        "Building",
+        "Confident",
+        "Strong"
+      ]
+    },
+    {
+      "id": "critical_thinking",
+      "name": "Critical thinking",
+      "category": "core_stem",
+      "stageLabels": [
+        "Emerging",
+        "Building",
+        "Confident",
+        "Strong"
+      ]
+    },
+    {
+      "id": "stakeholder_awareness",
+      "name": "Stakeholder awareness",
+      "category": "path_specific",
+      "path": "industry"
+    },
+    {
+      "id": "practical_problem_solving",
+      "name": "Practical problem solving",
+      "category": "path_specific",
+      "path": "industry"
+    },
+    {
+      "id": "delivery_execution",
+      "name": "Delivery and execution",
+      "category": "path_specific",
+      "path": "industry"
+    },
+    {
+      "id": "testing_quality",
+      "name": "Testing and quality",
+      "category": "path_specific",
+      "path": "industry"
+    },
+    {
+      "id": "tool_fluency",
+      "name": "Tool fluency",
+      "category": "path_specific",
+      "path": "industry"
+    },
+    {
+      "id": "research_question_design",
+      "name": "Research question design",
+      "category": "path_specific",
+      "path": "research"
+    },
+    {
+      "id": "literature_synthesis",
+      "name": "Literature synthesis",
+      "category": "path_specific",
+      "path": "research"
+    },
+    {
+      "id": "methodological_rigor",
+      "name": "Methodological rigor",
+      "category": "path_specific",
+      "path": "research"
+    },
+    {
+      "id": "experiment_design",
+      "name": "Experiment design",
+      "category": "path_specific",
+      "path": "research"
+    },
+    {
+      "id": "evidence_synthesis",
+      "name": "Evidence synthesis",
+      "category": "path_specific",
+      "path": "research"
+    },
+    {
+      "id": "critical_evaluation",
+      "name": "Critical evaluation",
+      "category": "path_specific",
+      "path": "research"
+    }
+  ],
+  "personas": [
+    {
+      "id": "industry",
+      "name": "Industry",
+      "description": "Build workplace-ready STEM habits through applied project work."
+    },
+    {
+      "id": "research",
+      "name": "Research",
+      "description": "Build academic research habits through evidence-led inquiry."
+    }
+  ],
+  "modules": [
+    {
+      "id": "natural_language_processing",
+      "name": "Natural Language Processing",
+      "description": "Build and evaluate a sentiment analysis system with careful evidence, error analysis, and responsible communication.",
+      "sampleWork": "",
+      "rubric": [
+        {
+          "id": "problem_framing_clarity",
+          "name": "Problem framing and clarity",
+          "title": "Problem framing and clarity",
+          "description": "Defines the prediction task clearly and explains why the chosen binary or three-class setup is appropriate.",
+          "lookingFor": "Clear objective, clear labels, motivation, constraints, and appropriate scope.",
+          "scoringGuidance": "0-3 unclear task definition or missing details; 4-7 mostly clear but missing motivation or scope; 8-10 crisp framing with appropriate assumptions.",
+          "expectedScoring": "0-3 unclear task definition or missing details; 4-7 mostly clear but missing motivation or scope; 8-10 crisp framing with appropriate assumptions.",
+          "weight": 10,
+          "skillLinks": [
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "stakeholder_awareness",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "critical_thinking",
+            "stakeholder_awareness"
+          ],
+          "keywords": [
+            "clear objective",
+            "clear labels",
+            "motivation",
+            "constraints",
+            "and appropriate scope.",
+            "problem framing and clarity"
+          ]
+        },
+        {
+          "id": "dataset_understanding",
+          "name": "Dataset understanding and data literacy",
+          "title": "Dataset understanding and data literacy",
+          "description": "Describes dataset composition and provides evidence of understanding the data.",
+          "lookingFor": "Dataset size, label distribution, examples, edge cases, and dataset limitations.",
+          "scoringGuidance": "0-5 dataset barely described; 6-11 partial stats and limited discussion; 12-15 solid stats plus thoughtful dataset considerations.",
+          "expectedScoring": "0-5 dataset barely described; 6-11 partial stats and limited discussion; 12-15 solid stats plus thoughtful dataset considerations.",
+          "weight": 15,
+          "skillLinks": [
+            {
+              "skillId": "data_literacy",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "data_literacy",
+            "critical_thinking"
+          ],
+          "keywords": [
+            "dataset size",
+            "label distribution",
+            "examples",
+            "edge cases",
+            "and dataset limitations.",
+            "describes dataset composition and provides evidence of understanding the data.",
+            "dataset understanding and data literacy"
+          ]
+        },
+        {
+          "id": "methodology_technical_depth",
+          "name": "Methodology and technical depth",
+          "title": "Methodology and technical depth",
+          "description": "Explains model choices and system design, including at least one baseline and one improved method.",
+          "lookingFor": "Architecture or approach description, rationale, reproducible implementation detail, and baseline/improved comparison.",
+          "scoringGuidance": "0-7 vague approach or no comparison; 8-15 clear approach with limited rationale; 16-20 strong technical explanation, rationale, and reproducible detail.",
+          "expectedScoring": "0-7 vague approach or no comparison; 8-15 clear approach with limited rationale; 16-20 strong technical explanation, rationale, and reproducible detail.",
+          "weight": 20,
+          "skillLinks": [
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            },
+            {
+              "skillId": "tool_fluency",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "technical_understanding",
+            "tool_fluency"
+          ],
+          "keywords": [
+            "architecture or approach description",
+            "rationale",
+            "reproducible implementation detail",
+            "and baseline/improved comparison.",
+            "explains model choices and system design",
+            "including at least one baseline and one improved method.",
+            "methodology and technical depth"
+          ]
+        },
+        {
+          "id": "preprocessing_feature_representation",
+          "name": "Preprocessing and feature representation",
+          "title": "Preprocessing and feature representation",
+          "description": "Explains how text is transformed into features and why those steps were chosen.",
+          "lookingFor": "Justified preprocessing choices, feature representation, and tradeoffs.",
+          "scoringGuidance": "0-5 missing or unjustified; 6-11 listed steps with limited rationale; 12-15 well justified and connected to model choice.",
+          "expectedScoring": "0-5 missing or unjustified; 6-11 listed steps with limited rationale; 12-15 well justified and connected to model choice.",
+          "weight": 15,
+          "skillLinks": [
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            },
+            {
+              "skillId": "problem_decomposition",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "technical_understanding",
+            "problem_decomposition"
+          ],
+          "keywords": [
+            "justified preprocessing choices",
+            "feature representation",
+            "and tradeoffs.",
+            "explains how text is transformed into features and why those steps were chosen.",
+            "preprocessing and feature representation"
+          ]
+        },
+        {
+          "id": "evaluation_evidence",
+          "name": "Evaluation and evidence",
+          "title": "Evaluation and evidence",
+          "description": "Uses appropriate metrics and evidence to support claims about performance.",
+          "lookingFor": "Accuracy, precision, recall, F1, confusion matrix, comparisons, and meaningful interpretation.",
+          "scoringGuidance": "0-7 no real metrics or incorrect evaluation; 8-15 metrics reported with weak interpretation; 16-20 complete metrics with strong interpretation and comparisons.",
+          "expectedScoring": "0-7 no real metrics or incorrect evaluation; 8-15 metrics reported with weak interpretation; 16-20 complete metrics with strong interpretation and comparisons.",
+          "weight": 20,
+          "skillLinks": [
+            {
+              "skillId": "data_literacy",
+              "weight": 1
+            },
+            {
+              "skillId": "mathematical_reasoning",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "data_literacy",
+            "mathematical_reasoning",
+            "critical_thinking"
+          ],
+          "keywords": [
+            "accuracy",
+            "precision",
+            "recall",
+            "f1",
+            "confusion matrix",
+            "comparisons",
+            "and meaningful interpretation.",
+            "uses appropriate metrics and evidence to support claims about performance.",
+            "evaluation and evidence"
+          ]
+        },
+        {
+          "id": "error_analysis_iteration",
+          "name": "Error analysis and iteration",
+          "title": "Error analysis and iteration",
+          "description": "Identifies failure patterns and proposes concrete improvements.",
+          "lookingFor": "At least three failure cases or patterns plus improvements tied to evidence.",
+          "scoringGuidance": "0-3 no meaningful error analysis; 4-7 examples with shallow reasoning; 8-10 clear patterns and thoughtful fixes.",
+          "expectedScoring": "0-3 no meaningful error analysis; 4-7 examples with shallow reasoning; 8-10 clear patterns and thoughtful fixes.",
+          "weight": 10,
+          "skillLinks": [
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "practical_problem_solving",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "critical_thinking",
+            "practical_problem_solving"
+          ],
+          "keywords": [
+            "at least three failure cases or patterns plus improvements tied to evidence.",
+            "identifies failure patterns and proposes concrete improvements.",
+            "error analysis and iteration"
+          ]
+        },
+        {
+          "id": "responsible_communication",
+          "name": "Responsible communication and limitations",
+          "title": "Responsible communication and limitations",
+          "description": "Acknowledges limitations and avoids overclaiming.",
+          "lookingFor": "Bias, domain shift, uncertainty, label noise, sarcasm, scope boundaries, and evidence-based claims.",
+          "scoringGuidance": "0-3 overclaims or no limitations; 4-7 mentions limitations shallowly; 8-10 thoughtful limitations and appropriate tone.",
+          "expectedScoring": "0-3 overclaims or no limitations; 4-7 mentions limitations shallowly; 8-10 thoughtful limitations and appropriate tone.",
+          "weight": 10,
+          "skillLinks": [
+            {
+              "skillId": "stakeholder_awareness",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "stakeholder_awareness",
+            "critical_thinking"
+          ],
+          "keywords": [
+            "bias",
+            "domain shift",
+            "uncertainty",
+            "label noise",
+            "sarcasm",
+            "scope boundaries",
+            "and evidence-based claims.",
+            "acknowledges limitations and avoids overclaiming.",
+            "responsible communication and limitations"
+          ]
+        }
+      ],
+      "createdAt": "2026-05-08T21:45:25.714Z"
+    },
+    {
+      "id": "green_chemistry",
+      "name": "Green Chemistry",
+      "description": "Evaluate a chemical process or product using green chemistry principles, evidence, tradeoffs, and improvement planning.",
+      "sampleWork": "",
+      "rubric": [
+        {
+          "id": "system_boundary",
+          "name": "System boundary and goal",
+          "title": "System boundary and goal",
+          "description": "Defines the chemical process or product being evaluated and establishes an appropriate comparison boundary.",
+          "lookingFor": "Process goal, inputs, outputs, comparison baseline, assumptions, and scope.",
+          "scoringGuidance": "Low scores lack scope; mid scores identify the process but miss assumptions; high scores define a clear boundary and comparison.",
+          "expectedScoring": "Low scores lack scope; mid scores identify the process but miss assumptions; high scores define a clear boundary and comparison.",
+          "weight": 15,
+          "skillLinks": [
+            {
+              "skillId": "problem_decomposition",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "problem_decomposition",
+            "critical_thinking"
+          ],
+          "keywords": [
+            "process goal",
+            "inputs",
+            "outputs",
+            "comparison baseline",
+            "assumptions",
+            "and scope.",
+            "system boundary and goal"
+          ]
+        },
+        {
+          "id": "principles_application",
+          "name": "Green chemistry principles",
+          "title": "Green chemistry principles",
+          "description": "Applies relevant green chemistry principles accurately to the chosen case.",
+          "lookingFor": "Relevant principles, correct application, and explanation of why each principle matters.",
+          "scoringGuidance": "Low scores list principles loosely; mid scores apply some principles; high scores apply relevant principles accurately with reasoning.",
+          "expectedScoring": "Low scores list principles loosely; mid scores apply some principles; high scores apply relevant principles accurately with reasoning.",
+          "weight": 20,
+          "skillLinks": [
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_evaluation",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "technical_understanding",
+            "critical_evaluation"
+          ],
+          "keywords": [
+            "relevant principles",
+            "correct application",
+            "and explanation of why each principle matters.",
+            "applies relevant green chemistry principles accurately to the chosen case.",
+            "green chemistry principles"
+          ]
+        },
+        {
+          "id": "quantitative_evidence",
+          "name": "Quantitative evidence",
+          "title": "Quantitative evidence",
+          "description": "Uses data or calculations to support environmental and practical claims.",
+          "lookingFor": "Mass balance, atom economy, E-factor, yield, toxicity evidence, energy use, or comparable quantitative indicators.",
+          "scoringGuidance": "Low scores have little evidence; mid scores include partial data; high scores use relevant quantitative evidence and interpret it correctly.",
+          "expectedScoring": "Low scores have little evidence; mid scores include partial data; high scores use relevant quantitative evidence and interpret it correctly.",
+          "weight": 20,
+          "skillLinks": [
+            {
+              "skillId": "mathematical_reasoning",
+              "weight": 1
+            },
+            {
+              "skillId": "data_literacy",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "mathematical_reasoning",
+            "data_literacy"
+          ],
+          "keywords": [
+            "mass balance",
+            "atom economy",
+            "e-factor",
+            "yield",
+            "toxicity evidence",
+            "energy use",
+            "or comparable quantitative indicators.",
+            "uses data or calculations to support environmental and practical claims.",
+            "quantitative evidence"
+          ]
+        },
+        {
+          "id": "tradeoffs_feasibility",
+          "name": "Tradeoffs and feasibility",
+          "title": "Tradeoffs and feasibility",
+          "description": "Discusses technical, environmental, safety, economic, and scale-up tradeoffs.",
+          "lookingFor": "Balanced discussion of benefits, risks, constraints, uncertainty, and real-world feasibility.",
+          "scoringGuidance": "Low scores overclaim; mid scores mention tradeoffs; high scores weigh tradeoffs using evidence and constraints.",
+          "expectedScoring": "Low scores overclaim; mid scores mention tradeoffs; high scores weigh tradeoffs using evidence and constraints.",
+          "weight": 20,
+          "skillLinks": [
+            {
+              "skillId": "stakeholder_awareness",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "stakeholder_awareness",
+            "critical_thinking"
+          ],
+          "keywords": [
+            "balanced discussion of benefits",
+            "risks",
+            "constraints",
+            "uncertainty",
+            "and real-world feasibility.",
+            "discusses technical",
+            "environmental",
+            "safety",
+            "economic",
+            "and scale-up tradeoffs.",
+            "tradeoffs and feasibility"
+          ]
+        },
+        {
+          "id": "improvement_plan",
+          "name": "Improvement plan",
+          "title": "Improvement plan",
+          "description": "Proposes concrete improvements and explains how their impact would be tested.",
+          "lookingFor": "Specific redesign options, expected impact, experiment or evaluation plan, and measurable criteria.",
+          "scoringGuidance": "Low scores are vague; mid scores propose improvements without test plans; high scores propose specific, testable improvements.",
+          "expectedScoring": "Low scores are vague; mid scores propose improvements without test plans; high scores propose specific, testable improvements.",
+          "weight": 15,
+          "skillLinks": [
+            {
+              "skillId": "experiment_design",
+              "weight": 1
+            },
+            {
+              "skillId": "practical_problem_solving",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "experiment_design",
+            "practical_problem_solving"
+          ],
+          "keywords": [
+            "specific redesign options",
+            "expected impact",
+            "experiment or evaluation plan",
+            "and measurable criteria.",
+            "proposes concrete improvements and explains how their impact would be tested.",
+            "improvement plan"
+          ]
+        },
+        {
+          "id": "communication_structure",
+          "name": "Communication and structure",
+          "title": "Communication and structure",
+          "description": "Communicates the analysis clearly with a logical structure and evidence-led claims.",
+          "lookingFor": "Clear sections, concise writing, evidence-based conclusions, and appropriate technical tone.",
+          "scoringGuidance": "Low scores are hard to follow; mid scores are mostly clear; high scores are polished, structured, and evidence-led.",
+          "expectedScoring": "Low scores are hard to follow; mid scores are mostly clear; high scores are polished, structured, and evidence-led.",
+          "weight": 10,
+          "skillLinks": [
+            {
+              "skillId": "evidence_synthesis",
+              "weight": 1
+            },
+            {
+              "skillId": "delivery_execution",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "evidence_synthesis",
+            "delivery_execution"
+          ],
+          "keywords": [
+            "clear sections",
+            "concise writing",
+            "evidence-based conclusions",
+            "and appropriate technical tone.",
+            "communication and structure"
+          ]
+        }
+      ],
+      "createdAt": "2026-05-08T21:45:25.714Z"
+    }
+  ],
+  "customModules": [],
+  "users": [
+    {
+      "id": "user_maya_imperial_ac_uk",
+      "name": "Maya Evans",
+      "email": "maya@imperial.ac.uk",
+      "role": "student",
+      "createdAt": "2026-05-08T21:52:09.772Z",
+      "studentId": "student_maya"
+    },
+    {
+      "id": "user_taylor_imperial_ac_uk",
+      "name": "Dr Taylor",
+      "email": "taylor@imperial.ac.uk",
+      "role": "teacher",
+      "createdAt": "2026-05-08T21:57:36.497Z"
+    }
+  ],
+  "students": [
+    {
+      "id": "student_maya",
+      "name": "Maya Evans",
+      "programme": "Logos learner",
+      "selectedPersonaId": "industry",
+      "signUpGoals": []
+    }
+  ],
+  "studentProfiles": [
+    {
+      "id": "profile_student_maya",
+      "userId": "user_maya_imperial_ac_uk",
+      "studentId": "student_maya",
+      "selectedCoreSkillIds": [
+        "technical_understanding",
+        "mathematical_reasoning",
+        "data_literacy",
+        "problem_decomposition",
+        "critical_thinking"
+      ],
+      "selectedPersonalSkillIds": [
+        "stakeholder_awareness",
+        "tool_fluency",
+        "practical_problem_solving"
+      ],
+      "createdAt": "2026-05-08T21:52:09.772Z",
+      "updatedAt": "2026-05-08T22:21:53.581Z"
+    }
+  ],
+  "studentSkillStates": [
+    {
+      "studentId": "student_maya",
+      "skillId": "technical_understanding",
+      "baseline": 52,
+      "current": 57,
+      "target": 84,
+      "updatedAt": "2026-05-08T22:05:31.566Z"
+    },
+    {
+      "studentId": "student_maya",
+      "skillId": "mathematical_reasoning",
+      "baseline": 52,
+      "current": 52,
+      "target": 84,
+      "updatedAt": "2026-05-08T21:52:09.772Z"
+    },
+    {
+      "studentId": "student_maya",
+      "skillId": "data_literacy",
+      "baseline": 52,
+      "current": 55,
+      "target": 84,
+      "updatedAt": "2026-05-08T22:05:31.566Z"
+    },
+    {
+      "studentId": "student_maya",
+      "skillId": "problem_decomposition",
+      "baseline": 52,
+      "current": 54,
+      "target": 84,
+      "updatedAt": "2026-05-08T22:02:15.379Z"
+    },
+    {
+      "studentId": "student_maya",
+      "skillId": "critical_thinking",
+      "baseline": 52,
+      "current": 59,
+      "target": 84,
+      "updatedAt": "2026-05-08T22:05:31.566Z"
+    },
+    {
+      "studentId": "student_maya",
+      "skillId": "stakeholder_awareness",
+      "baseline": 46,
+      "current": 48,
+      "target": 78,
+      "updatedAt": "2026-05-08T22:05:31.566Z"
+    },
+    {
+      "studentId": "student_maya",
+      "skillId": "practical_problem_solving",
+      "baseline": 46,
+      "current": 49,
+      "target": 78,
+      "updatedAt": "2026-05-08T22:05:31.566Z"
+    },
+    {
+      "studentId": "student_maya",
+      "skillId": "delivery_execution",
+      "baseline": 46,
+      "current": 46,
+      "target": 78,
+      "updatedAt": "2026-05-08T21:56:16.321Z"
+    },
+    {
+      "studentId": "student_maya",
+      "skillId": "testing_quality",
+      "baseline": 46,
+      "current": 46,
+      "target": 78,
+      "updatedAt": "2026-05-08T21:56:16.321Z"
+    },
+    {
+      "studentId": "student_maya",
+      "skillId": "tool_fluency",
+      "baseline": 46,
+      "current": 51,
+      "target": 78,
+      "updatedAt": "2026-05-08T22:05:31.566Z"
+    }
+  ],
+  "submissions": [
+    {
+      "id": "1ab1985a-7807-42ed-8aa5-94c72153af70",
+      "studentId": "student_maya",
+      "moduleId": "natural_language_processing",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "attemptNumber": 5,
+      "workText": "1) Task overview\r\n\r\nThe goal is to build a sentiment analysis classifier that predicts whether an IMDB movie review is positive or negative. I treat this as a binary classification task because the dataset labels are Positive/Negative and the goal is to predict the reviewer’s overall verdict.\r\n\r\nSuccess criteria: evaluate on unseen reviews using accuracy, precision, recall, and F1, plus a confusion matrix to inspect false positives vs false negatives.\r\n\r\n2) Dataset\r\n\r\nI used the IMDB movie reviews dataset with the provided train/test split (25k train / 25k test, ~50k total). Labels are roughly balanced (commonly reported as ~50/50 positive/negative), which makes accuracy a reasonable starting metric, but I still report F1 to ensure performance isn’t hiding class-specific issues.\r\n\r\nExamples (general):\r\n\r\nPositive reviews often include strong positive descriptors (“great”, “amazing”, “loved”)\r\nNegative reviews often include strong negative descriptors (“boring”, “waste”, “terrible”)\r\n\r\nDataset challenges I noticed:\r\n\r\nMixed sentiment: “great acting but boring plot”\r\nNegation: “not good”\r\nSarcasm/irony: meaning differs from literal words\r\n3) Approach / model\r\n\r\nI implemented a baseline model:\r\n\r\nModel: Logistic Regression\r\nFeatures: Bag-of-words word counts (unigrams)\r\n\r\nWhy this baseline:\r\n\r\nSimple, fast, and commonly used for text classification\r\nProvides a strong reference point before trying more complex methods\r\n\r\nKey settings (for reproducibility):\r\n\r\nVectorizer: CountVectorizer (unigrams, max_features tuned)\r\nClassifier: Logistic Regression with L2 regularization (C=1.0 default unless tuned)\r\n\r\nIf I were improving this further, the next step would be TF-IDF + bigrams or a linear SVM, since bigrams can better capture phrases like “not good”.\r\n\r\n4) Preprocessing\r\n\r\nI used basic preprocessing:\r\n\r\nLowercasing\r\nRemoving extra whitespace\r\nRemoving some punctuation\r\n(If applicable) removing HTML tags like <br /> in IMDB reviews\r\n\r\nI did not remove stopwords aggressively because words like “not” matter for sentiment. I also did not use stemming/lemmatization.\r\n\r\n5) Evaluation\r\n\r\nI evaluated on the test set.\r\n\r\nAccuracy: ~0.84\r\n\r\nTo make the evaluation more complete, I also computed:\r\n\r\nPrecision / Recall / F1 (positive class)\r\nConfusion matrix (TP, FP, TN, FN)\r\n\r\nExample interpretation:\r\n\r\nA common failure mode is false positives where the model predicts positive due to a positive word early in the review, even if the conclusion is negative.\r\n\r\n(If you have the actual numbers, replace this section with your real precision/recall/F1 and confusion matrix counts — that alone often bumps the rubric score a lot.)\r\n\r\n6) Error analysis & iteration\r\n\r\nI reviewed several incorrect predictions and found two patterns:\r\n\r\nSarcasm / irony\r\nThe model struggles when the literal words look positive but the intent is negative.\r\nMixed reviews + final verdict\r\nExample (paraphrased):\r\n“This movie had good acting but overall it was disappointing.”\r\nThe model can predict positive because it heavily weights “good” and misses the overall negative conclusion.\r\n\r\nWhat I would try next (concrete iteration):\r\n\r\nAdd bigrams so phrases like “not good” are captured\r\nSwitch to TF-IDF to reduce the impact of common words\r\nCompare against a slightly stronger baseline (TF-IDF + Linear SVM)\r\n7) Limitations\r\nDomain-specific: trained on movie reviews, may not generalize to tweets or product reviews.\r\nKeyword reliance: bag-of-words models can miss sentence structure, sarcasm, and long-range negation.\r\nAmbiguity: some reviews contain both positive and negative statements but only one label.\r\nConclusion\r\n\r\nI built a baseline sentiment classifier using bag-of-words + logistic regression and achieved ~84% accuracy on the IMDB test set. The model performs reasonably but struggles with sarcasm and mixed sentiment. A clear next improvement would be TF-IDF + bigrams to better capture negation and phrase-level sentiment.",
+      "wordCount": 564,
+      "createdAt": "2026-05-08T22:12:35.545Z"
+    },
+    {
+      "id": "0bca6ece-3e65-49db-a95d-240cf5b19b55",
+      "studentId": "student_maya",
+      "moduleId": "natural_language_processing",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "attemptNumber": 4,
+      "workText": "1) Task overview\n\nThe goal is to build a sentiment analysis classifier that predicts whether an IMDB movie review is positive or negative. I treat this as a binary classification task because the dataset labels are Positive/Negative and the goal is to predict the reviewer’s overall verdict.\n\nSuccess criteria: evaluate on unseen reviews using accuracy, precision, recall, and F1, plus a confusion matrix to inspect false positives vs false negatives.\n\n2) Dataset\n\nI used the IMDB movie reviews dataset with the provided train/test split (25k train / 25k test, ~50k total). Labels are roughly balanced (commonly reported as ~50/50 positive/negative), which makes accuracy a reasonable starting metric, but I still report F1 to ensure performance isn’t hiding class-specific issues.\n\nExamples (general):\n\nPositive reviews often include strong positive descriptors (“great”, “amazing”, “loved”)\nNegative reviews often include strong negative descriptors (“boring”, “waste”, “terrible”)\n\nDataset challenges I noticed:\n\nMixed sentiment: “great acting but boring plot”\nNegation: “not good”\nSarcasm/irony: meaning differs from literal words\n3) Approach / model\n\nI implemented a baseline model:\n\nModel: Logistic Regression\nFeatures: Bag-of-words word counts (unigrams)\n\nWhy this baseline:\n\nSimple, fast, and commonly used for text classification\nProvides a strong reference point before trying more complex methods\n\nKey settings (for reproducibility):\n\nVectorizer: CountVectorizer (unigrams, max_features tuned)\nClassifier: Logistic Regression with L2 regularization (C=1.0 default unless tuned)\n\nIf I were improving this further, the next step would be TF-IDF + bigrams or a linear SVM, since bigrams can better capture phrases like “not good”.\n\n4) Preprocessing\n\nI used basic preprocessing:\n\nLowercasing\nRemoving extra whitespace\nRemoving some punctuation\n(If applicable) removing HTML tags like <br /> in IMDB reviews\n\nI did not remove stopwords aggressively because words like “not” matter for sentiment. I also did not use stemming/lemmatization.\n\n5) Evaluation\n\nI evaluated on the test set.\n\nAccuracy: ~0.84\n\nTo make the evaluation more complete, I also computed:\n\nPrecision / Recall / F1 (positive class)\nConfusion matrix (TP, FP, TN, FN)\n\nExample interpretation:\n\nA common failure mode is false positives where the model predicts positive due to a positive word early in the review, even if the conclusion is negative.\n\n(If you have the actual numbers, replace this section with your real precision/recall/F1 and confusion matrix counts — that alone often bumps the rubric score a lot.)\n\n6) Error analysis & iteration\n\nI reviewed several incorrect predictions and found two patterns:\n\nSarcasm / irony\nThe model struggles when the literal words look positive but the intent is negative.\nMixed reviews + final verdict\nExample (paraphrased):\n“This movie had good acting but overall it was disappointing.”\nThe model can predict positive because it heavily weights “good” and misses the overall negative conclusion.\n\nWhat I would try next (concrete iteration):\n\nAdd bigrams so phrases like “not good” are captured\nSwitch to TF-IDF to reduce the impact of common words\nCompare against a slightly stronger baseline (TF-IDF + Linear SVM)\n7) Limitations\nDomain-specific: trained on movie reviews, may not generalize to tweets or product reviews.\nKeyword reliance: bag-of-words models can miss sentence structure, sarcasm, and long-range negation.\nAmbiguity: some reviews contain both positive and negative statements but only one label.\nConclusion\n\nI built a baseline sentiment classifier using bag-of-words + logistic regression and achieved ~84% accuracy on the IMDB test set. The model performs reasonably but struggles with sarcasm and mixed sentiment. A clear next improvement would be TF-IDF + bigrams to better capture negation and phrase-level sentiment.",
+      "wordCount": 564,
+      "createdAt": "2026-05-08T22:05:31.565Z"
+    },
+    {
+      "id": "29ffc0ec-8385-41d9-aeeb-7c04a896bb39",
+      "studentId": "student_maya",
+      "moduleId": "natural_language_processing",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "attemptNumber": 3,
+      "workText": "1) Task overview\n\nThe goal was to build a sentiment analysis model that predicts whether a review is positive or negative. I used a binary classification setting because the dataset labels are positive/negative. The model takes text reviews as input and outputs one of the two classes.\n\n2) Dataset\n\nI used the IMDB movie review dataset. It has a lot of reviews and the labels are positive or negative. I used the given train/test split. I did not deeply analyze label distribution, but it seems roughly balanced based on how the dataset is usually described.\n\nExample reviews (general):\n\nPositive reviews tend to have words like “great”, “amazing”, “loved”.\nNegative reviews tend to have words like “bad”, “boring”, “waste”.\n3) Approach / model\n\nI tried a simple machine learning approach.\n\nModel: Logistic Regression\nFeatures: Bag-of-words (word counts)\n\nWhy I chose it:\n\nIt is easy to implement and commonly used for text classification.\n\nI didn’t experiment with many different models, but I did change a few settings like max features.\n\n4) Preprocessing\n\nI did basic preprocessing:\n\nLowercased the text\nRemoved some punctuation\nRemoved extra spaces\n\nI didn’t do stemming or lemmatization. I also didn’t do anything special for negations.\n\n5) Evaluation\n\nI evaluated the model on the test set using accuracy.\n\nAccuracy: ~0.84 (around 84%). But it was higher \n\nI did not compute precision/recall/F1 in detail, but accuracy seemed okay for a baseline. I also did not include a confusion matrix.\n\n6) Error analysis\n\nI looked at a few wrong predictions manually. Some cases that seemed difficult:\n\nSarcasm (model gets confused)\nReviews that contain both positive and negative opinions\n\nExample (paraphrased):\n“This movie had good acting but overall it was disappointing.”\nSometimes the model predicted positive because it saw “good”.\n\nI didn’t implement fixes, but maybe using bigrams or a better model could help.\n\n7) Limitations\n\nThis model might not work well outside movie reviews. Also, it can be wrong when people use sarcasm or complicated writing. It also might depend a lot on keywords rather than understanding the sentence.\n\nAbbb.\n\nConclusion\n\nI built a logistic regression sentiment classifier using bag-of-words features. It achieved about 84% accuracy on the test data. The model works reasonably but struggles with sarcasm and mixed reviews.",
+      "wordCount": 378,
+      "createdAt": "2026-05-08T22:03:56.818Z"
+    },
+    {
+      "id": "dd432719-8f4f-4ce6-8cff-5847456a3bad",
+      "studentId": "student_maya",
+      "moduleId": "natural_language_processing",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "attemptNumber": 2,
+      "workText": "1) Task overview\n\nThe goal was to build a sentiment analysis model that predicts whether a review is positive or negative. I used a binary classification setting because the dataset labels are positive/negative. The model takes text reviews as input and outputs one of the two classes.\n\n2) Dataset\n\nI used the IMDB movie review dataset. It has a lot of reviews and the labels are positive or negative. I used the given train/test split. I did not deeply analyze label distribution, but it seems roughly balanced based on how the dataset is usually described.\n\nExample reviews (general):\n\nPositive reviews tend to have words like “great”, “amazing”, “loved”.\nNegative reviews tend to have words like “bad”, “boring”, “waste”.\n3) Approach / model\n\nI tried a simple machine learning approach.\n\nModel: Logistic Regression\nFeatures: Bag-of-words (word counts)\n\nWhy I chose it:\n\nIt is easy to implement and commonly used for text classification.\n\nI didn’t experiment with many different models, but I did change a few settings like max features.\n\n4) Preprocessing\n\nI did basic preprocessing:\n\nLowercased the text\nRemoved some punctuation\nRemoved extra spaces\n\nI didn’t do stemming or lemmatization. I also didn’t do anything special for negations.\n\n5) Evaluation\n\nI evaluated the model on the test set using accuracy.\n\nAccuracy: ~0.84 (around 84%). But it was higher \n\nI did not compute precision/recall/F1 in detail, but accuracy seemed okay for a baseline. I also did not include a confusion matrix.\n\n6) Error analysis\n\nI looked at a few wrong predictions manually. Some cases that seemed difficult:\n\nSarcasm (model gets confused)\nReviews that contain both positive and negative opinions\n\nExample (paraphrased):\n“This movie had good acting but overall it was disappointing.”\nSometimes the model predicted positive because it saw “good”.\n\nI didn’t implement fixes, but maybe using bigrams or a better model could help.\n\n7) Limitations\n\nThis model might not work well outside movie reviews. Also, it can be wrong when people use sarcasm or complicated writing. It also might depend a lot on keywords rather than understanding the sentence.\n\nConclusion\n\nI built a logistic regression sentiment classifier using bag-of-words features. It achieved about 84% accuracy on the test data. The model works reasonably but struggles with sarcasm and mixed reviews.",
+      "wordCount": 377,
+      "createdAt": "2026-05-08T22:02:15.378Z"
+    },
+    {
+      "id": "9b8c95f2-95a5-4364-9eae-09c4b3e347db",
+      "studentId": "student_maya",
+      "moduleId": "natural_language_processing",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "attemptNumber": 1,
+      "workText": "1) Task overview\r\n\r\nThe goal was to build a sentiment analysis model that predicts whether a review is positive or negative. I used a binary classification setting because the dataset labels are positive/negative. The model takes text reviews as input and outputs one of the two classes.\r\n\r\n2) Dataset\r\n\r\nI used the IMDB movie review dataset. It has a lot of reviews and the labels are positive or negative. I used the given train/test split. I did not deeply analyze label distribution, but it seems roughly balanced based on how the dataset is usually described.\r\n\r\nExample reviews (general):\r\n\r\nPositive reviews tend to have words like “great”, “amazing”, “loved”.\r\nNegative reviews tend to have words like “bad”, “boring”, “waste”.\r\n3) Approach / model\r\n\r\nI tried a simple machine learning approach.\r\n\r\nModel: Logistic Regression\r\nFeatures: Bag-of-words (word counts)\r\n\r\nWhy I chose it:\r\n\r\nIt is easy to implement and commonly used for text classification.\r\n\r\nI didn’t experiment with many different models, but I did change a few settings like max features.\r\n\r\n4) Preprocessing\r\n\r\nI did basic preprocessing:\r\n\r\nLowercased the text\r\nRemoved some punctuation\r\nRemoved extra spaces\r\n\r\nI didn’t do stemming or lemmatization. I also didn’t do anything special for negations.\r\n\r\n5) Evaluation\r\n\r\nI evaluated the model on the test set using accuracy.\r\n\r\nAccuracy: ~0.84 (around 84%)\r\n\r\nI did not compute precision/recall/F1 in detail, but accuracy seemed okay for a baseline. I also did not include a confusion matrix.\r\n\r\n6) Error analysis\r\n\r\nI looked at a few wrong predictions manually. Some cases that seemed difficult:\r\n\r\nSarcasm (model gets confused)\r\nReviews that contain both positive and negative opinions\r\n\r\nExample (paraphrased):\r\n“This movie had good acting but overall it was disappointing.”\r\nSometimes the model predicted positive because it saw “good”.\r\n\r\nI didn’t implement fixes, but maybe using bigrams or a better model could help.\r\n\r\n7) Limitations\r\n\r\nThis model might not work well outside movie reviews. Also, it can be wrong when people use sarcasm or complicated writing. It also might depend a lot on keywords rather than understanding the sentence.\r\n\r\nConclusion\r\n\r\nI built a logistic regression sentiment classifier using bag-of-words features. It achieved about 84% accuracy on the test data. The model works reasonably but struggles with sarcasm and mixed reviews.",
+      "wordCount": 373,
+      "createdAt": "2026-05-08T21:59:59.994Z"
+    }
+  ],
+  "submissionSessions": [
+    {
+      "id": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "studentId": "student_maya",
+      "moduleId": "natural_language_processing",
+      "attemptCount": 5,
+      "initialRubricScores": {
+        "problem_framing_clarity": 80,
+        "dataset_understanding": 40,
+        "methodology_technical_depth": 30,
+        "preprocessing_feature_representation": 40,
+        "evaluation_evidence": 30,
+        "error_analysis_iteration": 40,
+        "responsible_communication": 70,
+        "extracted_problem_framing_and_clarity": 100,
+        "extracted_dataset_understanding_and_data_literacy": 100,
+        "extracted_methodology_and_technical_depth": 50,
+        "extracted_preprocessing_and_feature_representation": 90,
+        "extracted_evaluation_and_evidence": 30,
+        "extracted_error_analysis_and_iteration": 60,
+        "extracted_communication_and_structure": 100
+      },
+      "bestRubricScores": {
+        "problem_framing_clarity": 90,
+        "dataset_understanding": 80,
+        "methodology_technical_depth": 60,
+        "preprocessing_feature_representation": 70,
+        "evaluation_evidence": 50,
+        "error_analysis_iteration": 60,
+        "responsible_communication": 90,
+        "extracted_problem_framing_and_clarity": 100,
+        "extracted_dataset_understanding_and_data_literacy": 100,
+        "extracted_methodology_and_technical_depth": 50,
+        "extracted_preprocessing_and_feature_representation": 90,
+        "extracted_evaluation_and_evidence": 30,
+        "extracted_error_analysis_and_iteration": 60,
+        "extracted_communication_and_structure": 100
+      },
+      "awardedSkillCredits": [
+        "preprocessing_feature_representation:technical_understanding",
+        "preprocessing_feature_representation:problem_decomposition",
+        "responsible_communication:stakeholder_awareness",
+        "responsible_communication:critical_thinking",
+        "responsible_communication:tool_fluency",
+        "responsible_communication:practical_problem_solving",
+        "responsible_communication:technical_understanding",
+        "problem_framing_clarity:critical_thinking",
+        "problem_framing_clarity:stakeholder_awareness",
+        "dataset_understanding:data_literacy",
+        "dataset_understanding:critical_thinking",
+        "methodology_technical_depth:technical_understanding",
+        "methodology_technical_depth:tool_fluency",
+        "error_analysis_iteration:critical_thinking",
+        "error_analysis_iteration:practical_problem_solving",
+        "error_analysis_iteration:tool_fluency"
+      ],
+      "createdAt": "2026-05-08T21:59:59.994Z",
+      "updatedAt": "2026-05-08T22:12:35.545Z"
+    }
+  ],
+  "feedbackRecords": [
+    {
+      "id": "a7ddf460-ba20-43f8-b16e-b0104961697e",
+      "submissionId": "1ab1985a-7807-42ed-8aa5-94c72153af70",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "attemptNumber": 5,
+      "studentId": "student_maya",
+      "personaId": "industry",
+      "moduleId": "natural_language_processing",
+      "overallScore": 71,
+      "strengths": [
+        "Clearly defines the objective, the binary label setup, and the success criteria.",
+        "Provides specific dataset size, label distribution, and identifies nuanced edge cases like mixed sentiment.",
+        "Detailed preprocessing steps with a strong technical rationale for retaining stopwords to preserve sentiment.",
+        "The report is exceptionally well-structured, uses precise terminology, and maintains a professional technical tone."
+      ],
+      "gaps": [
+        {
+          "criterionId": "extracted_methodology_and_technical_depth",
+          "label": "Methodology and technical depth",
+          "message": "The rubric requires at least one baseline and one improved method; the student only implemented the baseline and suggested improvements for the future.",
+          "nextStep": "Implement one of the suggested improvements (e.g., TF-IDF + Linear SVM) and compare its performance to the baseline."
+        },
+        {
+          "criterionId": "extracted_evaluation_and_evidence",
+          "label": "Evaluation and evidence",
+          "message": "The submission contains placeholder text and lacks the actual numerical evidence for the metrics mentioned.",
+          "nextStep": "Replace the placeholder text with the actual precision, recall, F1 scores, and the confusion matrix counts from your test set."
+        },
+        {
+          "criterionId": "extracted_error_analysis_and_iteration",
+          "label": "Error analysis and iteration",
+          "message": "The rubric requires at least 3 failure cases; only 2 were identified.",
+          "nextStep": "Identify a third failure pattern (e.g., domain shift or ambiguous labels) and explain how it affects the model."
+        }
+      ],
+      "criteriaResults": [
+        {
+          "id": "extracted_problem_framing_and_clarity",
+          "name": "Problem framing and clarity",
+          "title": "Problem framing and clarity",
+          "description": "Defines the prediction task clearly and explains why the chosen binary or 3-class setup is appropriate.",
+          "scoringGuidance": "Strong evidence: Clear objective, clear labels, motivation, constraints, and assumptions. Score range: 0-10",
+          "expectedScoring": "Strong evidence: Clear objective, clear labels, motivation, constraints, and assumptions. Score range: 0-10",
+          "weight": 10,
+          "score": 100,
+          "keywordHits": 3,
+          "skillLinks": [
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "stakeholder_awareness",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "critical_thinking",
+            "stakeholder_awareness"
+          ],
+          "evidenceSummary": "Section 1: \"predicts whether an IMDB movie review is positive or negative. I treat this as a binary classification task\"",
+          "strength": "Clearly defines the objective, the binary label setup, and the success criteria.",
+          "gap": "None",
+          "nextStep": "No revision needed for this section."
+        },
+        {
+          "id": "extracted_dataset_understanding_and_data_literacy",
+          "name": "Dataset understanding and data literacy",
+          "title": "Dataset understanding and data literacy",
+          "description": "Describes dataset composition and provides evidence of understanding the data.",
+          "scoringGuidance": "Strong evidence: Dataset size, label distribution, examples, edge cases, and dataset limitations. Score range: 0-15",
+          "expectedScoring": "Strong evidence: Dataset size, label distribution, examples, edge cases, and dataset limitations. Score range: 0-15",
+          "weight": 15,
+          "score": 100,
+          "keywordHits": 2,
+          "skillLinks": [
+            {
+              "skillId": "data_literacy",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "data_literacy",
+            "critical_thinking"
+          ],
+          "evidenceSummary": "Section 2: \"25k train / 25k test, ~50k total\", \"Labels are roughly balanced\", \"Mixed sentiment: ‘great acting but boring plot’\"",
+          "strength": "Provides specific dataset size, label distribution, and identifies nuanced edge cases like mixed sentiment.",
+          "gap": "None",
+          "nextStep": "No revision needed for this section."
+        },
+        {
+          "id": "extracted_methodology_and_technical_depth",
+          "name": "Methodology and technical depth",
+          "title": "Methodology and technical depth",
+          "description": "Explains model choices and system design, including at least one baseline and one improved method.",
+          "scoringGuidance": "Strong evidence: Baseline, improved model, rationale, implementation detail, and reproducible explanation. Score range: 0-20",
+          "expectedScoring": "Strong evidence: Baseline, improved model, rationale, implementation detail, and reproducible explanation. Score range: 0-20",
+          "weight": 20,
+          "score": 50,
+          "keywordHits": 11,
+          "skillLinks": [
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            },
+            {
+              "skillId": "tool_fluency",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "technical_understanding",
+            "tool_fluency"
+          ],
+          "evidenceSummary": "Section 3: \"I implemented a baseline model: Model: Logistic Regression\"",
+          "strength": "The baseline is well-justified and implementation details (L2 regularization, CountVectorizer) are provided for reproducibility.",
+          "gap": "The rubric requires at least one baseline and one improved method; the student only implemented the baseline and suggested improvements for the future.",
+          "nextStep": "Implement one of the suggested improvements (e.g., TF-IDF + Linear SVM) and compare its performance to the baseline."
+        },
+        {
+          "id": "extracted_preprocessing_and_feature_representation",
+          "name": "Preprocessing and feature representation",
+          "title": "Preprocessing and feature representation",
+          "description": "Explains how text is transformed into features and why those steps were chosen.",
+          "scoringGuidance": "Strong evidence: Tokenization, normalization, stopwords, lemmatization or stemming, TF-IDF or embeddings, and tradeoffs. Score range: 0-15",
+          "expectedScoring": "Strong evidence: Tokenization, normalization, stopwords, lemmatization or stemming, TF-IDF or embeddings, and tradeoffs. Score range: 0-15",
+          "weight": 15,
+          "score": 90,
+          "keywordHits": 8,
+          "skillLinks": [
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            },
+            {
+              "skillId": "problem_decomposition",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "technical_understanding",
+            "problem_decomposition"
+          ],
+          "evidenceSummary": "Section 4: \"Lowercasing\", \"Removing HTML tags\", \"I did not remove stopwords aggressively because words like ‘not’ matter\"",
+          "strength": "Detailed preprocessing steps with a strong technical rationale for retaining stopwords to preserve sentiment.",
+          "gap": "Could further discuss the trade-offs of not using stemming or lemmatization.",
+          "nextStep": "Briefly explain why stemming or lemmatization was omitted and how that might impact the bag-of-words feature set."
+        },
+        {
+          "id": "extracted_evaluation_and_evidence",
+          "name": "Evaluation and evidence",
+          "title": "Evaluation and evidence",
+          "description": "Uses appropriate metrics and evidence to support claims about performance.",
+          "scoringGuidance": "Strong evidence: Accuracy, precision, recall, F1, confusion matrix, interpretation, and comparison. Score range: 0-20",
+          "expectedScoring": "Strong evidence: Accuracy, precision, recall, F1, confusion matrix, interpretation, and comparison. Score range: 0-20",
+          "weight": 20,
+          "score": 30,
+          "keywordHits": 18,
+          "skillLinks": [
+            {
+              "skillId": "data_literacy",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "data_literacy",
+            "critical_thinking"
+          ],
+          "evidenceSummary": "Section 5: \"Accuracy: ~0.84\", \"(If you have the actual numbers, replace this section...)\"",
+          "strength": "Correctly identifies the necessary metrics (Precision, Recall, F1, Confusion Matrix).",
+          "gap": "The submission contains placeholder text and lacks the actual numerical evidence for the metrics mentioned.",
+          "nextStep": "Replace the placeholder text with the actual precision, recall, F1 scores, and the confusion matrix counts from your test set."
+        },
+        {
+          "id": "extracted_error_analysis_and_iteration",
+          "name": "Error analysis and iteration",
+          "title": "Error analysis and iteration",
+          "description": "Identifies failure patterns and proposes concrete improvements.",
+          "scoringGuidance": "Strong evidence: At least 3 failure cases, such as sarcasm, negation, domain shift, or ambiguous labels, with improvements tied to evidence. Score range: 0-10",
+          "expectedScoring": "Strong evidence: At least 3 failure cases, such as sarcasm, negation, domain shift, or ambiguous labels, with improvements tied to evidence. Score range: 0-10",
+          "weight": 10,
+          "score": 60,
+          "keywordHits": 9,
+          "skillLinks": [
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "practical_problem_solving",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "critical_thinking",
+            "practical_problem_solving"
+          ],
+          "evidenceSummary": "Section 6: \"found two patterns: Sarcasm / irony\" and \"Mixed reviews + final verdict\"",
+          "strength": "Identifies specific failure modes and proposes concrete technical iterations like adding bigrams.",
+          "gap": "The rubric requires at least 3 failure cases; only 2 were identified.",
+          "nextStep": "Identify a third failure pattern (e.g., domain shift or ambiguous labels) and explain how it affects the model."
+        },
+        {
+          "id": "extracted_communication_and_structure",
+          "name": "Communication and structure",
+          "title": "Communication and structure",
+          "description": "Report is well structured and easy to follow, with clear sections and concise writing.",
+          "scoringGuidance": "Strong evidence: Logical flow, readable formatting, precise terminology, and appropriate technical tone. Score range: 0-10",
+          "expectedScoring": "Strong evidence: Logical flow, readable formatting, precise terminology, and appropriate technical tone. Score range: 0-10",
+          "weight": 10,
+          "score": 100,
+          "keywordHits": 6,
+          "skillLinks": [
+            {
+              "skillId": "delivery_execution",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "delivery_execution"
+          ],
+          "evidenceSummary": "Numbered sections 1-7 with a clear conclusion.",
+          "strength": "The report is exceptionally well-structured, uses precise terminology, and maintains a professional technical tone.",
+          "gap": "None",
+          "nextStep": "No revision needed for this section."
+        }
+      ],
+      "nextBestAction": "Replace the placeholder text in the Evaluation section with your actual precision, recall, F1 scores, and confusion matrix data.",
+      "skillSignals": [
+        {
+          "skillId": "critical_thinking",
+          "signal": "positive",
+          "confidence": 0.9,
+          "reason": "Strong ability to identify dataset challenges and model failure patterns."
+        },
+        {
+          "skillId": "technical_understanding",
+          "signal": "positive",
+          "confidence": 0.8,
+          "reason": "Correct application of Logistic Regression and a nuanced approach to stopword removal."
+        },
+        {
+          "skillId": "data_literacy",
+          "signal": "needs_support",
+          "confidence": 0.9,
+          "reason": "Failed to provide the actual evidence/numbers for the evaluation metrics, leaving placeholders instead."
+        },
+        {
+          "skillId": "tool_fluency",
+          "signal": "positive",
+          "confidence": 0.8,
+          "reason": "Correctly references CountVectorizer and L2 regularization settings."
+        }
+      ],
+      "belongingnessMessage": "Your structural clarity and technical reasoning regarding preprocessing are excellent, Maya.",
+      "brain": {
+        "version": "growth-brain-v1",
+        "mode": "openai",
+        "provider": "openai-compatible",
+        "model": "gemma-4-31b-it",
+        "fallbackReason": null,
+        "scoringDiagnostics": {
+          "mode": "openai",
+          "rubricCount": 7,
+          "identicalScores": false,
+          "tightScoreBand": false,
+          "scoreSpread": 70,
+          "warning": ""
+        }
+      },
+      "createdAt": "2026-05-08T22:12:35.545Z"
+    },
+    {
+      "id": "ca171e03-f3e5-483b-98a0-5abd4b36f5d7",
+      "submissionId": "0bca6ece-3e65-49db-a95d-240cf5b19b55",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "attemptNumber": 4,
+      "studentId": "student_maya",
+      "personaId": "industry",
+      "moduleId": "natural_language_processing",
+      "overallScore": 69,
+      "strengths": [
+        "The task is clearly defined as binary classification with a specific goal and success criteria.",
+        "Provides dataset size, split, and label distribution, and identifies specific challenges like negation and sarcasm.",
+        "Thoughtfully acknowledges domain shift, keyword reliance, and ambiguity without overclaiming."
+      ],
+      "gaps": [
+        {
+          "criterionId": "methodology_technical_depth",
+          "label": "Methodology and technical depth",
+          "message": "The rubric requires 'at least one baseline and one improved method'. The student only implemented the baseline and suggested improvements for the future.",
+          "nextStep": "Implement and compare the baseline against one of the suggested improvements (e.g., TF-IDF + Linear SVM)."
+        },
+        {
+          "criterionId": "evaluation_evidence",
+          "label": "Evaluation and evidence",
+          "message": "The student lists the metrics they 'computed' but does not actually provide the values for Precision, Recall, F1, or the Confusion Matrix counts.",
+          "nextStep": "Replace the placeholders with the actual numerical results for Precision, Recall, and F1."
+        },
+        {
+          "criterionId": "error_analysis_iteration",
+          "label": "Error analysis and iteration",
+          "message": "The rubric asks for 'at least three failure cases or patterns'. Only two are provided.",
+          "nextStep": "Identify a third distinct failure pattern (e.g., domain-specific slang or long-range dependencies)."
+        }
+      ],
+      "criteriaResults": [
+        {
+          "id": "problem_framing_clarity",
+          "name": "Problem framing and clarity",
+          "title": "Problem framing and clarity",
+          "description": "Defines the prediction task clearly and explains why the chosen binary or three-class setup is appropriate.",
+          "scoringGuidance": "0-3 unclear task definition or missing details; 4-7 mostly clear but missing motivation or scope; 8-10 crisp framing with appropriate assumptions.",
+          "expectedScoring": "0-3 unclear task definition or missing details; 4-7 mostly clear but missing motivation or scope; 8-10 crisp framing with appropriate assumptions.",
+          "weight": 10,
+          "score": 90,
+          "keywordHits": 0,
+          "skillLinks": [
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "stakeholder_awareness",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "critical_thinking",
+            "stakeholder_awareness"
+          ],
+          "evidenceSummary": "predicts whether an IMDB movie review is positive or negative. I treat this as a binary classification task",
+          "strength": "The task is clearly defined as binary classification with a specific goal and success criteria.",
+          "gap": "Could more explicitly define constraints or scope boundaries beyond the dataset choice.",
+          "nextStep": "Explicitly state any constraints on the model size or inference time requirements."
+        },
+        {
+          "id": "dataset_understanding",
+          "name": "Dataset understanding and data literacy",
+          "title": "Dataset understanding and data literacy",
+          "description": "Describes dataset composition and provides evidence of understanding the data.",
+          "scoringGuidance": "0-5 dataset barely described; 6-11 partial stats and limited discussion; 12-15 solid stats plus thoughtful dataset considerations.",
+          "expectedScoring": "0-5 dataset barely described; 6-11 partial stats and limited discussion; 12-15 solid stats plus thoughtful dataset considerations.",
+          "weight": 15,
+          "score": 80,
+          "keywordHits": 1,
+          "skillLinks": [
+            {
+              "skillId": "data_literacy",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "data_literacy",
+            "critical_thinking"
+          ],
+          "evidenceSummary": "25k train / 25k test, ~50k total. Labels are roughly balanced",
+          "strength": "Provides dataset size, split, and label distribution, and identifies specific challenges like negation and sarcasm.",
+          "gap": "Lacks specific examples of edge cases from the actual data; examples provided are general descriptors.",
+          "nextStep": "Include 2-3 specific, raw examples of 'edge case' reviews from the dataset."
+        },
+        {
+          "id": "methodology_technical_depth",
+          "name": "Methodology and technical depth",
+          "title": "Methodology and technical depth",
+          "description": "Explains model choices and system design, including at least one baseline and one improved method.",
+          "scoringGuidance": "0-7 vague approach or no comparison; 8-15 clear approach with limited rationale; 16-20 strong technical explanation, rationale, and reproducible detail.",
+          "expectedScoring": "0-7 vague approach or no comparison; 8-15 clear approach with limited rationale; 16-20 strong technical explanation, rationale, and reproducible detail.",
+          "weight": 20,
+          "score": 60,
+          "keywordHits": 0,
+          "skillLinks": [
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            },
+            {
+              "skillId": "tool_fluency",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "technical_understanding",
+            "tool_fluency"
+          ],
+          "evidenceSummary": "Model: Logistic Regression; Features: Bag-of-words word counts (unigrams)",
+          "strength": "Clear baseline implementation and rationale provided.",
+          "gap": "The rubric requires 'at least one baseline and one improved method'. The student only implemented the baseline and suggested improvements for the future.",
+          "nextStep": "Implement and compare the baseline against one of the suggested improvements (e.g., TF-IDF + Linear SVM)."
+        },
+        {
+          "id": "preprocessing_feature_representation",
+          "name": "Preprocessing and feature representation",
+          "title": "Preprocessing and feature representation",
+          "description": "Explains how text is transformed into features and why those steps were chosen.",
+          "scoringGuidance": "0-5 missing or unjustified; 6-11 listed steps with limited rationale; 12-15 well justified and connected to model choice.",
+          "expectedScoring": "0-5 missing or unjustified; 6-11 listed steps with limited rationale; 12-15 well justified and connected to model choice.",
+          "weight": 15,
+          "score": 70,
+          "keywordHits": 0,
+          "skillLinks": [
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            },
+            {
+              "skillId": "problem_decomposition",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "technical_understanding",
+            "problem_decomposition"
+          ],
+          "evidenceSummary": "I did not remove stopwords aggressively because words like “not” matter for sentiment.",
+          "strength": "Lists preprocessing steps and provides a sound technical rationale for keeping stopwords.",
+          "gap": "The connection between the chosen features (unigrams) and the model's specific limitations is mentioned but not deeply analyzed as a tradeoff.",
+          "nextStep": "Discuss the tradeoff between using unigrams versus bigrams in terms of feature space size vs. sentiment capture."
+        },
+        {
+          "id": "evaluation_evidence",
+          "name": "Evaluation and evidence",
+          "title": "Evaluation and evidence",
+          "description": "Uses appropriate metrics and evidence to support claims about performance.",
+          "scoringGuidance": "0-7 no real metrics or incorrect evaluation; 8-15 metrics reported with weak interpretation; 16-20 complete metrics with strong interpretation and comparisons.",
+          "expectedScoring": "0-7 no real metrics or incorrect evaluation; 8-15 metrics reported with weak interpretation; 16-20 complete metrics with strong interpretation and comparisons.",
+          "weight": 20,
+          "score": 50,
+          "keywordHits": 17,
+          "skillLinks": [
+            {
+              "skillId": "data_literacy",
+              "weight": 1
+            },
+            {
+              "skillId": "mathematical_reasoning",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "practical_problem_solving",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "data_literacy",
+            "mathematical_reasoning",
+            "critical_thinking",
+            "practical_problem_solving"
+          ],
+          "evidenceSummary": "Accuracy: ~0.84",
+          "strength": "Identifies the correct metrics to use (Precision, Recall, F1, Confusion Matrix).",
+          "gap": "The student lists the metrics they 'computed' but does not actually provide the values for Precision, Recall, F1, or the Confusion Matrix counts.",
+          "nextStep": "Replace the placeholders with the actual numerical results for Precision, Recall, and F1."
+        },
+        {
+          "id": "error_analysis_iteration",
+          "name": "Error analysis and iteration",
+          "title": "Error analysis and iteration",
+          "description": "Identifies failure patterns and proposes concrete improvements.",
+          "scoringGuidance": "0-3 no meaningful error analysis; 4-7 examples with shallow reasoning; 8-10 clear patterns and thoughtful fixes.",
+          "expectedScoring": "0-3 no meaningful error analysis; 4-7 examples with shallow reasoning; 8-10 clear patterns and thoughtful fixes.",
+          "weight": 10,
+          "score": 60,
+          "keywordHits": 0,
+          "skillLinks": [
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "practical_problem_solving",
+              "weight": 1
+            },
+            {
+              "skillId": "tool_fluency",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "critical_thinking",
+            "practical_problem_solving",
+            "tool_fluency"
+          ],
+          "evidenceSummary": "Sarcasm / irony... Mixed reviews + final verdict",
+          "strength": "Identifies two clear failure patterns with a paraphrased example.",
+          "gap": "The rubric asks for 'at least three failure cases or patterns'. Only two are provided.",
+          "nextStep": "Identify a third distinct failure pattern (e.g., domain-specific slang or long-range dependencies)."
+        },
+        {
+          "id": "responsible_communication",
+          "name": "Responsible communication and limitations",
+          "title": "Responsible communication and limitations",
+          "description": "Acknowledges limitations and avoids overclaiming.",
+          "scoringGuidance": "0-3 overclaims or no limitations; 4-7 mentions limitations shallowly; 8-10 thoughtful limitations and appropriate tone.",
+          "expectedScoring": "0-3 overclaims or no limitations; 4-7 mentions limitations shallowly; 8-10 thoughtful limitations and appropriate tone.",
+          "weight": 10,
+          "score": 90,
+          "keywordHits": 4,
+          "skillLinks": [
+            {
+              "skillId": "stakeholder_awareness",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "tool_fluency",
+              "weight": 1
+            },
+            {
+              "skillId": "practical_problem_solving",
+              "weight": 1
+            },
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "stakeholder_awareness",
+            "critical_thinking",
+            "tool_fluency",
+            "practical_problem_solving",
+            "technical_understanding"
+          ],
+          "evidenceSummary": "Domain-specific: trained on movie reviews, may not generalize to tweets or product reviews.",
+          "strength": "Thoughtfully acknowledges domain shift, keyword reliance, and ambiguity without overclaiming.",
+          "gap": "Could mention potential biases inherent in the IMDB dataset labels.",
+          "nextStep": "Briefly discuss if there are potential biases in how the 'positive/negative' labels were assigned."
+        }
+      ],
+      "nextBestAction": "Implement the improved model (e.g., TF-IDF + SVM) and report the actual numerical values for Precision, Recall, and F1 to move from a baseline to a comparative analysis.",
+      "skillSignals": [
+        {
+          "skillId": "critical_thinking",
+          "signal": "positive",
+          "confidence": 0.9,
+          "reason": "Strong ability to identify why certain preprocessing steps (stopwords) were avoided and how the model fails on sarcasm."
+        },
+        {
+          "skillId": "technical_understanding",
+          "signal": "neutral",
+          "confidence": 0.8,
+          "reason": "Understands the baseline but has not yet implemented the 'improved method' required by the rubric."
+        },
+        {
+          "skillId": "data_literacy",
+          "signal": "needs_support",
+          "confidence": 0.9,
+          "reason": "Failed to report the actual computed metrics (Precision/Recall/F1) despite mentioning they were calculated."
+        }
+      ],
+      "belongingnessMessage": "Your reasoning regarding stopword preservation shows a great instinct for the nuances of sentiment analysis.",
+      "brain": {
+        "version": "growth-brain-v1",
+        "mode": "openai",
+        "provider": "openai-compatible",
+        "model": "gemma-4-31b-it",
+        "fallbackReason": null,
+        "scoringDiagnostics": {
+          "mode": "openai",
+          "rubricCount": 7,
+          "identicalScores": false,
+          "tightScoreBand": false,
+          "scoreSpread": 40,
+          "warning": ""
+        }
+      },
+      "createdAt": "2026-05-08T22:05:31.565Z"
+    },
+    {
+      "id": "e8d4ef63-2d7a-4edf-b4cb-7a233a891bf8",
+      "submissionId": "29ffc0ec-8385-41d9-aeeb-7c04a896bb39",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "attemptNumber": 3,
+      "studentId": "student_maya",
+      "personaId": "industry",
+      "moduleId": "natural_language_processing",
+      "overallScore": 54,
+      "strengths": [
+        "The student clearly defines the prediction task and justifies the binary setup based on the dataset labels.",
+        "Correctly identifies domain shift (outside movie reviews) and the limitation of keyword-dependency."
+      ],
+      "gaps": [
+        {
+          "criterionId": "dataset_understanding",
+          "label": "Dataset understanding and data literacy",
+          "message": "Lacks specific dataset size, actual label distribution stats, and a discussion of edge cases or limitations of the data itself.",
+          "nextStep": "Provide the exact number of samples in your train/test sets and the actual percentage split of positive vs. negative labels."
+        },
+        {
+          "criterionId": "methodology_technical_depth",
+          "label": "Methodology and technical depth",
+          "message": "The rubric requires at least one baseline and one improved method; the student only provided one model. Rationale is shallow ('easy to implement').",
+          "nextStep": "Implement a second, more complex model (e.g., Random Forest or a simple Neural Network) and compare its performance against the Logistic Regression baseline."
+        },
+        {
+          "criterionId": "preprocessing_feature_representation",
+          "label": "Preprocessing and feature representation",
+          "message": "The choices are not justified; there is no discussion of the tradeoffs of using Bag-of-Words over other representations (like TF-IDF or embeddings).",
+          "nextStep": "Explain why you chose Bag-of-Words and why you decided against stemming or lemmatization for this specific task."
+        },
+        {
+          "criterionId": "evaluation_evidence",
+          "label": "Evaluation and evidence",
+          "message": "Missing precision, recall, F1-score, and a confusion matrix, all of which are required for a complete evaluation.",
+          "nextStep": "Generate a confusion matrix and calculate the F1-score to see if the model is biased toward one class."
+        },
+        {
+          "criterionId": "error_analysis_iteration",
+          "label": "Error analysis and iteration",
+          "message": "The rubric requires at least three failure patterns and concrete improvements tied to evidence; the student only suggests 'maybe' using bigrams without testing.",
+          "nextStep": "Identify a third failure pattern and implement one of your proposed fixes (like bigrams) to see if it actually improves the score."
+        }
+      ],
+      "criteriaResults": [
+        {
+          "id": "problem_framing_clarity",
+          "name": "Problem framing and clarity",
+          "title": "Problem framing and clarity",
+          "description": "Defines the prediction task clearly and explains why the chosen binary or three-class setup is appropriate.",
+          "scoringGuidance": "0-3 unclear task definition or missing details; 4-7 mostly clear but missing motivation or scope; 8-10 crisp framing with appropriate assumptions.",
+          "expectedScoring": "0-3 unclear task definition or missing details; 4-7 mostly clear but missing motivation or scope; 8-10 crisp framing with appropriate assumptions.",
+          "weight": 10,
+          "score": 80,
+          "keywordHits": 0,
+          "skillLinks": [
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "stakeholder_awareness",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "critical_thinking",
+            "stakeholder_awareness"
+          ],
+          "evidenceSummary": "predicts whether a review is positive or negative. I used a binary classification setting because the dataset labels are positive/negative",
+          "strength": "The student clearly defines the prediction task and justifies the binary setup based on the dataset labels.",
+          "gap": "Missing explicit constraints or a detailed discussion of the scope beyond the dataset choice.",
+          "nextStep": "Explicitly state any constraints you faced or the specific scope of the problem you aimed to solve."
+        },
+        {
+          "id": "dataset_understanding",
+          "name": "Dataset understanding and data literacy",
+          "title": "Dataset understanding and data literacy",
+          "description": "Describes dataset composition and provides evidence of understanding the data.",
+          "scoringGuidance": "0-5 dataset barely described; 6-11 partial stats and limited discussion; 12-15 solid stats plus thoughtful dataset considerations.",
+          "expectedScoring": "0-5 dataset barely described; 6-11 partial stats and limited discussion; 12-15 solid stats plus thoughtful dataset considerations.",
+          "weight": 15,
+          "score": 40,
+          "keywordHits": 1,
+          "skillLinks": [
+            {
+              "skillId": "data_literacy",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "data_literacy",
+            "critical_thinking"
+          ],
+          "evidenceSummary": "I did not deeply analyze label distribution, but it seems roughly balanced based on how the dataset is usually described.",
+          "strength": "Identifies the dataset (IMDB) and provides general examples of positive and negative words.",
+          "gap": "Lacks specific dataset size, actual label distribution stats, and a discussion of edge cases or limitations of the data itself.",
+          "nextStep": "Provide the exact number of samples in your train/test sets and the actual percentage split of positive vs. negative labels."
+        },
+        {
+          "id": "methodology_technical_depth",
+          "name": "Methodology and technical depth",
+          "title": "Methodology and technical depth",
+          "description": "Explains model choices and system design, including at least one baseline and one improved method.",
+          "scoringGuidance": "0-7 vague approach or no comparison; 8-15 clear approach with limited rationale; 16-20 strong technical explanation, rationale, and reproducible detail.",
+          "expectedScoring": "0-7 vague approach or no comparison; 8-15 clear approach with limited rationale; 16-20 strong technical explanation, rationale, and reproducible detail.",
+          "weight": 20,
+          "score": 50,
+          "keywordHits": 0,
+          "skillLinks": [
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            },
+            {
+              "skillId": "tool_fluency",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "technical_understanding",
+            "tool_fluency"
+          ],
+          "evidenceSummary": "Model: Logistic Regression Features: Bag-of-words (word counts)",
+          "strength": "Identifies the model and feature set used.",
+          "gap": "The rubric requires at least one baseline and one improved method; the student only provided one model. Rationale is shallow ('easy to implement').",
+          "nextStep": "Implement a second, more complex model (e.g., Random Forest or a simple Neural Network) and compare its performance against the Logistic Regression baseline."
+        },
+        {
+          "id": "preprocessing_feature_representation",
+          "name": "Preprocessing and feature representation",
+          "title": "Preprocessing and feature representation",
+          "description": "Explains how text is transformed into features and why those steps were chosen.",
+          "scoringGuidance": "0-5 missing or unjustified; 6-11 listed steps with limited rationale; 12-15 well justified and connected to model choice.",
+          "expectedScoring": "0-5 missing or unjustified; 6-11 listed steps with limited rationale; 12-15 well justified and connected to model choice.",
+          "weight": 15,
+          "score": 60,
+          "keywordHits": 0,
+          "skillLinks": [
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            },
+            {
+              "skillId": "problem_decomposition",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "technical_understanding",
+            "problem_decomposition"
+          ],
+          "evidenceSummary": "Lowercased the text Removed some punctuation Removed extra spaces",
+          "strength": "Lists the preprocessing steps taken.",
+          "gap": "The choices are not justified; there is no discussion of the tradeoffs of using Bag-of-Words over other representations (like TF-IDF or embeddings).",
+          "nextStep": "Explain why you chose Bag-of-Words and why you decided against stemming or lemmatization for this specific task."
+        },
+        {
+          "id": "evaluation_evidence",
+          "name": "Evaluation and evidence",
+          "title": "Evaluation and evidence",
+          "description": "Uses appropriate metrics and evidence to support claims about performance.",
+          "scoringGuidance": "0-7 no real metrics or incorrect evaluation; 8-15 metrics reported with weak interpretation; 16-20 complete metrics with strong interpretation and comparisons.",
+          "expectedScoring": "0-7 no real metrics or incorrect evaluation; 8-15 metrics reported with weak interpretation; 16-20 complete metrics with strong interpretation and comparisons.",
+          "weight": 20,
+          "score": 40,
+          "keywordHits": 8,
+          "skillLinks": [
+            {
+              "skillId": "data_literacy",
+              "weight": 1
+            },
+            {
+              "skillId": "mathematical_reasoning",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "practical_problem_solving",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "data_literacy",
+            "mathematical_reasoning",
+            "critical_thinking",
+            "practical_problem_solving"
+          ],
+          "evidenceSummary": "Accuracy: ~0.84 (around 84%)... I did not compute precision/recall/F1 in detail",
+          "strength": "Reports a primary metric (accuracy) on a test set.",
+          "gap": "Missing precision, recall, F1-score, and a confusion matrix, all of which are required for a complete evaluation.",
+          "nextStep": "Generate a confusion matrix and calculate the F1-score to see if the model is biased toward one class."
+        },
+        {
+          "id": "error_analysis_iteration",
+          "name": "Error analysis and iteration",
+          "title": "Error analysis and iteration",
+          "description": "Identifies failure patterns and proposes concrete improvements.",
+          "scoringGuidance": "0-3 no meaningful error analysis; 4-7 examples with shallow reasoning; 8-10 clear patterns and thoughtful fixes.",
+          "expectedScoring": "0-3 no meaningful error analysis; 4-7 examples with shallow reasoning; 8-10 clear patterns and thoughtful fixes.",
+          "weight": 10,
+          "score": 50,
+          "keywordHits": 0,
+          "skillLinks": [
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "practical_problem_solving",
+              "weight": 1
+            },
+            {
+              "skillId": "tool_fluency",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "critical_thinking",
+            "practical_problem_solving",
+            "tool_fluency"
+          ],
+          "evidenceSummary": "Sarcasm (model gets confused) Reviews that contain both positive and negative opinions",
+          "strength": "Identifies two failure patterns (sarcasm and mixed sentiment) with a paraphrased example.",
+          "gap": "The rubric requires at least three failure patterns and concrete improvements tied to evidence; the student only suggests 'maybe' using bigrams without testing.",
+          "nextStep": "Identify a third failure pattern and implement one of your proposed fixes (like bigrams) to see if it actually improves the score."
+        },
+        {
+          "id": "responsible_communication",
+          "name": "Responsible communication and limitations",
+          "title": "Responsible communication and limitations",
+          "description": "Acknowledges limitations and avoids overclaiming.",
+          "scoringGuidance": "0-3 overclaims or no limitations; 4-7 mentions limitations shallowly; 8-10 thoughtful limitations and appropriate tone.",
+          "expectedScoring": "0-3 overclaims or no limitations; 4-7 mentions limitations shallowly; 8-10 thoughtful limitations and appropriate tone.",
+          "weight": 10,
+          "score": 80,
+          "keywordHits": 3,
+          "skillLinks": [
+            {
+              "skillId": "stakeholder_awareness",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "tool_fluency",
+              "weight": 1
+            },
+            {
+              "skillId": "practical_problem_solving",
+              "weight": 1
+            },
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "stakeholder_awareness",
+            "critical_thinking",
+            "tool_fluency",
+            "practical_problem_solving",
+            "technical_understanding"
+          ],
+          "evidenceSummary": "This model might not work well outside movie reviews... it can be wrong when people use sarcasm",
+          "strength": "Correctly identifies domain shift (outside movie reviews) and the limitation of keyword-dependency.",
+          "gap": "Could be more specific about potential biases in the IMDB dataset itself.",
+          "nextStep": "Discuss whether the dataset contains biases that might make the model unfair or inaccurate for certain types of reviewers."
+        }
+      ],
+      "nextBestAction": "Implement a second model to compare against your Logistic Regression baseline and calculate a full suite of metrics (Precision, Recall, F1) to move beyond simple accuracy.",
+      "skillSignals": [
+        {
+          "skillId": "critical_thinking",
+          "signal": "positive",
+          "confidence": 0.8,
+          "reason": "The student correctly identified that the model relies on keywords rather than semantic understanding and noted the issue with mixed sentiment."
+        },
+        {
+          "skillId": "data_literacy",
+          "signal": "needs_support",
+          "confidence": 0.9,
+          "reason": "The student explicitly admitted to not analyzing the label distribution and omitted key evaluation metrics."
+        },
+        {
+          "skillId": "technical_understanding",
+          "signal": "neutral",
+          "confidence": 0.8,
+          "reason": "The student can implement a basic pipeline but lacks depth in model comparison and feature justification."
+        }
+      ],
+      "belongingnessMessage": "You've built a solid foundation with your first classifier, Maya; exploring how it handles complex language like sarcasm shows a great analytical instinct.",
+      "brain": {
+        "version": "growth-brain-v1",
+        "mode": "openai",
+        "provider": "openai-compatible",
+        "model": "gemma-4-31b-it",
+        "fallbackReason": null,
+        "scoringDiagnostics": {
+          "mode": "openai",
+          "rubricCount": 7,
+          "identicalScores": false,
+          "tightScoreBand": false,
+          "scoreSpread": 40,
+          "warning": ""
+        }
+      },
+      "createdAt": "2026-05-08T22:03:56.818Z"
+    },
+    {
+      "id": "b369b1ca-1bcb-41a2-8245-7d23f2966c99",
+      "submissionId": "dd432719-8f4f-4ce6-8cff-5847456a3bad",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "attemptNumber": 2,
+      "studentId": "student_maya",
+      "personaId": "industry",
+      "moduleId": "natural_language_processing",
+      "overallScore": 54,
+      "strengths": [
+        "The objective is clearly defined as binary sentiment classification with a logical justification based on the labels.",
+        "Correctly identifies domain shift (outside movie reviews) and specific linguistic limitations (sarcasm)."
+      ],
+      "gaps": [
+        {
+          "criterionId": "dataset_understanding",
+          "label": "Dataset understanding and data literacy",
+          "message": "Lacks specific dataset size, actual label distribution statistics, and a discussion of edge cases or limitations of the data itself.",
+          "nextStep": "Provide the exact number of samples and the actual percentage split of positive vs. negative labels."
+        },
+        {
+          "criterionId": "methodology_technical_depth",
+          "label": "Methodology and technical depth",
+          "message": "The rubric requires at least one baseline and one improved method; the student only provided one model. Rationale is basic ('easy to implement').",
+          "nextStep": "Implement and compare the Logistic Regression baseline against a second, more complex model (e.g., Random Forest or a simple Neural Network)."
+        },
+        {
+          "criterionId": "preprocessing_feature_representation",
+          "label": "Preprocessing and feature representation",
+          "message": "The choices are not justified; there is no explanation of why these steps were chosen or the tradeoffs involved (e.g., why skip lemmatization).",
+          "nextStep": "Explain why lowercasing and punctuation removal were necessary for the Bag-of-Words approach."
+        },
+        {
+          "criterionId": "evaluation_evidence",
+          "label": "Evaluation and evidence",
+          "message": "Missing precision, recall, F1-score, and a confusion matrix, all of which are required for a complete evaluation.",
+          "nextStep": "Generate a confusion matrix and calculate the F1-score to better understand model performance on each class."
+        },
+        {
+          "criterionId": "error_analysis_iteration",
+          "label": "Error analysis and iteration",
+          "message": "The rubric requires at least three failure patterns and concrete improvements tied to evidence; the student only suggests 'maybe' using bigrams without testing.",
+          "nextStep": "Identify a third failure pattern and implement a specific fix (like n-grams) to see if it resolves the 'mixed opinion' error."
+        }
+      ],
+      "criteriaResults": [
+        {
+          "id": "problem_framing_clarity",
+          "name": "Problem framing and clarity",
+          "title": "Problem framing and clarity",
+          "description": "Defines the prediction task clearly and explains why the chosen binary or three-class setup is appropriate.",
+          "scoringGuidance": "0-3 unclear task definition or missing details; 4-7 mostly clear but missing motivation or scope; 8-10 crisp framing with appropriate assumptions.",
+          "expectedScoring": "0-3 unclear task definition or missing details; 4-7 mostly clear but missing motivation or scope; 8-10 crisp framing with appropriate assumptions.",
+          "weight": 10,
+          "score": 80,
+          "keywordHits": 0,
+          "skillLinks": [
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "stakeholder_awareness",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "critical_thinking",
+            "stakeholder_awareness"
+          ],
+          "evidenceSummary": "predicts whether a review is positive or negative. I used a binary classification setting because the dataset labels are positive/negative",
+          "strength": "The objective is clearly defined as binary sentiment classification with a logical justification based on the labels.",
+          "gap": "Missing explicit constraints or a detailed discussion of the scope beyond the dataset choice.",
+          "nextStep": "Explicitly define the scope and any constraints (e.g., language, review length) of the problem."
+        },
+        {
+          "id": "dataset_understanding",
+          "name": "Dataset understanding and data literacy",
+          "title": "Dataset understanding and data literacy",
+          "description": "Describes dataset composition and provides evidence of understanding the data.",
+          "scoringGuidance": "0-5 dataset barely described; 6-11 partial stats and limited discussion; 12-15 solid stats plus thoughtful dataset considerations.",
+          "expectedScoring": "0-5 dataset barely described; 6-11 partial stats and limited discussion; 12-15 solid stats plus thoughtful dataset considerations.",
+          "weight": 15,
+          "score": 40,
+          "keywordHits": 1,
+          "skillLinks": [
+            {
+              "skillId": "data_literacy",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "data_literacy",
+            "critical_thinking"
+          ],
+          "evidenceSummary": "I did not deeply analyze label distribution, but it seems roughly balanced based on how the dataset is usually described.",
+          "strength": "Identifies the dataset (IMDB) and provides general examples of positive/negative keywords.",
+          "gap": "Lacks specific dataset size, actual label distribution statistics, and a discussion of edge cases or limitations of the data itself.",
+          "nextStep": "Provide the exact number of samples and the actual percentage split of positive vs. negative labels."
+        },
+        {
+          "id": "methodology_technical_depth",
+          "name": "Methodology and technical depth",
+          "title": "Methodology and technical depth",
+          "description": "Explains model choices and system design, including at least one baseline and one improved method.",
+          "scoringGuidance": "0-7 vague approach or no comparison; 8-15 clear approach with limited rationale; 16-20 strong technical explanation, rationale, and reproducible detail.",
+          "expectedScoring": "0-7 vague approach or no comparison; 8-15 clear approach with limited rationale; 16-20 strong technical explanation, rationale, and reproducible detail.",
+          "weight": 20,
+          "score": 50,
+          "keywordHits": 0,
+          "skillLinks": [
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            },
+            {
+              "skillId": "tool_fluency",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "technical_understanding",
+            "tool_fluency"
+          ],
+          "evidenceSummary": "Model: Logistic Regression; Features: Bag-of-words (word counts)",
+          "strength": "Clearly states the model and feature representation used.",
+          "gap": "The rubric requires at least one baseline and one improved method; the student only provided one model. Rationale is basic ('easy to implement').",
+          "nextStep": "Implement and compare the Logistic Regression baseline against a second, more complex model (e.g., Random Forest or a simple Neural Network)."
+        },
+        {
+          "id": "preprocessing_feature_representation",
+          "name": "Preprocessing and feature representation",
+          "title": "Preprocessing and feature representation",
+          "description": "Explains how text is transformed into features and why those steps were chosen.",
+          "scoringGuidance": "0-5 missing or unjustified; 6-11 listed steps with limited rationale; 12-15 well justified and connected to model choice.",
+          "expectedScoring": "0-5 missing or unjustified; 6-11 listed steps with limited rationale; 12-15 well justified and connected to model choice.",
+          "weight": 15,
+          "score": 60,
+          "keywordHits": 0,
+          "skillLinks": [
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            },
+            {
+              "skillId": "problem_decomposition",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "technical_understanding",
+            "problem_decomposition"
+          ],
+          "evidenceSummary": "Lowercased the text, Removed some punctuation, Removed extra spaces",
+          "strength": "Lists the specific preprocessing steps taken.",
+          "gap": "The choices are not justified; there is no explanation of why these steps were chosen or the tradeoffs involved (e.g., why skip lemmatization).",
+          "nextStep": "Explain why lowercasing and punctuation removal were necessary for the Bag-of-Words approach."
+        },
+        {
+          "id": "evaluation_evidence",
+          "name": "Evaluation and evidence",
+          "title": "Evaluation and evidence",
+          "description": "Uses appropriate metrics and evidence to support claims about performance.",
+          "scoringGuidance": "0-7 no real metrics or incorrect evaluation; 8-15 metrics reported with weak interpretation; 16-20 complete metrics with strong interpretation and comparisons.",
+          "expectedScoring": "0-7 no real metrics or incorrect evaluation; 8-15 metrics reported with weak interpretation; 16-20 complete metrics with strong interpretation and comparisons.",
+          "weight": 20,
+          "score": 40,
+          "keywordHits": 8,
+          "skillLinks": [
+            {
+              "skillId": "data_literacy",
+              "weight": 1
+            },
+            {
+              "skillId": "mathematical_reasoning",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "practical_problem_solving",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "data_literacy",
+            "mathematical_reasoning",
+            "critical_thinking",
+            "practical_problem_solving"
+          ],
+          "evidenceSummary": "Accuracy: ~0.84 (around 84%)... I did not compute precision/recall/F1 in detail",
+          "strength": "Reports a primary metric (accuracy) on a test set.",
+          "gap": "Missing precision, recall, F1-score, and a confusion matrix, all of which are required for a complete evaluation.",
+          "nextStep": "Generate a confusion matrix and calculate the F1-score to better understand model performance on each class."
+        },
+        {
+          "id": "error_analysis_iteration",
+          "name": "Error analysis and iteration",
+          "title": "Error analysis and iteration",
+          "description": "Identifies failure patterns and proposes concrete improvements.",
+          "scoringGuidance": "0-3 no meaningful error analysis; 4-7 examples with shallow reasoning; 8-10 clear patterns and thoughtful fixes.",
+          "expectedScoring": "0-3 no meaningful error analysis; 4-7 examples with shallow reasoning; 8-10 clear patterns and thoughtful fixes.",
+          "weight": 10,
+          "score": 50,
+          "keywordHits": 0,
+          "skillLinks": [
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "practical_problem_solving",
+              "weight": 1
+            },
+            {
+              "skillId": "tool_fluency",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "critical_thinking",
+            "practical_problem_solving",
+            "tool_fluency"
+          ],
+          "evidenceSummary": "“This movie had good acting but overall it was disappointing.” Sometimes the model predicted positive because it saw “good”.",
+          "strength": "Identifies two failure patterns (sarcasm and mixed opinions) and provides a paraphrased example.",
+          "gap": "The rubric requires at least three failure patterns and concrete improvements tied to evidence; the student only suggests 'maybe' using bigrams without testing.",
+          "nextStep": "Identify a third failure pattern and implement a specific fix (like n-grams) to see if it resolves the 'mixed opinion' error."
+        },
+        {
+          "id": "responsible_communication",
+          "name": "Responsible communication and limitations",
+          "title": "Responsible communication and limitations",
+          "description": "Acknowledges limitations and avoids overclaiming.",
+          "scoringGuidance": "0-3 overclaims or no limitations; 4-7 mentions limitations shallowly; 8-10 thoughtful limitations and appropriate tone.",
+          "expectedScoring": "0-3 overclaims or no limitations; 4-7 mentions limitations shallowly; 8-10 thoughtful limitations and appropriate tone.",
+          "weight": 10,
+          "score": 80,
+          "keywordHits": 3,
+          "skillLinks": [
+            {
+              "skillId": "stakeholder_awareness",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "tool_fluency",
+              "weight": 1
+            },
+            {
+              "skillId": "practical_problem_solving",
+              "weight": 1
+            },
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "stakeholder_awareness",
+            "critical_thinking",
+            "tool_fluency",
+            "practical_problem_solving",
+            "technical_understanding"
+          ],
+          "evidenceSummary": "This model might not work well outside movie reviews. Also, it can be wrong when people use sarcasm",
+          "strength": "Correctly identifies domain shift (outside movie reviews) and specific linguistic limitations (sarcasm).",
+          "gap": "Could be more specific about potential biases in the IMDB dataset or label noise.",
+          "nextStep": "Discuss whether the training data might contain biases that could affect predictions on different demographics or genres."
+        }
+      ],
+      "nextBestAction": "Implement a second, improved model and compare its performance against the Logistic Regression baseline using a full set of metrics (Precision, Recall, F1, and a Confusion Matrix).",
+      "skillSignals": [
+        {
+          "skillId": "critical_thinking",
+          "signal": "positive",
+          "confidence": 0.8,
+          "reason": "The student correctly identified why the model failed on mixed-sentiment reviews, showing an ability to analyze model behavior."
+        },
+        {
+          "skillId": "data_literacy",
+          "signal": "needs_support",
+          "confidence": 0.9,
+          "reason": "The student explicitly admitted to not analyzing the label distribution and provided no quantitative dataset statistics."
+        },
+        {
+          "skillId": "technical_understanding",
+          "signal": "neutral",
+          "confidence": 0.7,
+          "reason": "The student can implement a basic pipeline but lacks depth in model comparison and feature justification."
+        }
+      ],
+      "belongingnessMessage": "You've built a solid foundation with your first classifier, and your ability to spot exactly where the model gets confused by mixed reviews is a great analytical start.",
+      "brain": {
+        "version": "growth-brain-v1",
+        "mode": "openai",
+        "provider": "openai-compatible",
+        "model": "gemma-4-31b-it",
+        "fallbackReason": null,
+        "scoringDiagnostics": {
+          "mode": "openai",
+          "rubricCount": 7,
+          "identicalScores": false,
+          "tightScoreBand": false,
+          "scoreSpread": 40,
+          "warning": ""
+        }
+      },
+      "createdAt": "2026-05-08T22:02:15.379Z"
+    },
+    {
+      "id": "ac77e49e-b87b-46db-b1a0-00ecac42991c",
+      "submissionId": "9b8c95f2-95a5-4364-9eae-09c4b3e347db",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "attemptNumber": 1,
+      "studentId": "student_maya",
+      "personaId": "industry",
+      "moduleId": "natural_language_processing",
+      "overallScore": 43,
+      "strengths": [
+        "The objective is clearly defined as a binary classification task with a specific input and output."
+      ],
+      "gaps": [
+        {
+          "criterionId": "dataset_understanding",
+          "label": "Dataset understanding and data literacy",
+          "message": "Missing dataset size, actual label distribution statistics, and a discussion of specific edge cases within the data.",
+          "nextStep": "Calculate and report the exact number of samples and the percentage split of positive vs. negative labels."
+        },
+        {
+          "criterionId": "methodology_technical_depth",
+          "label": "Methodology and technical depth",
+          "message": "Fails to provide a baseline vs. improved method comparison and lacks reproducible implementation details.",
+          "nextStep": "Implement a second model (e.g., a Random Forest or a model using TF-IDF) and compare its performance against the Logistic Regression baseline."
+        },
+        {
+          "criterionId": "preprocessing_feature_representation",
+          "label": "Preprocessing and feature representation",
+          "message": "No justification for why these steps were chosen or a discussion of the tradeoffs (e.g., why stemming was omitted).",
+          "nextStep": "Explain why lowercasing and punctuation removal are beneficial for a Bag-of-words approach."
+        },
+        {
+          "criterionId": "evaluation_evidence",
+          "label": "Evaluation and evidence",
+          "message": "Missing critical metrics including Precision, Recall, F1-score, and a Confusion Matrix to interpret the errors.",
+          "nextStep": "Generate a confusion matrix and calculate the F1-score to see if the model is biased toward one class."
+        },
+        {
+          "criterionId": "error_analysis_iteration",
+          "label": "Error analysis and iteration",
+          "message": "Only identifies two patterns instead of the required three, and the proposed fixes are generic rather than tied to evidence.",
+          "nextStep": "Find a third specific failure pattern in your misclassified examples and propose a technical fix (like n-grams) specifically for that pattern."
+        }
+      ],
+      "criteriaResults": [
+        {
+          "id": "problem_framing_clarity",
+          "name": "Problem framing and clarity",
+          "title": "Problem framing and clarity",
+          "description": "Defines the prediction task clearly and explains why the chosen binary or three-class setup is appropriate.",
+          "scoringGuidance": "0-3 unclear task definition or missing details; 4-7 mostly clear but missing motivation or scope; 8-10 crisp framing with appropriate assumptions.",
+          "expectedScoring": "0-3 unclear task definition or missing details; 4-7 mostly clear but missing motivation or scope; 8-10 crisp framing with appropriate assumptions.",
+          "weight": 10,
+          "score": 80,
+          "keywordHits": 0,
+          "skillLinks": [
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "stakeholder_awareness",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "critical_thinking",
+            "stakeholder_awareness"
+          ],
+          "evidenceSummary": "\"predicts whether a review is positive or negative\"",
+          "strength": "The objective is clearly defined as a binary classification task with a specific input and output.",
+          "gap": "Missing explicit constraints or a detailed motivation for why this specific scope was chosen.",
+          "nextStep": "Add a brief section on the constraints of the project and why binary classification is the most appropriate choice for the intended use case."
+        },
+        {
+          "id": "dataset_understanding",
+          "name": "Dataset understanding and data literacy",
+          "title": "Dataset understanding and data literacy",
+          "description": "Describes dataset composition and provides evidence of understanding the data.",
+          "scoringGuidance": "0-5 dataset barely described; 6-11 partial stats and limited discussion; 12-15 solid stats plus thoughtful dataset considerations.",
+          "expectedScoring": "0-5 dataset barely described; 6-11 partial stats and limited discussion; 12-15 solid stats plus thoughtful dataset considerations.",
+          "weight": 15,
+          "score": 40,
+          "keywordHits": 1,
+          "skillLinks": [
+            {
+              "skillId": "data_literacy",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "data_literacy",
+            "critical_thinking"
+          ],
+          "evidenceSummary": "\"I did not deeply analyze label distribution\"",
+          "strength": "Correctly identifies the dataset source (IMDB) and provides general examples of sentiment-bearing words.",
+          "gap": "Missing dataset size, actual label distribution statistics, and a discussion of specific edge cases within the data.",
+          "nextStep": "Calculate and report the exact number of samples and the percentage split of positive vs. negative labels."
+        },
+        {
+          "id": "methodology_technical_depth",
+          "name": "Methodology and technical depth",
+          "title": "Methodology and technical depth",
+          "description": "Explains model choices and system design, including at least one baseline and one improved method.",
+          "scoringGuidance": "0-7 vague approach or no comparison; 8-15 clear approach with limited rationale; 16-20 strong technical explanation, rationale, and reproducible detail.",
+          "expectedScoring": "0-7 vague approach or no comparison; 8-15 clear approach with limited rationale; 16-20 strong technical explanation, rationale, and reproducible detail.",
+          "weight": 20,
+          "score": 30,
+          "keywordHits": 0,
+          "skillLinks": [
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            },
+            {
+              "skillId": "tool_fluency",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "technical_understanding",
+            "tool_fluency"
+          ],
+          "evidenceSummary": "\"I didn’t experiment with many different models\"",
+          "strength": "Identifies a standard model (Logistic Regression) and feature set (Bag-of-words).",
+          "gap": "Fails to provide a baseline vs. improved method comparison and lacks reproducible implementation details.",
+          "nextStep": "Implement a second model (e.g., a Random Forest or a model using TF-IDF) and compare its performance against the Logistic Regression baseline."
+        },
+        {
+          "id": "preprocessing_feature_representation",
+          "name": "Preprocessing and feature representation",
+          "title": "Preprocessing and feature representation",
+          "description": "Explains how text is transformed into features and why those steps were chosen.",
+          "scoringGuidance": "0-5 missing or unjustified; 6-11 listed steps with limited rationale; 12-15 well justified and connected to model choice.",
+          "expectedScoring": "0-5 missing or unjustified; 6-11 listed steps with limited rationale; 12-15 well justified and connected to model choice.",
+          "weight": 15,
+          "score": 40,
+          "keywordHits": 0,
+          "skillLinks": [
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            },
+            {
+              "skillId": "problem_decomposition",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "technical_understanding",
+            "problem_decomposition"
+          ],
+          "evidenceSummary": "\"Lowercased the text\", \"Removed some punctuation\"",
+          "strength": "Lists the basic preprocessing steps taken to clean the text.",
+          "gap": "No justification for why these steps were chosen or a discussion of the tradeoffs (e.g., why stemming was omitted).",
+          "nextStep": "Explain why lowercasing and punctuation removal are beneficial for a Bag-of-words approach."
+        },
+        {
+          "id": "evaluation_evidence",
+          "name": "Evaluation and evidence",
+          "title": "Evaluation and evidence",
+          "description": "Uses appropriate metrics and evidence to support claims about performance.",
+          "scoringGuidance": "0-7 no real metrics or incorrect evaluation; 8-15 metrics reported with weak interpretation; 16-20 complete metrics with strong interpretation and comparisons.",
+          "expectedScoring": "0-7 no real metrics or incorrect evaluation; 8-15 metrics reported with weak interpretation; 16-20 complete metrics with strong interpretation and comparisons.",
+          "weight": 20,
+          "score": 30,
+          "keywordHits": 8,
+          "skillLinks": [
+            {
+              "skillId": "data_literacy",
+              "weight": 1
+            },
+            {
+              "skillId": "mathematical_reasoning",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "practical_problem_solving",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "data_literacy",
+            "mathematical_reasoning",
+            "critical_thinking",
+            "practical_problem_solving"
+          ],
+          "evidenceSummary": "\"Accuracy: ~0.84\"",
+          "strength": "Reports a primary performance metric on the test set.",
+          "gap": "Missing critical metrics including Precision, Recall, F1-score, and a Confusion Matrix to interpret the errors.",
+          "nextStep": "Generate a confusion matrix and calculate the F1-score to see if the model is biased toward one class."
+        },
+        {
+          "id": "error_analysis_iteration",
+          "name": "Error analysis and iteration",
+          "title": "Error analysis and iteration",
+          "description": "Identifies failure patterns and proposes concrete improvements.",
+          "scoringGuidance": "0-3 no meaningful error analysis; 4-7 examples with shallow reasoning; 8-10 clear patterns and thoughtful fixes.",
+          "expectedScoring": "0-3 no meaningful error analysis; 4-7 examples with shallow reasoning; 8-10 clear patterns and thoughtful fixes.",
+          "weight": 10,
+          "score": 40,
+          "keywordHits": 0,
+          "skillLinks": [
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "practical_problem_solving",
+              "weight": 1
+            },
+            {
+              "skillId": "tool_fluency",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "critical_thinking",
+            "practical_problem_solving",
+            "tool_fluency"
+          ],
+          "evidenceSummary": "\"Sarcasm (model gets confused)\", \"Reviews that contain both positive and negative opinions\"",
+          "strength": "Identifies two common failure patterns in sentiment analysis and provides a paraphrased example.",
+          "gap": "Only identifies two patterns instead of the required three, and the proposed fixes are generic rather than tied to evidence.",
+          "nextStep": "Find a third specific failure pattern in your misclassified examples and propose a technical fix (like n-grams) specifically for that pattern."
+        },
+        {
+          "id": "responsible_communication",
+          "name": "Responsible communication and limitations",
+          "title": "Responsible communication and limitations",
+          "description": "Acknowledges limitations and avoids overclaiming.",
+          "scoringGuidance": "0-3 overclaims or no limitations; 4-7 mentions limitations shallowly; 8-10 thoughtful limitations and appropriate tone.",
+          "expectedScoring": "0-3 overclaims or no limitations; 4-7 mentions limitations shallowly; 8-10 thoughtful limitations and appropriate tone.",
+          "weight": 10,
+          "score": 70,
+          "keywordHits": 3,
+          "skillLinks": [
+            {
+              "skillId": "stakeholder_awareness",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "tool_fluency",
+              "weight": 1
+            },
+            {
+              "skillId": "practical_problem_solving",
+              "weight": 1
+            },
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "stakeholder_awareness",
+            "critical_thinking",
+            "tool_fluency",
+            "practical_problem_solving",
+            "technical_understanding"
+          ],
+          "evidenceSummary": "\"This model might not work well outside movie reviews\"",
+          "strength": "Correctly identifies domain shift and the limitations of keyword-based classification.",
+          "gap": "Could expand on potential biases in the IMDB dataset or the uncertainty of the predictions.",
+          "nextStep": "Discuss how the model might handle label noise or biased reviews in a real-world deployment."
+        }
+      ],
+      "nextBestAction": "Implement a second model or a different feature representation (like TF-IDF) and compare it to your baseline using a full suite of metrics (Precision, Recall, F1, and a Confusion Matrix).",
+      "skillSignals": [
+        {
+          "skillId": "critical_thinking",
+          "signal": "positive",
+          "confidence": 0.9,
+          "reason": "The student correctly identified that sarcasm and mixed-sentiment reviews are primary drivers of model error."
+        },
+        {
+          "skillId": "data_literacy",
+          "signal": "needs_support",
+          "confidence": 1,
+          "reason": "The student explicitly admitted to skipping label distribution analysis and omitted standard NLP evaluation metrics."
+        },
+        {
+          "skillId": "technical_understanding",
+          "signal": "needs_support",
+          "confidence": 0.9,
+          "reason": "The submission lacks a comparison of methods and justification for preprocessing choices."
+        },
+        {
+          "skillId": "stakeholder_awareness",
+          "signal": "positive",
+          "confidence": 0.8,
+          "reason": "The student recognizes the limitation of the model's applicability to other domains."
+        }
+      ],
+      "belongingnessMessage": "You've built a solid foundation with your first classifier, and your ability to spot where the model struggles with sarcasm shows a great eye for detail.",
+      "brain": {
+        "version": "growth-brain-v1",
+        "mode": "openai",
+        "provider": "openai-compatible",
+        "model": "gemma-4-31b-it",
+        "fallbackReason": null,
+        "scoringDiagnostics": {
+          "mode": "openai",
+          "rubricCount": 7,
+          "identicalScores": false,
+          "tightScoreBand": false,
+          "scoreSpread": 50,
+          "warning": ""
+        }
+      },
+      "createdAt": "2026-05-08T21:59:59.994Z"
+    }
+  ],
+  "growthEvents": [
+    {
+      "id": "f05dd627-aa71-46ba-992c-7fa4aa0210b9",
+      "studentId": "student_maya",
+      "skillId": "tool_fluency",
+      "skillName": "Tool fluency",
+      "feedbackRecordId": "ca171e03-f3e5-483b-98a0-5abd4b36f5d7",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "rubricId": "error_analysis_iteration",
+      "rubricName": "Error analysis and iteration",
+      "previousScore": 49,
+      "newScore": 51,
+      "changeAmount": 2,
+      "evidenceSummary": "Error analysis and iteration improved by 20 percentage points and reached 60/100.",
+      "brainVersion": "growth-brain-v1",
+      "createdAt": "2026-05-08T22:05:31.566Z"
+    },
+    {
+      "id": "279bc290-7684-449e-8952-6105d9c6e8ea",
+      "studentId": "student_maya",
+      "skillId": "practical_problem_solving",
+      "skillName": "Practical problem solving",
+      "feedbackRecordId": "ca171e03-f3e5-483b-98a0-5abd4b36f5d7",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "rubricId": "error_analysis_iteration",
+      "rubricName": "Error analysis and iteration",
+      "previousScore": 47,
+      "newScore": 49,
+      "changeAmount": 2,
+      "evidenceSummary": "Error analysis and iteration improved by 20 percentage points and reached 60/100.",
+      "brainVersion": "growth-brain-v1",
+      "createdAt": "2026-05-08T22:05:31.566Z"
+    },
+    {
+      "id": "0e46a854-d5a2-4b6e-a879-cf27625826c4",
+      "studentId": "student_maya",
+      "skillId": "critical_thinking",
+      "skillName": "Critical thinking",
+      "feedbackRecordId": "ca171e03-f3e5-483b-98a0-5abd4b36f5d7",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "rubricId": "error_analysis_iteration",
+      "rubricName": "Error analysis and iteration",
+      "previousScore": 57,
+      "newScore": 59,
+      "changeAmount": 2,
+      "evidenceSummary": "Error analysis and iteration improved by 20 percentage points and reached 60/100.",
+      "brainVersion": "growth-brain-v1",
+      "createdAt": "2026-05-08T22:05:31.566Z"
+    },
+    {
+      "id": "1ac41c06-51bc-43e2-ae75-07668d8cfaa2",
+      "studentId": "student_maya",
+      "skillId": "tool_fluency",
+      "skillName": "Tool fluency",
+      "feedbackRecordId": "ca171e03-f3e5-483b-98a0-5abd4b36f5d7",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "rubricId": "methodology_technical_depth",
+      "rubricName": "Methodology and technical depth",
+      "previousScore": 47,
+      "newScore": 49,
+      "changeAmount": 2,
+      "evidenceSummary": "Methodology and technical depth improved by 30 percentage points and reached 60/100.",
+      "brainVersion": "growth-brain-v1",
+      "createdAt": "2026-05-08T22:05:31.566Z"
+    },
+    {
+      "id": "de12cf7d-f9a6-4f71-8371-6b11c884b7a6",
+      "studentId": "student_maya",
+      "skillId": "technical_understanding",
+      "skillName": "Technical understanding",
+      "feedbackRecordId": "ca171e03-f3e5-483b-98a0-5abd4b36f5d7",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "rubricId": "methodology_technical_depth",
+      "rubricName": "Methodology and technical depth",
+      "previousScore": 55,
+      "newScore": 57,
+      "changeAmount": 2,
+      "evidenceSummary": "Methodology and technical depth improved by 30 percentage points and reached 60/100.",
+      "brainVersion": "growth-brain-v1",
+      "createdAt": "2026-05-08T22:05:31.566Z"
+    },
+    {
+      "id": "eeba1952-2457-4fcd-aeb1-66311dacab71",
+      "studentId": "student_maya",
+      "skillId": "critical_thinking",
+      "skillName": "Critical thinking",
+      "feedbackRecordId": "ca171e03-f3e5-483b-98a0-5abd4b36f5d7",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "rubricId": "dataset_understanding",
+      "rubricName": "Dataset understanding and data literacy",
+      "previousScore": 54,
+      "newScore": 57,
+      "changeAmount": 3,
+      "evidenceSummary": "Dataset understanding and data literacy improved by 40 percentage points and reached 80/100.",
+      "brainVersion": "growth-brain-v1",
+      "createdAt": "2026-05-08T22:05:31.566Z"
+    },
+    {
+      "id": "a89106af-2e3c-45dd-93b5-579e113f60a0",
+      "studentId": "student_maya",
+      "skillId": "data_literacy",
+      "skillName": "Data literacy",
+      "feedbackRecordId": "ca171e03-f3e5-483b-98a0-5abd4b36f5d7",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "rubricId": "dataset_understanding",
+      "rubricName": "Dataset understanding and data literacy",
+      "previousScore": 52,
+      "newScore": 55,
+      "changeAmount": 3,
+      "evidenceSummary": "Dataset understanding and data literacy improved by 40 percentage points and reached 80/100.",
+      "brainVersion": "growth-brain-v1",
+      "createdAt": "2026-05-08T22:05:31.566Z"
+    },
+    {
+      "id": "143a4429-f2be-4e9e-9e99-2cd1dfe58edd",
+      "studentId": "student_maya",
+      "skillId": "stakeholder_awareness",
+      "skillName": "Stakeholder awareness",
+      "feedbackRecordId": "ca171e03-f3e5-483b-98a0-5abd4b36f5d7",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "rubricId": "problem_framing_clarity",
+      "rubricName": "Problem framing and clarity",
+      "previousScore": 47,
+      "newScore": 48,
+      "changeAmount": 1,
+      "evidenceSummary": "Problem framing and clarity improved by 10 percentage points and reached 90/100.",
+      "brainVersion": "growth-brain-v1",
+      "createdAt": "2026-05-08T22:05:31.566Z"
+    },
+    {
+      "id": "3201d359-2db8-49b8-b119-007e53f0a943",
+      "studentId": "student_maya",
+      "skillId": "critical_thinking",
+      "skillName": "Critical thinking",
+      "feedbackRecordId": "ca171e03-f3e5-483b-98a0-5abd4b36f5d7",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "rubricId": "problem_framing_clarity",
+      "rubricName": "Problem framing and clarity",
+      "previousScore": 53,
+      "newScore": 54,
+      "changeAmount": 1,
+      "evidenceSummary": "Problem framing and clarity improved by 10 percentage points and reached 90/100.",
+      "brainVersion": "growth-brain-v1",
+      "createdAt": "2026-05-08T22:05:31.566Z"
+    },
+    {
+      "id": "06fcbb67-c8b9-477c-b3be-3a6d42063ada",
+      "studentId": "student_maya",
+      "skillId": "technical_understanding",
+      "skillName": "Technical understanding",
+      "feedbackRecordId": "b369b1ca-1bcb-41a2-8245-7d23f2966c99",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "rubricId": "responsible_communication",
+      "rubricName": "Responsible communication and limitations",
+      "previousScore": 54,
+      "newScore": 55,
+      "changeAmount": 1,
+      "evidenceSummary": "Responsible communication and limitations improved by 10 percentage points and reached 80/100.",
+      "brainVersion": "growth-brain-v1",
+      "createdAt": "2026-05-08T22:02:15.379Z"
+    },
+    {
+      "id": "2b55b81c-2e60-4377-bb27-5290ff4a2a9f",
+      "studentId": "student_maya",
+      "skillId": "practical_problem_solving",
+      "skillName": "Practical problem solving",
+      "feedbackRecordId": "b369b1ca-1bcb-41a2-8245-7d23f2966c99",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "rubricId": "responsible_communication",
+      "rubricName": "Responsible communication and limitations",
+      "previousScore": 46,
+      "newScore": 47,
+      "changeAmount": 1,
+      "evidenceSummary": "Responsible communication and limitations improved by 10 percentage points and reached 80/100.",
+      "brainVersion": "growth-brain-v1",
+      "createdAt": "2026-05-08T22:02:15.379Z"
+    },
+    {
+      "id": "1f52b3ac-e262-4071-a401-7a1f09d3a70e",
+      "studentId": "student_maya",
+      "skillId": "tool_fluency",
+      "skillName": "Tool fluency",
+      "feedbackRecordId": "b369b1ca-1bcb-41a2-8245-7d23f2966c99",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "rubricId": "responsible_communication",
+      "rubricName": "Responsible communication and limitations",
+      "previousScore": 46,
+      "newScore": 47,
+      "changeAmount": 1,
+      "evidenceSummary": "Responsible communication and limitations improved by 10 percentage points and reached 80/100.",
+      "brainVersion": "growth-brain-v1",
+      "createdAt": "2026-05-08T22:02:15.379Z"
+    },
+    {
+      "id": "2debf05d-c789-440f-a33e-dafd5f181ae7",
+      "studentId": "student_maya",
+      "skillId": "critical_thinking",
+      "skillName": "Critical thinking",
+      "feedbackRecordId": "b369b1ca-1bcb-41a2-8245-7d23f2966c99",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "rubricId": "responsible_communication",
+      "rubricName": "Responsible communication and limitations",
+      "previousScore": 52,
+      "newScore": 53,
+      "changeAmount": 1,
+      "evidenceSummary": "Responsible communication and limitations improved by 10 percentage points and reached 80/100.",
+      "brainVersion": "growth-brain-v1",
+      "createdAt": "2026-05-08T22:02:15.379Z"
+    },
+    {
+      "id": "6b474855-c1fb-4f26-af63-8b4e1ec34a92",
+      "studentId": "student_maya",
+      "skillId": "stakeholder_awareness",
+      "skillName": "Stakeholder awareness",
+      "feedbackRecordId": "b369b1ca-1bcb-41a2-8245-7d23f2966c99",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "rubricId": "responsible_communication",
+      "rubricName": "Responsible communication and limitations",
+      "previousScore": 46,
+      "newScore": 47,
+      "changeAmount": 1,
+      "evidenceSummary": "Responsible communication and limitations improved by 10 percentage points and reached 80/100.",
+      "brainVersion": "growth-brain-v1",
+      "createdAt": "2026-05-08T22:02:15.379Z"
+    },
+    {
+      "id": "a19db5d1-3e0b-4394-8bfa-ef3126230981",
+      "studentId": "student_maya",
+      "skillId": "problem_decomposition",
+      "skillName": "Problem decomposition",
+      "feedbackRecordId": "b369b1ca-1bcb-41a2-8245-7d23f2966c99",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "rubricId": "preprocessing_feature_representation",
+      "rubricName": "Preprocessing and feature representation",
+      "previousScore": 52,
+      "newScore": 54,
+      "changeAmount": 2,
+      "evidenceSummary": "Preprocessing and feature representation improved by 20 percentage points and reached 60/100.",
+      "brainVersion": "growth-brain-v1",
+      "createdAt": "2026-05-08T22:02:15.379Z"
+    },
+    {
+      "id": "a686f0ca-e69f-49eb-8654-44c91fe22d46",
+      "studentId": "student_maya",
+      "skillId": "technical_understanding",
+      "skillName": "Technical understanding",
+      "feedbackRecordId": "b369b1ca-1bcb-41a2-8245-7d23f2966c99",
+      "sessionId": "a166ae6c-2692-46e6-81f6-8bb251106f16",
+      "rubricId": "preprocessing_feature_representation",
+      "rubricName": "Preprocessing and feature representation",
+      "previousScore": 52,
+      "newScore": 54,
+      "changeAmount": 2,
+      "evidenceSummary": "Preprocessing and feature representation improved by 20 percentage points and reached 60/100.",
+      "brainVersion": "growth-brain-v1",
+      "createdAt": "2026-05-08T22:02:15.379Z"
+    }
+  ],
+  "belongingnessCheckins": [],
+  "teacherModuleConfigs": [
+    {
+      "moduleId": "natural_language_processing",
+      "teacherFocus": "In Natural Language Processing, I am looking for work that shows build and evaluate a sentiment analysis system with careful evidence, error analysis, and responsible communication.",
+      "criteria": [
+        {
+          "id": "extracted_problem_framing_and_clarity",
+          "name": "Problem framing and clarity",
+          "title": "Problem framing and clarity",
+          "description": "Defines the prediction task clearly and explains why the chosen binary or 3-class setup is appropriate.",
+          "lookingFor": "Clear objective, clear labels, motivation, constraints, and assumptions.",
+          "scoringGuidance": "Strong evidence: Clear objective, clear labels, motivation, constraints, and assumptions. Score range: 0-10",
+          "expectedScoring": "Strong evidence: Clear objective, clear labels, motivation, constraints, and assumptions. Score range: 0-10",
+          "weight": 10,
+          "skillLinks": [
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "stakeholder_awareness",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "critical_thinking",
+            "stakeholder_awareness"
+          ],
+          "keywords": [
+            "prediction task",
+            "binary",
+            "3-class",
+            "labels",
+            "motivation",
+            "assumptions",
+            "scope",
+            "clear objective",
+            "clear labels",
+            "constraints",
+            "and assumptions.",
+            "problem framing and clarity"
+          ]
+        },
+        {
+          "id": "extracted_dataset_understanding_and_data_literacy",
+          "name": "Dataset understanding and data literacy",
+          "title": "Dataset understanding and data literacy",
+          "description": "Describes dataset composition and provides evidence of understanding the data.",
+          "lookingFor": "Dataset size, label distribution, examples, edge cases, and dataset limitations.",
+          "scoringGuidance": "Strong evidence: Dataset size, label distribution, examples, edge cases, and dataset limitations. Score range: 0-15",
+          "expectedScoring": "Strong evidence: Dataset size, label distribution, examples, edge cases, and dataset limitations. Score range: 0-15",
+          "weight": 15,
+          "skillLinks": [
+            {
+              "skillId": "data_literacy",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "data_literacy",
+            "critical_thinking"
+          ],
+          "keywords": [
+            "dataset size",
+            "label distribution",
+            "examples",
+            "edge cases",
+            "limitations",
+            "data quality",
+            "and dataset limitations.",
+            "describes dataset composition and provides evidence of understanding the data.",
+            "dataset understanding and data literacy"
+          ]
+        },
+        {
+          "id": "extracted_methodology_and_technical_depth",
+          "name": "Methodology and technical depth",
+          "title": "Methodology and technical depth",
+          "description": "Explains model choices and system design, including at least one baseline and one improved method.",
+          "lookingFor": "Baseline, improved model, rationale, implementation detail, and reproducible explanation.",
+          "scoringGuidance": "Strong evidence: Baseline, improved model, rationale, implementation detail, and reproducible explanation. Score range: 0-20",
+          "expectedScoring": "Strong evidence: Baseline, improved model, rationale, implementation detail, and reproducible explanation. Score range: 0-20",
+          "weight": 20,
+          "skillLinks": [
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            },
+            {
+              "skillId": "tool_fluency",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "technical_understanding",
+            "tool_fluency"
+          ],
+          "keywords": [
+            "baseline",
+            "logistic regression",
+            "tf-idf",
+            "embeddings",
+            "model choice",
+            "implementation",
+            "reproducible",
+            "improved model",
+            "rationale",
+            "implementation detail",
+            "and reproducible explanation.",
+            "explains model choices and system design",
+            "including at least one baseline and one improved method.",
+            "methodology and technical depth"
+          ]
+        },
+        {
+          "id": "extracted_preprocessing_and_feature_representation",
+          "name": "Preprocessing and feature representation",
+          "title": "Preprocessing and feature representation",
+          "description": "Explains how text is transformed into features and why those steps were chosen.",
+          "lookingFor": "Tokenization, normalization, stopwords, lemmatization or stemming, TF-IDF or embeddings, and tradeoffs.",
+          "scoringGuidance": "Strong evidence: Tokenization, normalization, stopwords, lemmatization or stemming, TF-IDF or embeddings, and tradeoffs. Score range: 0-15",
+          "expectedScoring": "Strong evidence: Tokenization, normalization, stopwords, lemmatization or stemming, TF-IDF or embeddings, and tradeoffs. Score range: 0-15",
+          "weight": 15,
+          "skillLinks": [
+            {
+              "skillId": "technical_understanding",
+              "weight": 1
+            },
+            {
+              "skillId": "problem_decomposition",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "technical_understanding",
+            "problem_decomposition"
+          ],
+          "keywords": [
+            "tokenization",
+            "normalization",
+            "stopwords",
+            "lemmatization",
+            "stemming",
+            "tf-idf",
+            "embeddings",
+            "features",
+            "lemmatization or stemming",
+            "tf-idf or embeddings",
+            "and tradeoffs.",
+            "explains how text is transformed into features and why those steps were chosen.",
+            "preprocessing and feature representation"
+          ]
+        },
+        {
+          "id": "extracted_evaluation_and_evidence",
+          "name": "Evaluation and evidence",
+          "title": "Evaluation and evidence",
+          "description": "Uses appropriate metrics and evidence to support claims about performance.",
+          "lookingFor": "Accuracy, precision, recall, F1, confusion matrix, interpretation, and comparison.",
+          "scoringGuidance": "Strong evidence: Accuracy, precision, recall, F1, confusion matrix, interpretation, and comparison. Score range: 0-20",
+          "expectedScoring": "Strong evidence: Accuracy, precision, recall, F1, confusion matrix, interpretation, and comparison. Score range: 0-20",
+          "weight": 20,
+          "skillLinks": [
+            {
+              "skillId": "data_literacy",
+              "weight": 1
+            },
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "data_literacy",
+            "critical_thinking"
+          ],
+          "keywords": [
+            "accuracy",
+            "precision",
+            "recall",
+            "f1",
+            "confusion matrix",
+            "validation",
+            "metrics",
+            "comparison",
+            "interpretation",
+            "and comparison.",
+            "uses appropriate metrics and evidence to support claims about performance.",
+            "evaluation and evidence"
+          ]
+        },
+        {
+          "id": "extracted_error_analysis_and_iteration",
+          "name": "Error analysis and iteration",
+          "title": "Error analysis and iteration",
+          "description": "Identifies failure patterns and proposes concrete improvements.",
+          "lookingFor": "At least 3 failure cases, such as sarcasm, negation, domain shift, or ambiguous labels, with improvements tied to evidence.",
+          "scoringGuidance": "Strong evidence: At least 3 failure cases, such as sarcasm, negation, domain shift, or ambiguous labels, with improvements tied to evidence. Score range: 0-10",
+          "expectedScoring": "Strong evidence: At least 3 failure cases, such as sarcasm, negation, domain shift, or ambiguous labels, with improvements tied to evidence. Score range: 0-10",
+          "weight": 10,
+          "skillLinks": [
+            {
+              "skillId": "critical_thinking",
+              "weight": 1
+            },
+            {
+              "skillId": "practical_problem_solving",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "critical_thinking",
+            "practical_problem_solving"
+          ],
+          "keywords": [
+            "error analysis",
+            "failure case",
+            "sarcasm",
+            "negation",
+            "domain shift",
+            "improvement",
+            "false positive",
+            "false negative",
+            "at least 3 failure cases",
+            "such as sarcasm",
+            "or ambiguous labels",
+            "with improvements tied to evidence.",
+            "identifies failure patterns and proposes concrete improvements.",
+            "error analysis and iteration"
+          ]
+        },
+        {
+          "id": "extracted_communication_and_structure",
+          "name": "Communication and structure",
+          "title": "Communication and structure",
+          "description": "Report is well structured and easy to follow, with clear sections and concise writing.",
+          "lookingFor": "Logical flow, readable formatting, precise terminology, and appropriate technical tone.",
+          "scoringGuidance": "Strong evidence: Logical flow, readable formatting, precise terminology, and appropriate technical tone. Score range: 0-10",
+          "expectedScoring": "Strong evidence: Logical flow, readable formatting, precise terminology, and appropriate technical tone. Score range: 0-10",
+          "weight": 10,
+          "skillLinks": [
+            {
+              "skillId": "delivery_execution",
+              "weight": 1
+            }
+          ],
+          "linkedSkillIds": [
+            "delivery_execution"
+          ],
+          "keywords": [
+            "structure",
+            "report",
+            "section",
+            "terminology",
+            "clarity",
+            "technical tone",
+            "conclusion",
+            "logical flow",
+            "readable formatting",
+            "precise terminology",
+            "and appropriate technical tone.",
+            "report is well structured and easy to follow",
+            "with clear sections and concise writing.",
+            "communication and structure"
+          ]
+        }
+      ],
+      "updatedAt": "2026-05-08T22:21:13.801Z"
+    }
+  ]
+}
