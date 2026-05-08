@@ -4,8 +4,8 @@
   "description": "Logos backend API and integrated React frontend for rubric-based student feedback.",
   "main": "server.js",
   "scripts": {
-    "start": "npm --prefix \"AI Collab\" run build && node server.js",
-    "check": "node --check server.js && npm --prefix \"AI Collab\" run build"
+    "start": "npm --prefix frontend run build && node server.js",
+    "check": "node --check server.js && npm --prefix frontend run build"
   },
   "private": true
 }
