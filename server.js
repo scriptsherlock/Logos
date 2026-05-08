@@ -5,6 +5,7 @@ const path = require("path");
 const { randomUUID } = require("crypto");
 
 const ROOT = __dirname;
+const FRONTEND_DIST = path.join(ROOT, "AI Collab", "dist");
 loadEnvFile(path.join(ROOT, ".env"));
 const PORT = Number(process.env.PORT || 3000);
 const DATA_DIR = path.join(ROOT, "data");
@@ -95,157 +96,106 @@ const seedData = {
   ],
   modules: [
     {
-      id: "ai_foundations",
-      name: "AI Foundations",
-      description: "Core AI, data, maths, ethics, and explanation skills.",
+      id: "natural_language_processing",
+      name: "Natural Language Processing",
+      description: "Language data, model explanation, evaluation, error analysis, and responsible communication.",
       sampleWork:
-        "This work explains how a machine learning model can learn patterns from training data. I describe the inputs, the output, and the loss function, then explain why the model should be tested on unseen data. The main limitation is that biased data can create unfair predictions, so evaluation should include accuracy and ethical checks. A practical next step would be to compare model performance across different student groups and explain the trade-offs.",
+        "This report builds a sentiment classifier for short movie reviews using tokenisation, TF-IDF features, and logistic regression. I explain how the text is cleaned, how the model learns weighted word patterns, and why F1 score is useful when the classes are uneven. The model performs well on clear positive or negative reviews, but it struggles with sarcasm and mixed opinions. A responsible next step would be to inspect false positives and false negatives, compare performance across review types, and discuss bias in the training data.",
       rubric: [
         {
-          id: "technical_accuracy",
-          title: "Technical concept accuracy",
-          description: "Explains AI concepts, model behaviour, inputs, outputs, and limitations accurately.",
+          id: "nlp_pipeline_explanation",
+          title: "NLP pipeline explanation",
+          description: "Explains text preprocessing, feature representation, model choice, and prediction flow accurately.",
           skillLinks: [
             { skillId: "technical_understanding", weight: 1 },
-            { skillId: "communication", weight: 0.5 },
+            { skillId: "communication", weight: 0.6 },
           ],
-          keywords: ["model", "algorithm", "training", "input", "output", "accuracy", "prediction", "loss", "classification"],
+          keywords: ["tokenisation", "preprocessing", "tf-idf", "embedding", "feature", "model", "classifier", "prediction", "pipeline"],
         },
         {
-          id: "math_data_reasoning",
-          title: "Mathematical and data reasoning",
-          description: "Uses data, metrics, numerical reasoning, or evaluation logic to justify claims.",
+          id: "evaluation_metrics",
+          title: "Evaluation and metrics",
+          description: "Uses appropriate metrics, validation evidence, and numerical reasoning to interpret performance.",
           skillLinks: [
             { skillId: "mathematical_reasoning", weight: 0.8 },
             { skillId: "data_literacy", weight: 1 },
           ],
-          keywords: ["data", "metric", "accuracy", "percentage", "mean", "bias", "sample", "dataset", "evaluate"],
+          keywords: ["accuracy", "precision", "recall", "f1", "confusion matrix", "validation", "test set", "metric", "baseline"],
         },
         {
-          id: "decomposition",
-          title: "Problem decomposition",
-          description: "Breaks a technical problem into requirements, steps, components, or tests.",
-          skillLinks: [
-            { skillId: "problem_decomposition", weight: 1 },
-            { skillId: "practical_problem_solving", weight: 0.8 },
-            { skillId: "research_question_design", weight: 0.5 },
-          ],
-          keywords: ["step", "component", "requirement", "input", "output", "test", "compare", "next step"],
-        },
-        {
-          id: "ethical_criticality",
-          title: "Critical and ethical judgement",
-          description: "Recognises assumptions, limitations, consequences, bias, or responsible use.",
+          id: "error_analysis",
+          title: "Error analysis and limitations",
+          description: "Identifies model failures, explains likely causes, and proposes realistic improvements.",
           skillLinks: [
             { skillId: "critical_thinking", weight: 1 },
-            { skillId: "ethical_awareness", weight: 1 },
+            { skillId: "data_literacy", weight: 0.7 },
             { skillId: "critical_evaluation", weight: 0.8 },
+          ],
+          keywords: ["error", "false positive", "false negative", "sarcasm", "limitation", "bias", "misclassified", "improvement"],
+        },
+        {
+          id: "academic_communication",
+          title: "Academic communication",
+          description: "Presents the NLP work in a clear report structure with precise terminology and evidence-led claims.",
+          skillLinks: [
+            { skillId: "communication", weight: 1 },
+            { skillId: "academic_argumentation", weight: 0.7 },
+            { skillId: "reflection", weight: 0.4 },
+          ],
+          keywords: ["report", "methodology", "results", "evidence", "terminology", "argument", "conclusion", "reference"],
+        },
+      ],
+    },
+    {
+      id: "green_chemistry",
+      name: "Green Chemistry",
+      description: "Sustainable chemical design, reaction efficiency, evidence use, risk, and environmental impact.",
+      sampleWork:
+        "This proposal compares two synthesis routes for an ester and argues that the greener route should use a safer solvent, lower temperature, and a catalyst that can be recovered. I calculate atom economy and discuss why yield alone is not enough to judge sustainability. The main risk is that replacing a solvent may reduce reaction rate, so the method should be tested with small-scale trials and waste measurements. The final recommendation balances product quality, energy use, toxicity, and disposal impact.",
+      rubric: [
+        {
+          id: "green_principles",
+          title: "Green chemistry principles",
+          description: "Applies relevant green chemistry principles to explain safer, lower-waste chemical choices.",
+          skillLinks: [
+            { skillId: "technical_understanding", weight: 0.8 },
+            { skillId: "ethical_awareness", weight: 1 },
             { skillId: "real_world_impact", weight: 0.6 },
           ],
-          keywords: ["limitation", "bias", "ethical", "fair", "risk", "assumption", "trade-off", "responsible"],
+          keywords: ["green chemistry", "safer solvent", "renewable", "waste", "toxicity", "catalyst", "sustainability", "hazard"],
         },
-      ],
-    },
-    {
-      id: "research_methods",
-      name: "Research Methods",
-      description: "Research question, literature, method, evidence, and contribution skills.",
-      sampleWork:
-        "The research question asks whether adaptive feedback improves student confidence in introductory programming. Existing literature on formative assessment suggests that timely feedback can improve self-regulation, but there is less evidence about belongingness. I would use a mixed-method design with survey measures and short interviews. A limitation is that self-reported confidence may not match performance, so results should be interpreted carefully. The contribution is to understand how feedback affects both competency and identity.",
-      rubric: [
         {
-          id: "research_question",
-          title: "Research question design",
-          description: "Frames a focused, investigable question with clear scope.",
+          id: "quantitative_sustainability",
+          title: "Quantitative sustainability reasoning",
+          description: "Uses calculations or data such as atom economy, yield, energy use, or waste to justify decisions.",
           skillLinks: [
-            { skillId: "research_question_design", weight: 1 },
-            { skillId: "problem_decomposition", weight: 0.5 },
+            { skillId: "mathematical_reasoning", weight: 1 },
+            { skillId: "data_literacy", weight: 0.8 },
+            { skillId: "critical_thinking", weight: 0.5 },
           ],
-          keywords: ["research question", "asks whether", "investigate", "scope", "hypothesis", "question"],
+          keywords: ["atom economy", "yield", "energy", "temperature", "mass", "waste", "percentage", "metric", "compare"],
         },
         {
-          id: "literature_synthesis",
-          title: "Literature and evidence synthesis",
-          description: "Connects sources, evidence, concepts, or prior work to the argument.",
+          id: "reaction_design_tradeoffs",
+          title: "Reaction design trade-offs",
+          description: "Compares feasible synthesis choices and explains trade-offs between efficiency, safety, cost, and quality.",
           skillLinks: [
-            { skillId: "literature_awareness", weight: 1 },
-            { skillId: "evidence_synthesis", weight: 1 },
-            { skillId: "academic_argumentation", weight: 0.6 },
-          ],
-          keywords: ["literature", "source", "study", "evidence", "prior work", "research", "suggests", "argues"],
-        },
-        {
-          id: "method_reasoning",
-          title: "Methodological reasoning",
-          description: "Justifies data collection, analysis choices, and methodological fit.",
-          skillLinks: [
-            { skillId: "methodological_reasoning", weight: 1 },
-            { skillId: "experiment_design", weight: 0.8 },
-            { skillId: "data_literacy", weight: 0.5 },
-          ],
-          keywords: ["method", "design", "survey", "interview", "experiment", "sample", "analysis", "measure"],
-        },
-        {
-          id: "contribution_criticality",
-          title: "Critical evaluation and contribution",
-          description: "Explains limits, implications, and the contribution to knowledge.",
-          skillLinks: [
-            { skillId: "critical_evaluation", weight: 1 },
-            { skillId: "contribution_to_knowledge", weight: 1 },
-            { skillId: "critical_thinking", weight: 0.6 },
-          ],
-          keywords: ["limitation", "contribution", "implication", "carefully", "validity", "future research", "identity"],
-        },
-      ],
-    },
-    {
-      id: "industry_project",
-      name: "Industry Project",
-      description: "Stakeholder, delivery, testing, collaboration, and impact skills.",
-      sampleWork:
-        "The project responds to a stakeholder need: tutors want a quicker way to identify common learning gaps. I divided the work into a submission form, feedback records, analytics, and a teacher report. The prototype uses local storage first so we can test the workflow before connecting a database. I tested empty submissions, short submissions, and a full sample. The next delivery goal is to collect feedback from users and show the impact through a simple portfolio case study.",
-      rubric: [
-        {
-          id: "stakeholder_problem",
-          title: "Stakeholder problem definition",
-          description: "Defines the user need, context, constraints, and success criteria.",
-          skillLinks: [
-            { skillId: "stakeholder_awareness", weight: 1 },
-            { skillId: "communication", weight: 0.6 },
-          ],
-          keywords: ["stakeholder", "user", "need", "context", "criteria", "constraint", "success"],
-        },
-        {
-          id: "solution_delivery",
-          title: "Solution delivery",
-          description: "Shows practical execution, component planning, and delivery decisions.",
-          skillLinks: [
-            { skillId: "delivery_execution", weight: 1 },
+            { skillId: "problem_decomposition", weight: 0.9 },
             { skillId: "practical_problem_solving", weight: 0.8 },
-            { skillId: "tool_fluency", weight: 0.5 },
+            { skillId: "methodological_reasoning", weight: 0.6 },
           ],
-          keywords: ["prototype", "workflow", "database", "component", "build", "delivery", "tool", "implementation"],
+          keywords: ["route", "reaction", "trade-off", "solvent", "catalyst", "rate", "quality", "cost", "scale"],
         },
         {
-          id: "testing_quality",
-          title: "Testing and quality assurance",
-          description: "Checks whether the solution works and explains testing evidence.",
+          id: "environmental_argument",
+          title: "Environmental argument and communication",
+          description: "Builds a clear evidence-led recommendation about environmental impact and responsible practice.",
           skillLinks: [
-            { skillId: "testing_quality", weight: 1 },
-            { skillId: "technical_understanding", weight: 0.6 },
+            { skillId: "communication", weight: 0.9 },
+            { skillId: "academic_argumentation", weight: 0.7 },
+            { skillId: "real_world_impact", weight: 0.8 },
           ],
-          keywords: ["test", "tested", "quality", "empty", "edge", "validation", "bug", "works"],
-        },
-        {
-          id: "impact_communication",
-          title: "Impact and portfolio communication",
-          description: "Communicates value, learning, collaboration, and real-world impact.",
-          skillLinks: [
-            { skillId: "real_world_impact", weight: 1 },
-            { skillId: "portfolio_communication", weight: 0.8 },
-            { skillId: "collaboration", weight: 0.5 },
-          ],
-          keywords: ["impact", "portfolio", "case study", "team", "collaboration", "feedback", "value", "users"],
+          keywords: ["environmental impact", "recommendation", "evidence", "risk", "responsible", "disposal", "safety", "conclusion"],
         },
       ],
     },
@@ -265,12 +215,34 @@ const seedData = {
       selectedPersonaId: "challenger",
       signUpGoals: ["Build a strong project portfolio", "Improve testing habits", "Connect technical work to user needs"],
     },
+    {
+      id: "aisha",
+      name: "Aisha Rahman",
+      programme: "BSc Applied Data Science",
+      selectedPersonaId: "visionary",
+      signUpGoals: ["Write sharper technical reports", "Learn how to evaluate models critically", "See progress in communication"],
+    },
+    {
+      id: "leo",
+      name: "Leo Bennett",
+      programme: "BSc Software Engineering",
+      selectedPersonaId: "challenger",
+      signUpGoals: ["Ship stronger prototypes", "Explain trade-offs more clearly", "Turn assignments into portfolio stories"],
+    },
+    {
+      id: "sana",
+      name: "Sana Patel",
+      programme: "BSc Intelligent Systems",
+      selectedPersonaId: "visionary",
+      signUpGoals: ["Improve methodological reasoning", "Strengthen academic tone", "Track my growth across modules"],
+    },
   ],
   studentSkillStates: [],
   submissions: [],
   feedbackRecords: [],
   growthEvents: [],
   belongingnessCheckins: [],
+  teacherModuleConfigs: [],
 };
 
 async function loadDb() {
@@ -292,11 +264,14 @@ async function saveDb(db) {
 }
 
 function ensureDataShape(db) {
+  db.modules = cloneData(seedData.modules);
   db.studentSkillStates ||= [];
   db.submissions ||= [];
   db.feedbackRecords ||= [];
   db.growthEvents ||= [];
   db.belongingnessCheckins ||= [];
+  db.teacherModuleConfigs = normaliseStoredTeacherModuleConfigs(db.teacherModuleConfigs, db.modules);
+  db.quickFeedbackConfig = normaliseStoredQuickFeedbackConfig(db.quickFeedbackConfig);
 
   for (const student of db.students) {
     ensureStudentSkillStates(db, student.id);
@@ -361,9 +336,10 @@ async function readJsonBody(request) {
 
 async function routeApi(request, response, pathname) {
   const db = await loadDb();
+  const effectiveModules = getEffectiveModules(db);
 
   if (request.method === "GET" && pathname === "/api/health") {
-    return sendJson(response, 200, { ok: true, service: "student-feedback-growth-coach" });
+    return sendJson(response, 200, { ok: true, service: "logos-feedback-coach" });
   }
 
   if (request.method === "GET" && pathname === "/api/brain/status") {
@@ -373,6 +349,7 @@ async function routeApi(request, response, pathname) {
   if (request.method === "GET" && pathname === "/api/bootstrap") {
     return sendJson(response, 200, {
       ...db,
+      modules: effectiveModules,
       brainStatus: getBrainStatus(),
       teacherAnalytics: buildTeacherAnalytics(db),
     });
@@ -383,8 +360,37 @@ async function routeApi(request, response, pathname) {
     await saveDb(fresh);
     return sendJson(response, 200, {
       ...fresh,
+      modules: getEffectiveModules(fresh),
       brainStatus: getBrainStatus(),
       teacherAnalytics: buildTeacherAnalytics(fresh),
+    });
+  }
+
+  if (request.method === "GET" && pathname === "/api/quick-feedback/config") {
+    return sendJson(response, 200, {
+      config: db.quickFeedbackConfig,
+      brainStatus: getBrainStatus(),
+    });
+  }
+
+  if (request.method === "POST" && pathname === "/api/quick-feedback/config") {
+    const payload = await readJsonBody(request);
+    const result = saveQuickFeedbackConfig(db, payload);
+    if (result.error) return sendError(response, result.status, result.error);
+    await saveDb(db);
+    return sendJson(response, 200, {
+      config: db.quickFeedbackConfig,
+      brainStatus: getBrainStatus(),
+    });
+  }
+
+  if (request.method === "POST" && pathname === "/api/quick-feedback/analyse") {
+    const payload = await readJsonBody(request);
+    const result = await analyseQuickFeedback(db.quickFeedbackConfig, payload);
+    if (result.error) return sendError(response, result.status, result.error);
+    return sendJson(response, 201, {
+      ...result,
+      brainStatus: getBrainStatus(result.feedbackRecord.brain),
     });
   }
 
@@ -441,13 +447,32 @@ async function routeApi(request, response, pathname) {
     return sendJson(response, 200, buildTeacherAnalytics(db));
   }
 
+  const teacherDashboardMatch = pathname.match(/^\/api\/teachers\/dashboard(?:\/([^/]+))?$/);
+  if (request.method === "GET" && teacherDashboardMatch) {
+    return sendJson(response, 200, buildTeacherDashboard(db, teacherDashboardMatch[1] || null));
+  }
+
+  const teacherRubricMatch = pathname.match(/^\/api\/teachers\/modules\/([^/]+)\/rubric$/);
+  if ((request.method === "PUT" || request.method === "PATCH") && teacherRubricMatch) {
+    const moduleId = teacherRubricMatch[1];
+    const payload = await readJsonBody(request);
+    const result = saveTeacherModuleConfig(db, moduleId, payload);
+    if (result.error) return sendError(response, result.status, result.error);
+    await saveDb(db);
+    return sendJson(response, 200, {
+      module: getEffectiveModule(db, moduleId),
+      dashboard: buildTeacherDashboard(db, moduleId),
+      brainStatus: getBrainStatus(),
+    });
+  }
+
   return sendError(response, 404, "API route not found");
 }
 
 async function serveStatic(response, pathname) {
   const cleanPath = pathname === "/" ? "/index.html" : pathname;
-  const absolutePath = path.normalize(path.join(ROOT, cleanPath));
-  if (!absolutePath.startsWith(ROOT)) {
+  const absolutePath = path.normalize(path.join(FRONTEND_DIST, cleanPath));
+  if (!absolutePath.startsWith(FRONTEND_DIST)) {
     return sendError(response, 403, "Forbidden");
   }
 
@@ -457,8 +482,489 @@ async function serveStatic(response, pathname) {
     response.writeHead(200, { "Content-Type": mimeTypes[extension] || "application/octet-stream" });
     response.end(content);
   } catch (error) {
-    sendError(response, 404, "File not found");
+    try {
+      const content = await fs.readFile(path.join(FRONTEND_DIST, "index.html"));
+      response.writeHead(200, { "Content-Type": mimeTypes[".html"] });
+      response.end(content);
+    } catch (fallbackError) {
+      sendError(response, 404, "Frontend build not found. Run npm start to build AI Collab first.");
+    }
   }
+}
+
+function normaliseStoredTeacherModuleConfigs(configs, modules = []) {
+  if (!Array.isArray(configs)) return [];
+
+  return configs
+    .map((config) => {
+      const baseModule = modules.find((module) => module.id === config?.moduleId);
+      if (!baseModule) return null;
+      return normaliseTeacherModuleConfig(config, baseModule);
+    })
+    .filter(Boolean);
+}
+
+function normaliseTeacherModuleConfig(config, baseModule, options = {}) {
+  const fallbackToBase = options.fallbackToBase !== false;
+  const criteria = Array.isArray(config?.criteria)
+    ? config.criteria
+        .map((criterion, index) =>
+          normaliseTeacherCriterion(criterion, baseModule.rubric[index] || baseModule.rubric.find((item) => item.id === criterion?.id), baseModule.id, index),
+        )
+        .filter(Boolean)
+        .slice(0, 10)
+    : [];
+
+  return {
+    moduleId: baseModule.id,
+    teacherFocus: cleanMultilineText(config?.teacherFocus || defaultTeacherFocus(baseModule), 600),
+    criteria: criteria.length
+      ? criteria
+      : fallbackToBase
+        ? baseModule.rubric.map((criterion, index) => normaliseTeacherCriterion(criterion, criterion, baseModule.id, index))
+        : [],
+    updatedAt: config?.updatedAt || null,
+  };
+}
+
+function normaliseTeacherCriterion(criterion, baseCriterion, moduleId, index) {
+  const title = cleanText(criterion?.title || baseCriterion?.title || `Criterion ${index + 1}`);
+  const description = cleanMultilineText(criterion?.description || baseCriterion?.description || "", 420);
+  const lookingFor = cleanMultilineText(criterion?.lookingFor || defaultCriterionLookingFor(baseCriterion || criterion), 500);
+  const expectedScoring = cleanMultilineText(
+    criterion?.expectedScoring || defaultExpectedScoring(baseCriterion || criterion),
+    520,
+  );
+  const skillLinks = Array.isArray(baseCriterion?.skillLinks) && baseCriterion.skillLinks.length ? baseCriterion.skillLinks : defaultSkillLinksForModule(moduleId);
+
+  if (!title || !description || !lookingFor || !expectedScoring) {
+    return null;
+  }
+
+  return {
+    id: String(criterion?.id || baseCriterion?.id || `${moduleId}_${slugify(title) || `criterion_${index + 1}`}`),
+    title,
+    description,
+    lookingFor,
+    expectedScoring,
+    skillLinks,
+    keywords: buildCriterionKeywords({
+      title,
+      description,
+      lookingFor,
+      keywords: criterion?.keywords || baseCriterion?.keywords,
+    }),
+  };
+}
+
+function getTeacherModuleConfig(db, moduleId) {
+  return db.teacherModuleConfigs.find((config) => config.moduleId === moduleId) || null;
+}
+
+function getEffectiveModules(db) {
+  return db.modules.map((module) => getEffectiveModule(db, module.id)).filter(Boolean);
+}
+
+function getEffectiveModule(db, moduleId) {
+  const baseModule = db.modules.find((module) => module.id === moduleId);
+  if (!baseModule) return null;
+
+  const stored = getTeacherModuleConfig(db, moduleId);
+  const normalised = normaliseTeacherModuleConfig(stored || {}, baseModule);
+
+  return {
+    id: baseModule.id,
+    name: baseModule.name,
+    description: baseModule.description,
+    sampleWork: baseModule.sampleWork,
+    teacherFocus: normalised.teacherFocus,
+    rubric: normalised.criteria,
+    rubricUpdatedAt: normalised.updatedAt,
+  };
+}
+
+function saveTeacherModuleConfig(db, moduleId, payload) {
+  const baseModule = db.modules.find((module) => module.id === moduleId);
+  if (!baseModule) {
+    return { error: "Module not found", status: 404 };
+  }
+
+  const next = normaliseTeacherModuleConfig(
+    {
+      moduleId,
+      teacherFocus: payload.teacherFocus,
+      criteria: payload.criteria,
+      updatedAt: new Date().toISOString(),
+    },
+    baseModule,
+    { fallbackToBase: false },
+  );
+
+  if (next.teacherFocus.length < 18) {
+    return {
+      error: "Add a short note for what you are looking for in this module before saving.",
+      status: 400,
+    };
+  }
+
+  if (next.criteria.length < 2) {
+    return {
+      error: "Add at least two rubric criteria so the module has a meaningful scoring frame.",
+      status: 400,
+    };
+  }
+
+  const invalidCriterion = next.criteria.find(
+    (criterion) =>
+      criterion.title.length < 3 ||
+      criterion.description.length < 12 ||
+      criterion.lookingFor.length < 12 ||
+      criterion.expectedScoring.length < 12,
+  );
+
+  if (invalidCriterion) {
+    return {
+      error: "Each rubric row needs a name, what it requires, what to look for, and expected scoring guidance.",
+      status: 400,
+    };
+  }
+
+  const existingIndex = db.teacherModuleConfigs.findIndex((config) => config.moduleId === moduleId);
+  if (existingIndex >= 0) {
+    db.teacherModuleConfigs[existingIndex] = next;
+  } else {
+    db.teacherModuleConfigs.push(next);
+  }
+
+  return { ok: true, config: next };
+}
+
+function defaultTeacherFocus(module) {
+  return `In ${module.name}, I am looking for work that shows ${module.description.toLowerCase()}`;
+}
+
+function defaultCriterionLookingFor(criterion) {
+  const signals = Array.isArray(criterion?.keywords) ? criterion.keywords.join(", ") : "";
+  return signals || criterion?.description || "";
+}
+
+function defaultExpectedScoring(criterion) {
+  const description = String(criterion?.description || "").replace(/\.$/, "");
+  return description
+    ? `High-scoring work clearly demonstrates that it ${description.toLowerCase()} with specific evidence and precise explanation.`
+    : "High-scoring work should be explicit, precise, and supported by evidence from the report.";
+}
+
+function defaultSkillLinksForModule(moduleId) {
+  if (moduleId === "natural_language_processing") {
+    return [
+      { skillId: "technical_understanding", weight: 1 },
+      { skillId: "communication", weight: 0.6 },
+      { skillId: "critical_thinking", weight: 0.5 },
+    ];
+  }
+  if (moduleId === "green_chemistry") {
+    return [
+      { skillId: "ethical_awareness", weight: 0.9 },
+      { skillId: "mathematical_reasoning", weight: 0.7 },
+      { skillId: "real_world_impact", weight: 0.6 },
+    ];
+  }
+  return [
+    { skillId: "technical_understanding", weight: 0.8 },
+    { skillId: "communication", weight: 0.6 },
+    { skillId: "critical_thinking", weight: 0.5 },
+  ];
+}
+
+function buildCriterionKeywords(criterion) {
+  const signals = [
+    ...(Array.isArray(criterion?.keywords) ? criterion.keywords : []),
+    ...parseRubricSignals(criterion?.lookingFor),
+    ...parseRubricSignals(criterion?.title),
+  ];
+  return Array.from(new Set(signals.map((item) => String(item || "").trim().toLowerCase()).filter(Boolean))).slice(0, 16);
+}
+
+function parseRubricSignals(value) {
+  return String(value || "")
+    .split(/\n|,|;|\|/g)
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function slugify(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "")
+    .slice(0, 48);
+}
+
+function defaultQuickFeedbackConfig() {
+  return {
+    rubricFileName: "",
+    rubricText: "",
+    examples: [],
+    isConfigured: false,
+    updatedAt: null,
+  };
+}
+
+function normaliseStoredQuickFeedbackConfig(config) {
+  const base = defaultQuickFeedbackConfig();
+  if (!config || typeof config !== "object") return base;
+
+  const examples = Array.isArray(config.examples)
+    ? config.examples
+        .map((example) => normaliseQuickFeedbackExample(example))
+        .filter((example) => example && example.workText && Number.isFinite(example.score) && example.reason)
+        .slice(0, 6)
+    : [];
+
+  return {
+    rubricFileName: String(config.rubricFileName || "").trim().slice(0, 200),
+    rubricText: cleanMultilineText(config.rubricText, 12000),
+    examples,
+    isConfigured: Boolean(cleanMultilineText(config.rubricText, 12000) && examples.length),
+    updatedAt: config.updatedAt || null,
+  };
+}
+
+function normaliseQuickFeedbackExample(example) {
+  if (!example || typeof example !== "object") return null;
+  const score = Number(example.score);
+  return {
+    id: String(example.id || randomUUID()),
+    workText: cleanMultilineText(example.workText, 4500),
+    score: Number.isFinite(score) ? clamp(Math.round(score), 0, 100) : NaN,
+    reason: cleanMultilineText(example.reason, 900),
+  };
+}
+
+function saveQuickFeedbackConfig(db, payload) {
+  const next = normaliseStoredQuickFeedbackConfig({
+    rubricFileName: payload.rubricFileName,
+    rubricText: payload.rubricText,
+    examples: payload.examples,
+    updatedAt: new Date().toISOString(),
+  });
+
+  if (next.rubricText.length < 60) {
+    return {
+      error: "Paste more of the rubric text so the model has a real scoring source of truth.",
+      status: 400,
+    };
+  }
+
+  if (next.examples.length < 1) {
+    return {
+      error: "Add at least one scored teacher example before unlocking student mode.",
+      status: 400,
+    };
+  }
+
+  const invalidExample = next.examples.find((example) => example.workText.length < 40 || example.reason.length < 12);
+  if (invalidExample) {
+    return {
+      error: "Each teacher example needs some real sample text, a numeric score, and a short reason.",
+      status: 400,
+    };
+  }
+
+  next.isConfigured = true;
+  db.quickFeedbackConfig = next;
+  return { ok: true };
+}
+
+async function analyseQuickFeedback(config, payload) {
+  const activeConfig = normaliseStoredQuickFeedbackConfig(config);
+  const workText = cleanMultilineText(payload.workText, 8000);
+
+  if (!activeConfig.isConfigured) {
+    return {
+      error: "Teacher mode has not been configured yet.",
+      status: 400,
+    };
+  }
+
+  if (workText.length < 40) {
+    return {
+      error: "Submission needs at least 40 characters for a useful review.",
+      status: 400,
+    };
+  }
+
+  if (!shouldUseOpenAiBrain()) {
+    return {
+      error: "Teacher-configured quick feedback needs an OpenAI-compatible brain. Add OPENAI_API_KEY or switch BRAIN_MODE.",
+      status: 503,
+    };
+  }
+
+  let brainResult;
+  try {
+    brainResult = await runQuickFeedbackOpenAi(activeConfig, workText);
+  } catch (error) {
+    return {
+      error: `Teacher-configured scoring failed: ${error.message}`,
+      status: 502,
+    };
+  }
+
+  return {
+    feedbackRecord: normaliseQuickFeedbackRecord(brainResult),
+  };
+}
+
+async function runQuickFeedbackOpenAi(config, workText) {
+  if (!process.env.OPENAI_API_KEY) {
+    throw new Error("OPENAI_API_KEY is required for teacher-configured quick feedback.");
+  }
+
+  const response = await fetch(OPENAI_API_URL, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: OPENAI_MODEL,
+      temperature: 0.2,
+      response_format: { type: "json_object" },
+      messages: [
+        {
+          role: "system",
+          content: buildQuickFeedbackSystemPrompt(),
+        },
+        {
+          role: "user",
+          content: JSON.stringify({
+            rubricFileName: config.rubricFileName || null,
+            rubricText: config.rubricText,
+            scoredExamples: config.examples.map((example) => ({
+              score: example.score,
+              reason: example.reason,
+              workText: example.workText,
+            })),
+            submission: workText,
+          }),
+        },
+      ],
+    }),
+  });
+
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(data.error?.message || `AI provider returned ${response.status}`);
+  }
+
+  const content = data.choices?.[0]?.message?.content;
+  if (!content) {
+    throw new Error("AI provider returned no message content");
+  }
+
+  return {
+    ...JSON.parse(content),
+    mode: "openai",
+    provider: "openai-compatible",
+    model: OPENAI_MODEL,
+  };
+}
+
+function buildQuickFeedbackSystemPrompt() {
+  return [
+    "You are the grading engine for a quick feedback coach.",
+    "The rubric text is the source of truth.",
+    "The scored examples are calibration references that show the teacher's grading style, score range, and reasoning.",
+    "Assess the new submission against the rubric, not against generic writing advice.",
+    "Be precise about what is present, what is missing, and what the next revision should do.",
+    "Return JSON only with this shape:",
+    "{",
+    '  "overallScore": 0-100,',
+    '  "overallReason": "...",',
+    '  "strengths": ["..."],',
+    '  "gaps": [{"label":"...","message":"...","nextStep":"..."}],',
+    '  "criteriaResults": [{"title":"...","score":0-100,"evidenceSummary":"...","nextStep":"..."}],',
+    '  "nextBestAction": "..."',
+    "}",
+  ].join("\n");
+}
+
+function normaliseQuickFeedbackRecord(brainResult) {
+  const criteriaResults = normaliseQuickCriteria(brainResult.criteriaResults);
+  const derivedOverallScore = Number.isFinite(Number(brainResult.overallScore))
+    ? Number(brainResult.overallScore)
+    : average(criteriaResults.map((criterion) => criterion.score));
+  const overallScore = Math.round(clampNumber(derivedOverallScore, 0, 100));
+
+  const strengths = normaliseQuickStringList(brainResult.strengths, 6).length
+    ? normaliseQuickStringList(brainResult.strengths, 6)
+    : criteriaResults
+        .filter((criterion) => criterion.score >= 72)
+        .map((criterion) => `Strong evidence for ${criterion.title.toLowerCase()}.`)
+        .slice(0, 6);
+
+  const gaps = normaliseQuickGaps(brainResult.gaps).length
+    ? normaliseQuickGaps(brainResult.gaps)
+    : criteriaResults
+        .filter((criterion) => criterion.score < 68)
+        .map((criterion) => ({
+          label: criterion.title,
+          message: `Develop ${criterion.title.toLowerCase()}: ${criterion.nextStep}`,
+          nextStep: criterion.nextStep,
+        }))
+        .slice(0, 6);
+
+  return {
+    overallScore,
+    overallReason: cleanText(brainResult.overallReason || brainResult.nextBestAction || "Feedback generated."),
+    strengths: strengths.length ? strengths : ["This draft contains enough material to generate a targeted next step."],
+    gaps,
+    criteriaResults,
+    nextBestAction: cleanText(brainResult.nextBestAction || gaps[0]?.nextStep || "Revise the weakest rubric area and submit again."),
+    brain: {
+      version: BRAIN_VERSION,
+      mode: brainResult.mode,
+      provider: brainResult.provider,
+      model: brainResult.model,
+      fallbackReason: null,
+    },
+  };
+}
+
+function normaliseQuickCriteria(criteria) {
+  return Array.isArray(criteria)
+    ? criteria.slice(0, 8).map((criterion, index) => ({
+        id: `quick_criterion_${index + 1}`,
+        title: cleanText(criterion?.title || `Criterion ${index + 1}`),
+        score: Math.round(clampNumber(Number(criterion?.score ?? 50), 0, 100)),
+        evidenceSummary: cleanText(criterion?.evidenceSummary || criterion?.evidence || "No evidence summary was returned."),
+        nextStep: cleanText(criterion?.nextStep || "Add more direct evidence against this rubric point."),
+      }))
+    : [];
+}
+
+function normaliseQuickStringList(items, limit = 6) {
+  return Array.isArray(items)
+    ? items
+        .map((item) => cleanText(item))
+        .filter(Boolean)
+        .slice(0, limit)
+    : [];
+}
+
+function normaliseQuickGaps(gaps) {
+  return Array.isArray(gaps)
+    ? gaps
+        .map((gap) => ({
+          label: cleanText(gap?.label || "Gap"),
+          message: cleanText(gap?.message || gap?.gap || "A rubric gap was detected."),
+          nextStep: cleanText(gap?.nextStep || "Add direct evidence for this rubric area."),
+        }))
+        .filter((gap) => gap.message)
+        .slice(0, 6)
+    : [];
 }
 
 function getBrainStatus(lastRun = null) {
@@ -515,10 +1021,13 @@ function buildBrainContext(db, student, persona, module, workText, payload) {
       id: module.id,
       name: module.name,
       description: module.description,
+      teacherFocus: module.teacherFocus || null,
       rubric: module.rubric.map((criterion) => ({
         id: criterion.id,
         title: criterion.title,
         description: criterion.description,
+        lookingFor: criterion.lookingFor || "",
+        expectedScoring: criterion.expectedScoring || "",
         skillLinks: criterion.skillLinks,
         keywords: criterion.keywords,
       })),
@@ -558,9 +1067,6 @@ async function runFeedbackBrain(context) {
     try {
       return await runOpenAiBrain(context);
     } catch (error) {
-      if (BRAIN_MODE === "openai") {
-        throw error;
-      }
       const fallback = runLocalBrain(context);
       fallback.fallbackReason = `OpenAI-compatible brain failed: ${error.message}`;
       return fallback;
@@ -729,7 +1235,7 @@ function normaliseSkillSignals(brainResult, db, trackedSkillIds) {
 
 async function analyseSubmission(db, payload) {
   const student = db.students.find((item) => item.id === payload.studentId);
-  const module = db.modules.find((item) => item.id === payload.moduleId);
+  const module = getEffectiveModule(db, payload.moduleId);
   const workText = String(payload.workText || "").trim();
 
   if (!student) return { error: "Student not found", status: 404 };
@@ -819,7 +1325,8 @@ async function analyseSubmission(db, payload) {
 }
 
 function scoreCriterion(criterion, metrics) {
-  const keywordHits = (criterion.keywords || []).reduce((total, keyword) => {
+  const rubricSignals = buildCriterionKeywords(criterion);
+  const keywordHits = rubricSignals.reduce((total, keyword) => {
     const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const pattern = new RegExp(`\\b${escaped}\\b`, "gi");
     return total + (metrics.raw.match(pattern) || []).length;
@@ -1003,13 +1510,151 @@ function buildStudentTimeline(db, studentId) {
   return Array.from(byDay.entries()).map(([date, value]) => ({ date, value }));
 }
 
+function buildTeacherDashboard(db, selectedModuleId = null) {
+  const modules = getEffectiveModules(db).map((module) => ({
+    id: module.id,
+    name: module.name,
+    description: module.description,
+    teacherFocus: module.teacherFocus,
+    rubricUpdatedAt: module.rubricUpdatedAt || null,
+    rubric: module.rubric,
+  }));
+
+  const selectedModule = modules.find((module) => module.id === selectedModuleId) || modules[0] || null;
+  if (!selectedModule) {
+    return {
+      modules: [],
+      selectedModule: null,
+      overview: null,
+      criterionStatuses: [],
+      studentStatuses: [],
+      generatedAt: new Date().toISOString(),
+    };
+  }
+
+  const latestRecords = latestModuleFeedbackByStudent(db, selectedModule.id);
+  const scoredRecords = Array.from(latestRecords.values());
+  const criterionStatuses = selectedModule.rubric.map((criterion) =>
+    buildTeacherCriterionStatus(db, selectedModule, criterion, latestRecords),
+  );
+  const scoredCriteria = criterionStatuses.filter((criterion) => Number.isFinite(criterion.averageScore));
+  const weakestCriterion = scoredCriteria.slice().sort((a, b) => a.averageScore - b.averageScore)[0] || null;
+  const strongestCriterion = scoredCriteria.slice().sort((a, b) => b.averageScore - a.averageScore)[0] || null;
+
+  return {
+    modules,
+    selectedModule,
+    overview: {
+      feedbackCount: scoredRecords.length,
+      studentCount: db.students.length,
+      awaitingSubmission: db.students.length - scoredRecords.length,
+      averageScore: scoredRecords.length ? Math.round(average(scoredRecords.map((record) => record.overallScore))) : 0,
+      atRiskCount: scoredRecords.filter((record) => record.overallScore < 68).length,
+      strongestCriterion,
+      weakestCriterion,
+    },
+    criterionStatuses,
+    studentStatuses: db.students
+      .map((student) => buildTeacherStudentStatus(student, latestRecords.get(student.id)))
+      .sort((left, right) => {
+        if (left.latestOverallScore === null && right.latestOverallScore !== null) return 1;
+        if (left.latestOverallScore !== null && right.latestOverallScore === null) return -1;
+        return (left.latestOverallScore || 0) - (right.latestOverallScore || 0);
+      }),
+    generatedAt: new Date().toISOString(),
+  };
+}
+
+function latestModuleFeedbackByStudent(db, moduleId) {
+  const latestRecords = new Map();
+  for (const record of db.feedbackRecords) {
+    if (record.moduleId !== moduleId) continue;
+    if (!latestRecords.has(record.studentId)) {
+      latestRecords.set(record.studentId, record);
+    }
+  }
+  return latestRecords;
+}
+
+function buildTeacherCriterionStatus(db, module, criterion, latestRecords) {
+  const scoredStudents = Array.from(latestRecords.values())
+    .map((record) => {
+      const criterionResult = record.criteriaResults.find((item) => item.id === criterion.id);
+      if (!criterionResult) return null;
+      const student = db.students.find((item) => item.id === record.studentId);
+      const gap = record.gaps.find((item) => item.criterionId === criterion.id);
+      return {
+        studentId: record.studentId,
+        studentName: student?.name || record.studentId,
+        overallScore: record.overallScore,
+        criterionScore: criterionResult.score,
+        needsSupport: criterionResult.score < 68,
+        message: gap?.message || criterionResult.nextStep || criterionResult.evidenceSummary,
+      };
+    })
+    .filter(Boolean);
+
+  const failingStudents = scoredStudents.filter((student) => student.needsSupport);
+  const averageScore = scoredStudents.length ? Math.round(average(scoredStudents.map((student) => student.criterionScore))) : null;
+  const threshold = Math.max(2, Math.ceil(Math.max(scoredStudents.length, 1) * 0.45));
+
+  return {
+    criterionId: criterion.id,
+    title: criterion.title,
+    description: criterion.description,
+    lookingFor: criterion.lookingFor,
+    expectedScoring: criterion.expectedScoring,
+    averageScore,
+    submissions: scoredStudents.length,
+    affectedStudents: failingStudents.length,
+    students: failingStudents.slice(0, 6),
+    status:
+      !scoredStudents.length ? "quiet" : failingStudents.length >= threshold ? "alert" : failingStudents.length ? "watch" : "healthy",
+    mitigationStep: buildTeacherMitigationStep(module, criterion),
+  };
+}
+
+function buildTeacherStudentStatus(student, record) {
+  if (!record) {
+    return {
+      studentId: student.id,
+      name: student.name,
+      programme: student.programme,
+      latestOverallScore: null,
+      likelyGrade: "No submission yet",
+      weakestCriterion: "Awaiting a module submission",
+      nextStep: "Ask this student to submit a draft so the dashboard can surface targeted support.",
+      needsAttention: false,
+    };
+  }
+
+  const weakestCriterion = [...record.criteriaResults].sort((left, right) => left.score - right.score)[0] || null;
+
+  return {
+    studentId: student.id,
+    name: student.name,
+    programme: student.programme,
+    latestOverallScore: record.overallScore,
+    likelyGrade: likelyGradeLabel(record.overallScore),
+    weakestCriterion: weakestCriterion?.title || "No weakest criterion found",
+    nextStep: weakestCriterion?.nextStep || record.nextBestAction || "Keep iterating on the report.",
+    needsAttention: record.overallScore < 68,
+  };
+}
+
+function buildTeacherMitigationStep(module, criterion) {
+  const baseAction = teacherRecommendation(criterion.id, module.id);
+  const scoringHint = criterion.expectedScoring ? ` Use the scoring guide: ${criterion.expectedScoring}` : "";
+  return `${baseAction}${scoringHint}`.trim();
+}
+
 function buildTeacherAnalytics(db) {
   const gapCounts = new Map();
   const personaCounts = new Map();
 
   for (const record of db.feedbackRecords) {
     const persona = db.personas.find((item) => item.id === record.personaId);
-    const module = db.modules.find((item) => item.id === record.moduleId);
+    const module = getEffectiveModule(db, record.moduleId);
     personaCounts.set(record.personaId, (personaCounts.get(record.personaId) || 0) + 1);
 
     for (const gap of record.gaps) {
@@ -1055,18 +1700,14 @@ function buildTeacherAnalytics(db) {
 
 function teacherRecommendation(criterionId, personaId) {
   const recommendations = {
-    technical_accuracy: "Use concept explanation drills where students define input, process, output, and limitation.",
-    math_data_reasoning: "Run a short data reasoning clinic using one metric, one chart, and one interpretation.",
-    decomposition: "Ask students to map work into components, tests, and next steps before drafting.",
-    ethical_criticality: "Use a limitation and consequence prompt in every technical explanation.",
-    research_question: "Give Visionary students question frames that name population, variable, and purpose.",
-    literature_synthesis: "Practise source-to-claim sentences that explain why each source matters.",
-    method_reasoning: "Compare two possible methods and ask students to justify the better fit.",
-    contribution_criticality: "Ask students to state what their work adds and what it cannot prove.",
-    stakeholder_problem: "Have Challenger students interview or write for a specific stakeholder.",
-    solution_delivery: "Use a delivery board with problem, prototype, test, and next release.",
-    testing_quality: "Require at least three named tests before a project can be marked complete.",
-    impact_communication: "Ask students to turn the work into a portfolio story with problem, action, impact.",
+    nlp_pipeline_explanation: "Ask students to draw the pipeline from raw text to prediction, naming each transformation.",
+    evaluation_metrics: "Run a metrics clinic using one confusion matrix, then require a precision/recall/F1 interpretation.",
+    error_analysis: "Have students label false positives and false negatives, then write one cause and one improvement for each.",
+    academic_communication: "Use a report skeleton with method, result, error analysis, limitation, and recommendation sections.",
+    green_principles: "Revisit the green chemistry principles and ask students to justify which principles apply to their route.",
+    quantitative_sustainability: "Give a short atom economy and waste comparison exercise before students revise their claim.",
+    reaction_design_tradeoffs: "Ask students to compare two synthesis routes across safety, efficiency, cost, and product quality.",
+    environmental_argument: "Require a final recommendation paragraph that links evidence to environmental impact and risk.",
   };
   return recommendations[criterionId] || `Review this gap with ${personaId} students in the next workshop.`;
 }
@@ -1100,6 +1741,14 @@ function stageForScore(score) {
   return "Emerging";
 }
 
+function likelyGradeLabel(score) {
+  if (score >= 70) return "Likely First";
+  if (score >= 60) return "Likely 2:1";
+  if (score >= 50) return "Likely 2:2";
+  if (score >= 40) return "Likely Third";
+  return "Rework needed";
+}
+
 function countMatches(text, pattern) {
   return (text.match(pattern) || []).length;
 }
@@ -1120,6 +1769,10 @@ function clampNumber(value, min, max) {
 
 function cleanText(value) {
   return String(value || "").replace(/\s+/g, " ").trim().slice(0, 900);
+}
+
+function cleanMultilineText(value, max = 4000) {
+  return String(value || "").replace(/\r\n?/g, "\n").trim().slice(0, max);
 }
 
 function cloneData(value) {
@@ -1153,5 +1806,5 @@ const server = http.createServer(async (request, response) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Student feedback growth coach running at http://localhost:${PORT}`);
+  console.log(`Logos feedback coach running at http://localhost:${PORT}`);
 });
