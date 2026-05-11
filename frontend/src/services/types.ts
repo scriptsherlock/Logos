@@ -216,6 +216,24 @@ export type GrowthSkillState = {
   };
 };
 
+export type BelongingnessInsight = {
+  headline: string;
+  message: string;
+  mostImprovedSkills: Array<{
+    skillId: string;
+    skillName: string;
+    improvement: number;
+    type: "core" | "personal";
+  }>;
+  recentGrowthEventCount: number;
+  skillToKeepPracticing?: {
+    skillId: string;
+    skillName: string;
+    reason: string;
+  };
+  latestModuleName?: string;
+};
+
 export type GrowthProfile = {
   student: Student;
   persona: Persona;
@@ -264,6 +282,7 @@ export type TeacherCriterionStatus = RubricCriterion & {
   affectedStudents: number;
   status: "quiet" | "alert" | "watch" | "healthy";
   mitigationStep: string;
+  mitigationSource?: "AI generated" | "Local fallback";
   commonMissingEvidence?: string;
   students: Array<{
     studentId: string;

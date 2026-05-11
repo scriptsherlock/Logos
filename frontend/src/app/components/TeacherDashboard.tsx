@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router";
-import { Plus, Users, AlertTriangle, BookOpen, ChevronRight, BarChart, ChevronDown, FileText } from "lucide-react";
+import { Plus, Users, AlertTriangle, BookOpen, ChevronRight, BarChart, ChevronDown, FileText, Send } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { getTeacherDashboard } from "../../services/api";
+import { getTeacherDashboard, sendClassFeedback } from "../../services/api";
 import { useActiveUser } from "../../hooks/useActiveUser";
 import type { TeacherDashboardResponse } from "../../services/types";
 
@@ -12,6 +12,10 @@ export function TeacherDashboard() {
   const [error, setError] = useState<string | null>(null);
   const [selectedModuleId, setSelectedModuleId] = useState<string | undefined>(undefined);
   const [expandedCriterionIds, setExpandedCriterionIds] = useState<Set<string>>(new Set());
+  const [classFeedback, setClassFeedback] = useState("");
+  const [feedbackSent, setFeedbackSent] = useState(false);
+  const [feedbackSending, setFeedbackSending] = useState(false);
+  const [feedbackError, setFeedbackError] = useState<string | null>(null);
   const { user } = useActiveUser();
   const navigate = useNavigate();
 
@@ -52,6 +56,25 @@ export function TeacherDashboard() {
       else next.add(criterionId);
       return next;
     });
+  }
+
+  async function handleSendClassFeedback() {
+    if (!classFeedback.trim() || !dashboard?.selectedModule) return;
+    setFeedbackSending(true);
+    setFeedbackError(null);
+    try {
+      await sendClassFeedback({
+        moduleId: dashboard.selectedModule.id,
+        message: classFeedback,
+      });
+      setFeedbackSent(true);
+      setClassFeedback("");
+    } catch (err) {
+      setFeedbackError(err instanceof Error ? err.message : "Unable to send class feedback.");
+      setFeedbackSent(false);
+    } finally {
+      setFeedbackSending(false);
+    }
   }
 
   return (
@@ -140,7 +163,12 @@ export function TeacherDashboard() {
                     {expanded && (
                       <div className="px-4 pb-4 space-y-4">
                         <div className="border-t border-stone-100 dark:border-stone-800 pt-4">
-                          <p className="text-[10px] uppercase tracking-widest font-medium text-stone-500 mb-2">Mitigation</p>
+                          <div className="flex items-center justify-between gap-3 mb-2">
+                            <p className="text-[10px] uppercase tracking-widest font-medium text-stone-500">Mitigation</p>
+                            {criterion.mitigationSource && (
+                              <span className="text-[10px] uppercase tracking-widest text-stone-400">{criterion.mitigationSource}</span>
+                            )}
+                          </div>
                           <p className="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">{criterion.mitigationStep}</p>
                         </div>
 
@@ -206,13 +234,56 @@ export function TeacherDashboard() {
                   </p>
                   
                   <div className="bg-white dark:bg-[#121212] p-5 rounded-sm border border-stone-200 dark:border-stone-800">
-                    <h5 className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-3">Suggested Mitigation</h5>
+                    <div className="flex items-center justify-between gap-3 mb-3">
+                      <h5 className="text-[10px] font-bold text-stone-500 uppercase tracking-widest">Suggested Mitigation</h5>
+                      {weakest?.mitigationSource && (
+                        <span className="text-[10px] uppercase tracking-widest text-stone-400">{weakest.mitigationSource}</span>
+                      )}
+                    </div>
                     <ul className="text-xs text-stone-600 dark:text-stone-400 space-y-3 font-light">
                       <li className="flex gap-2"><span className="text-stone-400">-</span> {weakest?.mitigationStep || "Review the selected module rubric with the cohort."}</li>
                       <li className="flex gap-2"><span className="text-stone-400">-</span> Provide a short targeted practice task before the next submission.</li>
                     </ul>
                   </div>
                 </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.08, duration: 0.5 }}
+              className="bg-[#F9F8F6] dark:bg-[#1A1A1A] p-6 rounded-sm border border-stone-200 dark:border-stone-800 space-y-4"
+            >
+              <div>
+                <h4 className="text-sm font-medium text-stone-800 dark:text-stone-200 mb-2 uppercase tracking-widest">Send Feedback to Class</h4>
+                <p className="text-xs text-stone-500 font-light leading-relaxed">
+                  Share a short cohort note for {dashboard?.selectedModule?.name || "the selected module"}.
+                </p>
+              </div>
+              <textarea
+                value={classFeedback}
+                onChange={(event) => {
+                  setClassFeedback(event.target.value);
+                  setFeedbackSent(false);
+                  setFeedbackError(null);
+                }}
+                rows={5}
+                className="w-full resize-none bg-white dark:bg-[#121212] border border-stone-200 dark:border-stone-800 rounded-sm p-3 text-sm text-stone-700 dark:text-stone-300 font-light leading-relaxed outline-none focus:border-stone-500 dark:focus:border-stone-500 transition-colors"
+                placeholder="Write a concise class-wide feedback note..."
+              />
+              <div className="flex items-center justify-between gap-4">
+                <p className="text-xs text-stone-400 italic font-light">
+                  {feedbackError || (feedbackSent ? "Feedback note sent." : "Keep it concise and actionable.")}
+                </p>
+                <button
+                  type="button"
+                  onClick={handleSendClassFeedback}
+                  disabled={!classFeedback.trim() || !dashboard?.selectedModule || feedbackSending}
+                  className="flex items-center gap-2 px-4 py-2 bg-stone-900 dark:bg-stone-100 text-[#F4F3F0] dark:text-stone-900 rounded-sm text-xs font-medium uppercase tracking-widest hover:bg-stone-700 dark:hover:bg-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <Send className="w-3.5 h-3.5" /> {feedbackSending ? "Sending" : "Send"}
+                </button>
               </div>
             </motion.div>
 

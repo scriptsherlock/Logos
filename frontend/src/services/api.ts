@@ -82,6 +82,13 @@ export function getTeacherDashboard(moduleId?: string) {
   return request<TeacherDashboardResponse>(`/api/teachers/dashboard${moduleId ? `/${moduleId}` : ""}`);
 }
 
+export function sendClassFeedback(payload: { moduleId: string; message: string }) {
+  return request<{ message: { id: string; moduleId: string; moduleName: string; message: string; createdAt: string } }>("/api/teachers/class-feedback", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
 export function saveModuleRubric(moduleId: string, payload: { teacherFocus?: string; criteria: RubricCriterion[] }) {
   return request<{ dashboard: TeacherDashboardResponse }>(`/api/teachers/modules/${moduleId}/rubric`, {
     method: "PUT",

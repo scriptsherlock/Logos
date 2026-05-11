@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 import { useBootstrap } from '../../hooks/useBootstrap';
 import { useActiveUser } from '../../hooks/useActiveUser';
 import { getStudentGrowth } from '../../services/api';
-import type { GrowthProfile } from '../../services/types';
+import type { BelongingnessInsight, GrowthProfile } from '../../services/types';
 
 function buildLineData(profile: GrowthProfile | null, selectedSkill: string) {
   const events = [...(profile?.recentGrowthEvents || [])].reverse();
@@ -54,6 +54,64 @@ function buildRadarData(skills: GrowthProfile["groups"]["core"]) {
     A: Math.round(state.current),
     fullMark: 100,
   }));
+}
+
+function generateBelongingnessMessage(profile: GrowthProfile | null): BelongingnessInsight {
+  const coreSkills = profile?.groups.core || [];
+  const personalSkills = profile?.groups.path || [];
+  const allSkills = [
+    ...coreSkills.map((state) => ({ ...state, type: "core" as const })),
+    ...personalSkills.map((state) => ({ ...state, type: "personal" as const })),
+  ];
+  const improvedSkills = allSkills
+    .filter((state) => state.growth > 0)
+    .sort((a, b) => b.growth - a.growth)
+    .slice(0, 2)
+    .map((state) => ({
+      skillId: state.skillId,
+      skillName: state.skill?.name || state.skillId,
+      improvement: Math.round(state.growth),
+      type: state.type,
+    }));
+  const recentGrowthEventCount = profile?.recentGrowthEvents?.length || 0;
+  const skillToKeepPracticing = allSkills.slice().sort((a, b) => a.current - b.current)[0];
+  const latestModuleName = profile?.recentFeedback?.[0]?.moduleName;
+
+  if (!profile || (!recentGrowthEventCount && !improvedSkills.length)) {
+    return {
+      headline: "Your growth pattern will become clearer soon.",
+      message: "For now, focus on one visible improvement per revision: clearer evidence, a better explanation, or a more readable section.",
+      mostImprovedSkills: [],
+      recentGrowthEventCount,
+      skillToKeepPracticing: skillToKeepPracticing
+        ? {
+            skillId: skillToKeepPracticing.skillId,
+            skillName: skillToKeepPracticing.skill?.name || skillToKeepPracticing.skillId,
+            reason: "This is a useful next focus for your next submission.",
+          }
+        : undefined,
+      latestModuleName,
+    };
+  }
+
+  const improvedNames = improvedSkills.map((skill) => skill.skillName);
+  const practiceName = skillToKeepPracticing?.skill?.name || skillToKeepPracticing?.skillId || "";
+  const modulePhrase = latestModuleName ? ` in ${latestModuleName}` : "";
+
+  return {
+    headline: "You are building momentum.",
+    message: `Across your recent sessions${modulePhrase}, your strongest growth has been in ${improvedNames.join(" and ")}. ${practiceName ? `${practiceName} is still developing, giving you a clear next focus for the next submission.` : "Your revisions are strengthening how you reason, explain, and support your ideas."}`,
+    mostImprovedSkills: improvedSkills,
+    recentGrowthEventCount,
+    skillToKeepPracticing: skillToKeepPracticing
+      ? {
+          skillId: skillToKeepPracticing.skillId,
+          skillName: practiceName,
+          reason: "This is a useful next focus for your next submission.",
+        }
+      : undefined,
+    latestModuleName,
+  };
 }
 
 export function StudentProgress() {
@@ -107,26 +165,38 @@ export function StudentProgress() {
   const totalGrowth = profile?.summary.totalGrowth || 0;
   const recentSubmissions = profile?.recentFeedback || [];
   const recentGrowthEvents = profile?.recentGrowthEvents || [];
+  const learningReflection = useMemo(() => generateBelongingnessMessage(profile), [profile]);
   const isLoading = bootstrapLoading || loading;
   const activeTabLabel = skillTab === "core" ? "Core" : "Personal";
 
   return (
-    <div className="flex-1 overflow-y-auto p-6 md:p-12">
-      <div className="max-w-6xl mx-auto space-y-12">
+    <div className="flex-1 overflow-y-auto p-6 md:p-10">
+      <div className="max-w-6xl mx-auto space-y-8">
         
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-b border-stone-200 dark:border-stone-800 pb-8">
-          <div>
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(340px,520px)] gap-6 border-b border-stone-200 dark:border-stone-800 pb-6">
+          <div className="flex flex-col justify-between gap-5">
+            <div>
             <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-stone-800 dark:text-stone-100">Growth Dashboard</h2>
             <p className="text-stone-500 dark:text-stone-400 mt-2 italic">Track your selected skills across all modules.</p>
+            </div>
+            <div className="w-fit px-4 py-2 bg-stone-100 text-stone-800 dark:bg-stone-900 dark:text-stone-300 rounded-sm text-xs uppercase tracking-widest font-medium flex items-center gap-3 border border-stone-200 dark:border-stone-800">
+              <TrendingUp className="w-3.5 h-3.5" /> +{totalGrowth}% Overall Growth
+            </div>
             {(bootstrapError || error) && <p className="text-sm text-stone-500 dark:text-stone-400 mt-3 italic">{bootstrapError || error}</p>}
           </div>
-          <div className="px-4 py-2 bg-stone-100 text-stone-800 dark:bg-stone-900 dark:text-stone-300 rounded-sm text-xs uppercase tracking-widest font-medium flex items-center gap-3 border border-stone-200 dark:border-stone-800 self-start sm:self-auto">
-            <TrendingUp className="w-3.5 h-3.5" /> +{totalGrowth}% Overall Growth
+          <div className="bg-[#F9F8F6] dark:bg-[#1A1A1A] border border-stone-200 dark:border-stone-800 rounded-sm p-5 space-y-3 self-start">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-[10px] uppercase tracking-widest font-medium text-stone-500">Your Learning Reflection</p>
+                <p className="text-sm font-medium text-stone-800 dark:text-stone-200 mt-2">{isLoading ? "Reading your recent growth pattern..." : learningReflection.headline}</p>
+              </div>
+            </div>
+            <p className="text-sm text-stone-600 dark:text-stone-400 leading-relaxed font-light">{learningReflection.message}</p>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-[#F9F8F6] dark:bg-[#1A1A1A] p-8 rounded-sm border border-stone-200 dark:border-stone-800 flex items-center gap-6">
+        <div className="grid md:grid-cols-3 gap-5">
+          <div className="bg-[#F9F8F6] dark:bg-[#1A1A1A] p-6 rounded-sm border border-stone-200 dark:border-stone-800 flex items-center gap-5 min-h-28">
             <div className="text-stone-400">
               <Award className="w-8 h-8 stroke-[1.5]" />
             </div>
@@ -135,7 +205,7 @@ export function StudentProgress() {
               <p className="text-xl font-medium">{isLoading ? 'Loading...' : highestSkill?.skill?.name || 'No data yet'}</p>
             </div>
           </div>
-          <div className="bg-[#F9F8F6] dark:bg-[#1A1A1A] p-8 rounded-sm border border-stone-200 dark:border-stone-800 flex items-center gap-6">
+          <div className="bg-[#F9F8F6] dark:bg-[#1A1A1A] p-6 rounded-sm border border-stone-200 dark:border-stone-800 flex items-center gap-5 min-h-28">
             <div className="text-stone-400">
               <TrendingUp className="w-8 h-8 stroke-[1.5]" />
             </div>
@@ -144,7 +214,7 @@ export function StudentProgress() {
               <p className="text-xl font-medium">{isLoading ? 'Loading...' : mostImproved?.skill?.name || 'No data yet'}</p>
             </div>
           </div>
-          <div className="bg-[#F9F8F6] dark:bg-[#1A1A1A] p-8 rounded-sm border border-stone-200 dark:border-stone-800 flex items-center gap-6">
+          <div className="bg-[#F9F8F6] dark:bg-[#1A1A1A] p-6 rounded-sm border border-stone-200 dark:border-stone-800 flex items-center gap-5 min-h-28">
             <div className="text-stone-400">
               <Clock className="w-8 h-8 stroke-[1.5]" />
             </div>
@@ -155,7 +225,7 @@ export function StudentProgress() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 pt-6">
+        <div className="grid md:grid-cols-2 gap-7">
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}

@@ -242,6 +242,7 @@ const seedData = {
   feedbackRecords: [],
   growthEvents: [],
   belongingnessCheckins: [],
+  classFeedbackMessages: [],
   customModules: [],
   teacherModuleConfigs: [],
 };
@@ -274,6 +275,7 @@ function ensureDataShape(db) {
   db.feedbackRecords ||= [];
   db.growthEvents ||= [];
   db.belongingnessCheckins ||= [];
+  db.classFeedbackMessages ||= [];
   db.teacherModuleConfigs = normaliseStoredTeacherModuleConfigs(db.teacherModuleConfigs, db.modules);
   delete db.quickFeedbackConfig;
   ensureDemoStudentProfiles(db);
@@ -517,7 +519,15 @@ async function routeApi(request, response, pathname) {
 
   const teacherDashboardMatch = pathname.match(/^\/api\/teachers\/dashboard(?:\/([^/]+))?$/);
   if (request.method === "GET" && teacherDashboardMatch) {
-    return sendJson(response, 200, buildTeacherDashboard(db, teacherDashboardMatch[1] || null));
+    return sendJson(response, 200, await buildTeacherDashboard(db, teacherDashboardMatch[1] || null));
+  }
+
+  if (request.method === "POST" && pathname === "/api/teachers/class-feedback") {
+    const payload = await readJsonBody(request);
+    const result = saveClassFeedbackMessage(db, payload);
+    if (result.error) return sendError(response, result.status, result.error);
+    await saveDb(db);
+    return sendJson(response, 201, result);
   }
 
   if (request.method === "POST" && pathname === "/api/teachers/modules") {
@@ -527,7 +537,7 @@ async function routeApi(request, response, pathname) {
     await saveDb(db);
     return sendJson(response, 201, {
       module: getEffectiveModule(db, result.module.id),
-      dashboard: buildTeacherDashboard(db, result.module.id),
+      dashboard: await buildTeacherDashboard(db, result.module.id),
       brainStatus: getBrainStatus(),
     });
   }
@@ -541,7 +551,7 @@ async function routeApi(request, response, pathname) {
     await saveDb(db);
     return sendJson(response, 200, {
       module: getEffectiveModule(db, moduleId),
-      dashboard: buildTeacherDashboard(db, moduleId),
+      dashboard: await buildTeacherDashboard(db, moduleId),
       brainStatus: getBrainStatus(),
     });
   }
@@ -910,6 +920,24 @@ function createTeacherModule(db, payload) {
   });
   if (configResult.error) return configResult;
   return { ok: true, module };
+}
+
+function saveClassFeedbackMessage(db, payload) {
+  const moduleId = cleanText(payload?.moduleId || "").slice(0, 80);
+  const message = cleanMultilineText(payload?.message || "", 1600);
+  const module = getEffectiveModule(db, moduleId);
+  if (!module) return { error: "Module not found", status: 404 };
+  if (message.length < 8) return { error: "Feedback message is too short", status: 400 };
+
+  const record = {
+    id: randomUUID(),
+    moduleId: module.id,
+    moduleName: module.name,
+    message,
+    createdAt: new Date().toISOString(),
+  };
+  db.classFeedbackMessages.unshift(record);
+  return { message: record };
 }
 
 function defaultTeacherFocus(module) {
@@ -2105,7 +2133,7 @@ function buildStudentTimeline(db, studentId) {
   return Array.from(byDay.entries()).map(([date, value]) => ({ date, value }));
 }
 
-function buildTeacherDashboard(db, selectedModuleId = null) {
+async function buildTeacherDashboard(db, selectedModuleId = null) {
   const modules = getEffectiveModules(db).map((module) => buildTeacherModuleSummary(db, module));
 
   const selectedModule = modules.find((module) => module.id === selectedModuleId) || modules[0] || null;
@@ -2122,8 +2150,10 @@ function buildTeacherDashboard(db, selectedModuleId = null) {
 
   const latestRecords = latestModuleFeedbackByStudent(db, selectedModule.id);
   const scoredRecords = Array.from(latestRecords.values());
-  const criterionStatuses = selectedModule.rubric.map((criterion) =>
-    buildTeacherCriterionStatus(db, selectedModule, criterion, latestRecords),
+  const criterionStatuses = await Promise.all(
+    selectedModule.rubric.map((criterion) =>
+      buildTeacherCriterionStatus(db, selectedModule, criterion, latestRecords),
+    ),
   );
   const scoredCriteria = criterionStatuses.filter((criterion) => Number.isFinite(criterion.averageScore));
   const weakestCriterion = scoredCriteria.slice().sort((a, b) => a.averageScore - b.averageScore)[0] || null;
@@ -2184,7 +2214,7 @@ function latestModuleFeedbackByStudent(db, moduleId) {
   return latestRecords;
 }
 
-function buildTeacherCriterionStatus(db, module, criterion, latestRecords) {
+async function buildTeacherCriterionStatus(db, module, criterion, latestRecords) {
   const scoredStudents = Array.from(latestRecords.values())
     .map((record) => {
       const criterionResult = record.criteriaResults.find((item) => item.id === criterion.id);
@@ -2213,6 +2243,7 @@ function buildTeacherCriterionStatus(db, module, criterion, latestRecords) {
   const averageScore = scoredStudents.length ? Math.round(average(scoredStudents.map((student) => student.criterionScore))) : null;
   const threshold = Math.max(2, Math.ceil(Math.max(scoredStudents.length, 1) * 0.45));
   const commonMissingEvidence = summariseMissingEvidence(failingStudents);
+  const mitigation = await buildTeacherMitigationStep(module, criterion, failingStudents.length, commonMissingEvidence);
 
   return {
     criterionId: criterion.id,
@@ -2227,7 +2258,8 @@ function buildTeacherCriterionStatus(db, module, criterion, latestRecords) {
     status:
       !scoredStudents.length ? "quiet" : failingStudents.length >= threshold ? "alert" : failingStudents.length ? "watch" : "healthy",
     commonMissingEvidence,
-    mitigationStep: buildTeacherFallbackMitigationStep(module, criterion, failingStudents.length, commonMissingEvidence),
+    mitigationStep: mitigation.step,
+    mitigationSource: mitigation.source,
   };
 }
 
@@ -2265,6 +2297,88 @@ function summariseMissingEvidence(students) {
     .filter(Boolean)
     .slice(0, 3);
   return messages.length ? messages.join(" ") : "No common missing evidence has been identified yet.";
+}
+
+async function buildTeacherMitigationStep(module, criterion, affectedStudents = 0, commonMissingEvidence = "") {
+  const fallback = buildTeacherFallbackMitigationStep(module, criterion, affectedStudents, commonMissingEvidence);
+  if (!affectedStudents) {
+    return { step: fallback, source: "Local fallback" };
+  }
+
+  if (!shouldUseOpenAiBrain()) {
+    return { step: fallback, source: "Local fallback" };
+  }
+
+  try {
+    const step = await runTeacherMitigationBrain({
+      module: {
+        id: module.id,
+        name: module.name,
+        description: module.description,
+        teacherFocus: module.teacherFocus,
+      },
+      criterion: {
+        id: criterion.id,
+        title: criterion.title,
+        description: criterion.description,
+        lookingFor: criterion.lookingFor,
+        expectedScoring: criterion.expectedScoring,
+      },
+      affectedStudents,
+      commonMissingEvidence,
+    });
+    return { step, source: "AI generated" };
+  } catch {
+    return { step: fallback, source: "Local fallback" };
+  }
+}
+
+async function runTeacherMitigationBrain(context) {
+  if (!process.env.OPENAI_API_KEY) {
+    throw new Error("OPENAI_API_KEY is required for AI teacher mitigation");
+  }
+
+  const response = await fetch(OPENAI_API_URL, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: OPENAI_MODEL,
+      temperature: 0.25,
+      response_format: { type: "json_object" },
+      messages: [
+        {
+          role: "system",
+          content: [
+            "You are Logos, helping a teacher respond to cohort rubric evidence.",
+            "Return a single valid JSON object with no markdown or extra text.",
+            "Write one concise, practical mitigation step for the next class session.",
+            "Use the module, weak rubric, affected student count, and common missing evidence.",
+            "Do not diagnose students. Do not mention private student data. Do not overpromise.",
+            'Shape: {"mitigationStep":"one specific teacher action, 1-2 sentences"}',
+          ].join("\n"),
+        },
+        {
+          role: "user",
+          content: JSON.stringify(context),
+        },
+      ],
+    }),
+  });
+
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const error = new Error(data.error?.message || `AI provider returned ${response.status}`);
+    error.providerStatus = response.status;
+    throw error;
+  }
+
+  const parsed = parseModelJson(data.choices?.[0]?.message?.content || "");
+  const mitigationStep = cleanMultilineText(parsed.mitigationStep || "", 700);
+  if (!mitigationStep) throw new Error("AI provider returned an empty mitigation step");
+  return mitigationStep;
 }
 
 function buildTeacherFallbackMitigationStep(module, criterion, affectedStudents = 0, commonMissingEvidence = "") {
