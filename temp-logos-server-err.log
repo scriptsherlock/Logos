@@ -1,6 +1,0 @@
-ReferenceError: persona is not defined
-    at buildGrowthProfile (E:\MoRPh\server.js:2066:5)
-    at loginOrCreateUser (E:\MoRPh\server.js:579:69)
-    at routeApi (E:\MoRPh\server.js:419:20)
-    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
-    at async Server.<anonymous> (E:\MoRPh\server.js:2423:7)
