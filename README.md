@@ -13,7 +13,7 @@ Logos addresses **Grand Challenge 4: AI-Powered Peer Feedback Coach for STEM Out
 
 The challenge asks for AI-powered feedback systems that help learners, educators, and peers provide high-quality, accurate, and constructive feedback on STEM work. Logos focuses on STEM submissions where students need more than a score: they need help checking their reasoning, evidence, assumptions, methodological choices, clarity, and next revision steps.
 
-## Problem And Solution
+## Problem and Solution
 
 Students often receive feedback too late, too generally, or without a clear link to the skills they are trying to develop. In STEM contexts, this can make it difficult to see whether the issue is calculation, evidence, reasoning, methodology, communication, or a missing intermediate step. It can also make students feel like STEM progress belongs to a generic standard rather than their own journey, interests, and emerging identity as learners. Teachers also need a faster way to see class-wide misunderstanding across rubric criteria without manually reviewing every trend.
 
@@ -44,7 +44,7 @@ AI feedback is grounded in teacher-authored criteria, student work, rubric evide
 
 ![Logos architecture flowchart](doc/architecture-flowchart.svg)
 
-## Directory Structure
+## Repository Structure
 
 ```text
 .
@@ -80,7 +80,7 @@ AI feedback is grounded in teacher-authored criteria, student work, rubric evide
 
 Generated or local-only folders such as `frontend/dist/`, `frontend/node_modules/`, and the root `.env` file are intentionally not part of the source tree to commit.
 
-## Installation And Setup
+## Installation and Setup
 
 ### Prerequisites
 
@@ -91,7 +91,7 @@ Generated or local-only folders such as `frontend/dist/`, `frontend/node_modules
 
 ```bash
 git clone <your-repository-url>
-cd MoRPh
+cd Logos
 ```
 
 ### 2. Install frontend dependencies
@@ -180,9 +180,7 @@ Logos is designed around a shared feedback loop: teachers define the standard, s
 
 ## Screenshots
 
-### Landing And Entry Flow
-
-
+### Landing and Entry Flow
 
 ![Student or teacher selection](doc/screenshots/studentorteacher.png)
 
@@ -202,30 +200,20 @@ Logos is designed around a shared feedback loop: teachers define the standard, s
 
 ![Student improvement feedback](doc/screenshots/Studentbad.jpg.png)
 
-
-
 ### Teacher Experience
 
 ![Teacher dashboard](doc/screenshots/teacher.png)
+
 ![Module Setup](<doc/screenshots/Screenshot 2026-05-12 020541.png>)
 
 ![Module](<doc/screenshots/Screenshot 2026-05-12 020601.png>)
 
 ## Demo Video
 
-Demo video link: **TBD**
+[Demo video link](https://youtu.be/68ZhZtKeNE4)
 
-Add the final demo video URL here before submission.
 
-## Team Members
-
-| Team member | GitHub |
-| --- | --- |
-| Riya Kumar | TBD |
-| Muhammed Farizan | [babehgobber](https://github.com/babehgobber) |
-| Pooja Hiremath | [scriptsherlock](https://github.com/scriptsherlock) |
-
-## Sample Data And Test Cases
+## Sample Data and Test Cases
 
 The repository includes:
 
@@ -277,6 +265,14 @@ Important variables:
 Do **not** upload API keys, credentials, or sensitive information to the repository.
 
 This repository ignores `.env`. Commit only `.env.example`, which documents the required environment variables without secrets.
+
+## Team Members
+
+| Team member | GitHub |
+| --- | --- |
+| Riya Kumar | TBD |
+| Muhammed Farizan | [babehgobber](https://github.com/babehgobber) |
+| Pooja Hiremath | [scriptsherlock](https://github.com/scriptsherlock) |
 
 ## License
 

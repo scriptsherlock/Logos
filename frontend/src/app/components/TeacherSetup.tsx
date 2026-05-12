@@ -37,6 +37,14 @@ function blankRubric(): Rubric {
   };
 }
 
+function mergeRubrics(current: Rubric[], extracted: Rubric[]) {
+  const byId = new Map(current.map((rubric) => [rubric.id, rubric]));
+  for (const rubric of extracted) {
+    byId.set(rubric.id, rubric);
+  }
+  return Array.from(byId.values());
+}
+
 export function TeacherSetup() {
   const [mode, setMode] = useState<"existing" | "new">("existing");
   const [moduleName, setModuleName] = useState("");
@@ -85,7 +93,7 @@ export function TeacherSetup() {
         mimeType: file.type || "text/plain",
         textContent,
       });
-      setRubrics(toRubrics(result.rubrics));
+      setRubrics((current) => mergeRubrics(current, toRubrics(result.rubrics)));
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unable to extract rubrics from that file.");
     } finally {
@@ -269,7 +277,10 @@ export function TeacherSetup() {
                 type="file"
                 accept=".txt,.md,.csv,.json,.html,.doc,.docx,.pdf"
                 className="sr-only"
-                onChange={(event) => handleRubricUpload(event.target.files?.[0] || null)}
+                onChange={(event) => {
+                  handleRubricUpload(event.target.files?.[0] || null);
+                  event.target.value = "";
+                }}
               />
               <Upload className="w-8 h-8 text-stone-400 mb-4 stroke-[1.5]" />
               <p className="font-medium text-stone-800 dark:text-stone-200">{extracting ? "Extracting rubrics..." : "Click to upload or drag and drop"}</p>

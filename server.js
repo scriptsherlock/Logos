@@ -1019,7 +1019,7 @@ function extractRubricsFromPayload(db, payload) {
   const knownSkillIds = new Set(db.skills.map((skill) => skill.id));
   const skillNameMap = buildSkillNameMap(db.skills);
   const structuredRubrics = parseStructuredRubricText(text, knownSkillIds, skillNameMap);
-  const rubrics = structuredRubrics.length >= 2 ? structuredRubrics : parseLooseRubricText(text, knownSkillIds);
+  const rubrics = structuredRubrics.length ? structuredRubrics : parseLooseRubricText(text, knownSkillIds);
 
   return { rubrics, source: { fileName, extractor: "local-placeholder" } };
 }
