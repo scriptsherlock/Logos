@@ -1,11 +1,11 @@
 {
-  "name": "student-feedback-growth-coach",
+  "name": "logos-feedback-coach",
   "version": "1.0.0",
-  "description": "Local backend and test interface for persona-based student feedback growth tracking.",
+  "description": "Logos backend API and integrated React frontend for rubric-based student feedback.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "check": "node --check server.js && node --check app.js"
+    "start": "npm --prefix frontend run build && node server.js",
+    "check": "node --check server.js && npm --prefix frontend run build"
   },
   "private": true
 }
