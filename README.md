@@ -1,6 +1,9 @@
 ﻿# Logos - Your STEM Companion
 
-**Team name:** TriNova
+**Team name:** Team 8: TriNova
+
+
+![Landing page](doc/screenshots/landing.png)
 
 Logos is a STEM learning companion that connects teacher rubrics, AI-guided feedback, student revision, and visible skill growth.
 
@@ -12,19 +15,18 @@ The challenge asks for AI-powered feedback systems that help learners, educators
 
 ## Problem And Solution
 
-Students often receive feedback too late, too generally, or without a clear link to the skills they are trying to develop. In STEM contexts, this can make it difficult to see whether the issue is calculation, evidence, reasoning, methodology, communication, or a missing intermediate step. Teachers also need a faster way to see class-wide misunderstanding across rubric criteria without manually reviewing every trend.
+Students often receive feedback too late, too generally, or without a clear link to the skills they are trying to develop. In STEM contexts, this can make it difficult to see whether the issue is calculation, evidence, reasoning, methodology, communication, or a missing intermediate step. It can also make students feel like STEM progress belongs to a generic standard rather than their own journey, interests, and emerging identity as learners. Teachers also need a faster way to see class-wide misunderstanding across rubric criteria without manually reviewing every trend.
 
 Logos provides:
 
-- Rubric-based AI feedback on student submissions.
-- Teacher-created modules and saved rubrics.
-- Student revision workflows with repeated attempts.
-- Skill growth tracking based on meaningful rubric improvement.
-- Teacher dashboard insights showing common weak rubric areas.
-- Targeted `Answer with Logos` guidance that gives sentence starters and self-checks without writing the full answer for the student.
-- Criterion-level scoring that identifies evidence, missing elements, and specific revision moves.
-- A Growth Dashboard that recognises effort through repeated attempts, visible skill movement, selected personal skills, and a short learning reflection.
-- A teacher feedback loop that turns many individual struggles into class-level insight, so educators can respond to shared misconceptions.
+- **AI-powered feedback:** Rubric-based analysis of student submissions, grounded in teacher criteria and the student's own work.
+- **Student-Teacher collaboration:** Teacher-created modules and saved rubrics that define the standard students revise against.
+- **Constructive revision:** Student workflows for repeated attempts, reflection, and clearer reasoning over time.
+- **Belongingness:** Personal skill growth tracking based on meaningful rubric improvement, helping students see their own journey through STEM rather than comparing their path to someone else's.
+- **Class-wide collaboration:** Teacher dashboard insights showing common weak rubric areas so educators can respond to shared misconceptions.
+- **Guidance without shortcuts:** Targeted `Answer with Logos` support that gives sentence starters and self-checks without writing the full answer for the student.
+- **Transparent assessment:** Criterion-level scoring that identifies evidence, missing elements, and specific revision moves.
+- **Effort recognition:** A Growth Dashboard that recognises repeated attempts, visible skill movement, selected personal skills, and a short learning reflection connected to the learner's chosen STEM path.
 
 ## Technology Stack
 
@@ -145,7 +147,7 @@ npm run check
 
 ## Usage Guide
 
-Logos is designed around a shared feedback loop: teachers define the standard, students revise against that standard, and the system surfaces both individual growth and class-wide struggle patterns. The student experience emphasises constructive revision and belonging through evidence-based reflections, while the teacher experience supports earlier intervention when many learners miss the same idea.
+Logos is designed around a shared feedback loop: teachers define the standard, students revise against that standard, and the system surfaces both individual growth and class-wide struggle patterns. The student experience emphasises constructive revision and belonging through evidence-based reflections. Personal skill tracking helps each learner connect progress to their own STEM journey, career interests, and reasons for learning, while the teacher experience supports earlier intervention when many learners miss the same idea.
 
 ### Student Flow
 
@@ -178,16 +180,36 @@ Logos is designed around a shared feedback loop: teachers define the standard, s
 
 ## Screenshots
 
-Add final exported screenshots before submission in `doc/screenshots/`.
+### Landing And Entry Flow
 
-Suggested screenshot set:
 
-```markdown
-![Landing page](doc/screenshots/landing-page.png)
-![Student Growth Dashboard](doc/screenshots/student-growth-dashboard.png)
-![Student Workspace Feedback](doc/screenshots/student-workspace-feedback.png)
-![Teacher Dashboard](doc/screenshots/teacher-dashboard.png)
-```
+
+![Student or teacher selection](doc/screenshots/studentorteacher.png)
+
+![Path selection](doc/screenshots/Path.png)
+
+![Industry skills](doc/screenshots/skills_industry.png)
+
+![Research skills](<doc/screenshots/research skills.png>)
+
+![Switch path prompt](doc/screenshots/switch.png)
+
+### Student Experience
+
+![Student dashboard](doc/screenshots/Stuedentdash.png)
+
+![Student workspace feedback](doc/screenshots/Studentgood.png)
+
+![Student improvement feedback](doc/screenshots/Studentbad.jpg.png)
+
+
+
+### Teacher Experience
+
+![Teacher dashboard](doc/screenshots/teacher.png)
+![Module Setup](<doc/screenshots/Screenshot 2026-05-12 020541.png>)
+
+![Module](<doc/screenshots/Screenshot 2026-05-12 020601.png>)
 
 ## Demo Video
 
@@ -198,10 +220,10 @@ Add the final demo video URL here before submission.
 ## Team Members
 
 | Team member | GitHub |
-| Riya Kumar |  |
-| Muhammed Farizan | https://github.com/babehgobber |
-| Pooja Hiremath | https://github.com/scriptsherlock |
-
+| --- | --- |
+| Riya Kumar | TBD |
+| Muhammed Farizan | [babehgobber](https://github.com/babehgobber) |
+| Pooja Hiremath | [scriptsherlock](https://github.com/scriptsherlock) |
 
 ## Sample Data And Test Cases
 

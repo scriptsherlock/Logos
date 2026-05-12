@@ -18,19 +18,19 @@ export function StudentSkills() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<string[]>([]);
+  const commonSkills = (data?.skills || []).filter((skill) => skill.category === "core_stem").slice(0, 5);
+  const specializedSkills = (data?.skills || []).filter((skill) => skill.category === "path_specific" && skill.path === path);
+  const specializedSkillIds = new Set(specializedSkills.map((skill) => skill.id));
+  const savedPersonalSkillIds = savedProfile?.selectedPersonalSkillIds || [];
+  const savedSkillsFromAnotherPath = savedPersonalSkillIds.some((skillId) => !specializedSkillIds.has(skillId));
 
   useEffect(() => {
     if (!user || user.role !== "student") navigate("/login/student");
   }, [navigate, user]);
 
   useEffect(() => {
-    if (savedProfile?.selectedPersonalSkillIds?.length) {
-      setSelected(savedProfile.selectedPersonalSkillIds.slice(0, 3));
-    }
-  }, [savedProfile?.selectedPersonalSkillIds]);
-
-  const commonSkills = (data?.skills || []).filter((skill) => skill.category === "core_stem").slice(0, 5);
-  const specializedSkills = (data?.skills || []).filter((skill) => skill.category === "path_specific" && skill.path === path);
+    setSelected(savedPersonalSkillIds.filter((skillId) => specializedSkillIds.has(skillId)).slice(0, 3));
+  }, [path, data?.skills, savedProfile?.selectedPersonalSkillIds]);
 
   const toggleSkill = (skillId: string) => {
     if (selected.includes(skillId)) {
@@ -94,6 +94,11 @@ export function StudentSkills() {
             <div>
               <h3 className="text-xl font-medium capitalize">{path} Specialized Skills</h3>
               <p className="text-sm text-stone-500 italic mt-1">Select 3 additional personal skills to track through your work.</p>
+              {savedSkillsFromAnotherPath && (
+                <p className="text-sm text-stone-600 dark:text-stone-300 mt-3">
+                  Your previous personal skills belonged to another path. Choose three {path} skills to reset this part of your journey.
+                </p>
+              )}
             </div>
             <span className="text-xs uppercase tracking-widest text-stone-400 font-medium bg-stone-100 dark:bg-stone-900 px-3 py-1 rounded-sm">
               {selected.length} / 3

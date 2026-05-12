@@ -5,7 +5,7 @@ import { useActiveUser } from "../../hooks/useActiveUser";
 
 export function Welcome() {
   const { user } = useActiveUser();
-  const continuePath = user?.role === "student" ? "/student/progress" : user?.role === "teacher" ? "/teacher/dashboard" : null;
+  const continuePath = user?.role === "student" ? "/student/path" : user?.role === "teacher" ? "/teacher/dashboard" : null;
 
   return (
     <div className="flex-1 flex flex-col items-center justify-center p-6">
