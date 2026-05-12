@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Upload, Send, Sparkles, ChevronRight, FileText, LockKeyhole } from "lucide-react";
 import { useNavigate } from "react-router";
 import { analyseSubmission } from "../../services/api";
+import { extractTextFromFile } from "../../services/fileText";
 import { useBootstrap } from "../../hooks/useBootstrap";
 import { useActiveUser } from "../../hooks/useActiveUser";
 import type { AnalyseSubmissionResponse } from "../../services/types";
@@ -76,26 +77,28 @@ export function StudentWorkspace() {
     if (!file) return;
     setSubmitError(null);
     try {
-      const text = await file.text();
+      const text = await extractTextFromFile(file);
       setContent(text);
       setFeedback(null);
       setIsSubmitted(false);
       setOpenHints({});
-    } catch {
-      setSubmitError("Unable to read that file. Try uploading a plain text, markdown, CSV, JSON, or HTML file.");
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error
+          ? err.message
+          : "Unable to read that file. Try .txt, .md, .csv, .json, .html, .docx, .pptx, .xlsx, or paste the text directly. PDFs must contain selectable text."
+      );
     }
   }
 
   return (
-    <div data-scroll-region="workspace-page" className="h-full min-h-0 overflow-hidden p-4 md:p-8">
-      {/* Scroll debug: body/main/workspace-page stay locked; only left-editor-scroll and right-rubric-scroll should move. */}
-      <div data-scroll-region="workspace-shell" className="w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-4 md:gap-6 relative h-full min-h-0 overflow-hidden">
+    <div className="h-full min-h-0 overflow-hidden p-4 md:p-8">
+      <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-4 md:gap-6 relative h-full min-h-0 overflow-hidden">
         <motion.div
           layout
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          data-scroll-region="left-pane"
           className={`min-h-0 flex flex-col bg-[#F9F8F6] dark:bg-[#1A1A1A] border border-stone-200 dark:border-stone-800 rounded-sm shadow-sm overflow-hidden flex-1 ${isSubmitted ? "h-[42%] md:h-full md:w-1/2 md:max-w-none" : "h-full w-full max-w-4xl mx-auto"}`}
           style={{ maxWidth: isSubmitted ? undefined : "56rem" }}
         >
@@ -117,7 +120,7 @@ export function StudentWorkspace() {
               <label className="flex items-center gap-2 text-xs uppercase tracking-widest font-medium text-stone-500 hover:text-stone-900 dark:hover:text-stone-200 transition-colors cursor-pointer">
                 <input
                   type="file"
-                  accept=".txt,.md,.csv,.json,.html"
+                  accept=".txt,.md,.markdown,.csv,.tsv,.json,.jsonl,.html,.htm,.xml,.docx,.pptx,.xlsx,.pdf,.js,.jsx,.ts,.tsx,.py,.java,.c,.cpp,.cs,.r,.sql,.yaml,.yml,.log,text/*,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                   className="sr-only"
                   onChange={(event) => handleFileUpload(event.target.files?.[0] || null)}
                 />
@@ -126,7 +129,7 @@ export function StudentWorkspace() {
             )}
           </div>
 
-          <div data-scroll-region="left-editor-scroll" className="min-h-0 flex-1 p-6 md:p-8 flex flex-col relative bg-white dark:bg-[#121212] overflow-auto">
+          <div className="min-h-0 flex-1 p-6 md:p-8 flex flex-col relative bg-white dark:bg-[#121212] overflow-auto">
             <textarea
               value={content}
               onChange={(e) => setContent(e.target.value)}
@@ -178,7 +181,6 @@ export function StudentWorkspace() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-              data-scroll-region="right-pane"
               className="min-h-0 flex-1 h-[58%] md:h-full md:w-1/2 flex flex-col bg-[#F9F8F6] dark:bg-[#1A1A1A] border border-stone-200 dark:border-stone-800 rounded-sm shadow-sm overflow-hidden"
             >
               <div className="shrink-0 p-5 border-b border-stone-200 dark:border-stone-800 bg-white/50 dark:bg-black/20 flex items-center gap-3">
@@ -196,7 +198,7 @@ export function StudentWorkspace() {
                   </div>
                 ) : feedback ? (
                   <>
-                    <div data-scroll-region="right-sticky-score" className="shrink-0 sticky top-0 z-10 p-6 md:p-8 pb-5 border-b border-stone-200 dark:border-stone-800 bg-[#F9F8F6]/95 dark:bg-[#1A1A1A]/95 backdrop-blur-sm space-y-4">
+                    <div className="shrink-0 sticky top-0 z-10 p-6 md:p-8 pb-5 border-b border-stone-200 dark:border-stone-800 bg-[#F9F8F6]/95 dark:bg-[#1A1A1A]/95 backdrop-blur-sm space-y-4">
                       <p className="text-[10px] font-bold text-stone-500 uppercase tracking-widest">Score</p>
                       <p className="text-5xl font-medium text-stone-900 dark:text-stone-100 font-serif tracking-tighter">
                         {score}
@@ -205,7 +207,7 @@ export function StudentWorkspace() {
                       <p className="text-sm text-stone-600 dark:text-stone-400 font-light italic leading-relaxed">{feedback.summary}</p>
                     </div>
 
-                    <div data-scroll-region="right-rubric-scroll" className="min-h-0 flex-1 overflow-y-auto p-6 md:p-8 space-y-8">
+                    <div className="min-h-0 flex-1 overflow-y-auto p-6 md:p-8 space-y-8">
                       {hasRubricFeedback ? (
                       <div className="space-y-5">
                         <h4 className="flex items-center gap-3 text-sm font-medium text-stone-800 dark:text-stone-200 uppercase tracking-widest">
@@ -251,7 +253,7 @@ export function StudentWorkspace() {
                                 {unlocked && hintOpen && rubric.answerWithLogos?.hint && (
                                   <div className="mt-4 p-4 bg-[#F9F8F6] dark:bg-[#1A1A1A] border border-stone-200 dark:border-stone-800 rounded-sm text-sm text-stone-700 dark:text-stone-300 leading-relaxed font-light italic">
                                     {rubric.answerWithLogos.hint.split(/\n\n+/).map((part) => (
-                                      <p key={part} className="mb-3 last:mb-0">{part}</p>
+                                      <p key={part} className="mb-3 last:mb-0 whitespace-pre-line">{part}</p>
                                     ))}
                                   </div>
                                 )}

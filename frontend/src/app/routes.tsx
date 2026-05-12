@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import { Layout } from "./components/Layout";
 import { Welcome } from "./components/Welcome";
+import { LogosLandingTemplate } from "./components/LogosLandingTemplate";
 import { StudentPath } from "./components/StudentPath";
 import { StudentSkills } from "./components/StudentSkills";
 import { StudentWorkspace } from "./components/StudentWorkspace";
@@ -14,7 +15,8 @@ export const router = createBrowserRouter([
     path: "/",
     Component: Layout,
     children: [
-      { index: true, Component: Welcome },
+      { index: true, Component: LogosLandingTemplate },
+      { path: "intro", Component: Welcome },
       { path: "login/:role", Component: Login },
       { path: "student/path", Component: StudentPath },
       { path: "student/skills", Component: StudentSkills },

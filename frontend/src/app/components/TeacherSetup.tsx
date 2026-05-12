@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { motion } from "motion/react";
 import { useBootstrap } from "../../hooks/useBootstrap";
 import { createTeacherModule, extractRubrics, saveModuleRubric } from "../../services/api";
+import { extractTextFromFile } from "../../services/fileText";
 import { useActiveUser } from "../../hooks/useActiveUser";
 import type { Rubric } from "../../services/types";
 import { RubricEditor } from "./RubricEditor";
@@ -78,7 +79,7 @@ export function TeacherSetup() {
     setExtracting(true);
     setError(null);
     try {
-      const textContent = await file.text();
+      const textContent = await extractTextFromFile(file);
       const result = await extractRubrics({
         fileName: file.name,
         mimeType: file.type || "text/plain",

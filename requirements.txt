@@ -1,0 +1,89 @@
+Logos setup requirements
+========================
+
+This repository is a Node.js / npm project, not a Python project.
+This file exists for submission checklists that expect a requirements file.
+The actual package dependencies are declared in:
+
+- package.json
+- frontend/package.json
+- frontend/package-lock.json
+
+Required software
+-----------------
+
+- Node.js 20 or newer
+- npm 10 or newer
+
+First-time setup
+----------------
+
+From the repository root:
+
+1. Install frontend dependencies:
+
+   npm --prefix frontend install
+
+2. Copy environment templates:
+
+   cp .env.example .env
+   cp frontend/.env.example frontend/.env
+
+   On Windows PowerShell:
+
+   Copy-Item .env.example .env
+   Copy-Item frontend/.env.example frontend/.env
+
+3. Start the full app:
+
+   npm start
+
+The app runs at:
+
+   http://localhost:3000
+
+Environment files
+-----------------
+
+Root .env is used by the Node backend:
+
+- PORT
+- LOGOS_DB_PATH
+- BRAIN_MODE
+- OPENAI_API_KEY
+- OPENAI_MODEL
+- OPENAI_API_URL
+
+frontend/.env is used by Vite/browser code:
+
+- VITE_API_BASE_URL
+
+Do not commit real .env files. Commit only .env.example files.
+
+Useful commands
+---------------
+
+- Full check/build:
+
+  npm run check
+
+- Start full app from the repository root:
+
+  npm start
+
+- Run only the frontend development server:
+
+  npm --prefix frontend run dev
+
+- Run only the frontend production build:
+
+  npm --prefix frontend run build
+
+Notes for teammates
+-------------------
+
+- Do not run vite directly unless it is installed globally.
+- Prefer npm --prefix frontend run dev or npm --prefix frontend run build.
+- npm will use the local Vite installed in frontend/node_modules.
+- frontend/node_modules and frontend/dist are generated locally and should not be committed.
+- If "vite: command not found" appears, run npm --prefix frontend install, then use the npm scripts above.

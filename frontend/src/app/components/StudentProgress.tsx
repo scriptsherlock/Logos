@@ -1,8 +1,8 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
 import { motion } from 'motion/react';
-import { TrendingUp, Award, Clock, FileText } from 'lucide-react';
+import { ArrowRight, TrendingUp, Award, Clock, FileText } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { useBootstrap } from '../../hooks/useBootstrap';
 import { useActiveUser } from '../../hooks/useActiveUser';
 import { getStudentGrowth } from '../../services/api';
@@ -123,6 +123,8 @@ export function StudentProgress() {
   const [error, setError] = useState<string | null>(null);
   const [skillTab, setSkillTab] = useState<"core" | "personal">("core");
   const [trajectorySkill, setTrajectorySkill] = useState("");
+  const [showAllSubmissions, setShowAllSubmissions] = useState(false);
+  const [showAllGrowthEvents, setShowAllGrowthEvents] = useState(false);
   useEffect(() => {
     if (!user || user.role !== "student") navigate("/login/student");
   }, [navigate, user]);
@@ -165,6 +167,8 @@ export function StudentProgress() {
   const totalGrowth = profile?.summary.totalGrowth || 0;
   const recentSubmissions = profile?.recentFeedback || [];
   const recentGrowthEvents = profile?.recentGrowthEvents || [];
+  const visibleSubmissions = showAllSubmissions ? recentSubmissions : recentSubmissions.slice(0, 5);
+  const visibleGrowthEvents = showAllGrowthEvents ? recentGrowthEvents : recentGrowthEvents.slice(0, 5);
   const learningReflection = useMemo(() => generateBelongingnessMessage(profile), [profile]);
   const isLoading = bootstrapLoading || loading;
   const activeTabLabel = skillTab === "core" ? "Core" : "Personal";
@@ -176,11 +180,19 @@ export function StudentProgress() {
         <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(340px,520px)] gap-6 border-b border-stone-200 dark:border-stone-800 pb-6">
           <div className="flex flex-col justify-between gap-5">
             <div>
-            <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-stone-800 dark:text-stone-100">Growth Dashboard</h2>
-            <p className="text-stone-500 dark:text-stone-400 mt-2 italic">Track your selected skills across all modules.</p>
+              <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-stone-800 dark:text-stone-100">Growth Dashboard</h2>
+              <p className="text-stone-500 dark:text-stone-400 mt-2 italic">Track your selected skills across all modules.</p>
             </div>
-            <div className="w-fit px-4 py-2 bg-stone-100 text-stone-800 dark:bg-stone-900 dark:text-stone-300 rounded-sm text-xs uppercase tracking-widest font-medium flex items-center gap-3 border border-stone-200 dark:border-stone-800">
-              <TrendingUp className="w-3.5 h-3.5" /> +{totalGrowth}% Overall Growth
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+              <div className="w-fit px-4 py-2 bg-stone-100 text-stone-800 dark:bg-stone-900 dark:text-stone-300 rounded-sm text-xs uppercase tracking-widest font-medium flex items-center gap-3 border border-stone-200 dark:border-stone-800">
+                <TrendingUp className="w-3.5 h-3.5 text-[#B08D57]" /> +{totalGrowth}% Overall Growth
+              </div>
+              <Link
+                to="/student/workspace"
+                className="w-fit inline-flex items-center justify-center gap-3 px-4 py-2 bg-stone-900 dark:bg-stone-100 text-[#F4F3F0] dark:text-stone-900 rounded-sm text-xs uppercase tracking-widest font-medium hover:bg-stone-700 dark:hover:bg-white transition-colors"
+              >
+                Go to workspace <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
             {(bootstrapError || error) && <p className="text-sm text-stone-500 dark:text-stone-400 mt-3 italic">{bootstrapError || error}</p>}
           </div>
@@ -259,10 +271,10 @@ export function StudentProgress() {
                   <Line
                     type="monotone"
                     dataKey="Growth"
-                    stroke="#44403c"
-                    strokeWidth={1.5}
-                    dot={{ r: 3, fill: '#44403c' }}
-                    activeDot={{ r: 6 }}
+                    stroke="#B08D57"
+                    strokeWidth={2}
+                    dot={{ r: 3, fill: '#B08D57' }}
+                    activeDot={{ r: 6, fill: '#B08D57', stroke: '#f5f5f4', strokeWidth: 1 }}
                   />
                 </LineChart>
               </ResponsiveContainer>
@@ -284,14 +296,14 @@ export function StudentProgress() {
                 <button
                   type="button"
                   onClick={() => setSkillTab("core")}
-                  className={`px-4 py-2 text-xs uppercase tracking-widest transition-colors ${skillTab === "core" ? "bg-stone-900 text-[#F4F3F0] dark:bg-stone-100 dark:text-stone-900" : "text-stone-500 hover:bg-white dark:hover:bg-[#121212]"}`}
+                  className={`px-4 py-2 text-xs uppercase tracking-widest transition-colors ${skillTab === "core" ? "bg-[#B08D57] text-white dark:text-stone-950" : "text-stone-500 hover:bg-white dark:hover:bg-[#121212]"}`}
                 >
                   Core
                 </button>
                 <button
                   type="button"
                   onClick={() => setSkillTab("personal")}
-                  className={`px-4 py-2 text-xs uppercase tracking-widest transition-colors ${skillTab === "personal" ? "bg-stone-900 text-[#F4F3F0] dark:bg-stone-100 dark:text-stone-900" : "text-stone-500 hover:bg-white dark:hover:bg-[#121212]"}`}
+                  className={`px-4 py-2 text-xs uppercase tracking-widest transition-colors ${skillTab === "personal" ? "bg-[#B08D57] text-white dark:text-stone-950" : "text-stone-500 hover:bg-white dark:hover:bg-[#121212]"}`}
                 >
                   Personal
                 </button>
@@ -303,7 +315,7 @@ export function StudentProgress() {
                   <PolarGrid stroke="#a8a29e" opacity={0.3} />
                   <PolarAngleAxis dataKey="subject" tick={{ fill: '#78716c', fontSize: 10, textAnchor: 'middle' }} />
                   <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
-                  <Radar name="Student" dataKey="A" stroke="#292524" strokeWidth={1} fill="#78716c" fillOpacity={0.15} />
+                  <Radar name="Student" dataKey="A" stroke="#B08D57" strokeWidth={1.5} fill="#B08D57" fillOpacity={0.16} />
                   <Tooltip 
                     contentStyle={{ backgroundColor: '#1c1917', border: '1px solid #44403c', borderRadius: '4px', color: '#f5f5f4', fontSize: '12px' }} 
                   />
@@ -345,7 +357,7 @@ export function StudentProgress() {
           </div>
 
           <div className="grid gap-3">
-            {recentSubmissions.length ? recentSubmissions.map((submission) => (
+            {recentSubmissions.length ? visibleSubmissions.map((submission) => (
               <div key={submission.id} className="bg-white dark:bg-[#121212] border border-stone-200 dark:border-stone-800 rounded-sm p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
                   <p className="font-medium text-stone-800 dark:text-stone-200">{submission.moduleName || submission.moduleId}</p>
@@ -366,6 +378,17 @@ export function StudentProgress() {
               </div>
             )}
           </div>
+          {recentSubmissions.length > 5 && (
+            <div className="mt-5 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setShowAllSubmissions((current) => !current)}
+                className="px-4 py-2 border border-stone-200 dark:border-stone-800 rounded-sm text-xs uppercase tracking-widest font-medium text-stone-600 dark:text-stone-300 hover:border-stone-400 dark:hover:border-stone-600 transition-colors"
+              >
+                {showAllSubmissions ? "Show fewer submissions" : `Show ${recentSubmissions.length - 5} more submissions`}
+              </button>
+            </div>
+          )}
         </motion.div>
 
         <motion.div
@@ -383,7 +406,7 @@ export function StudentProgress() {
           </div>
 
           <div className="grid gap-3">
-            {recentGrowthEvents.length ? recentGrowthEvents.map((event) => (
+            {recentGrowthEvents.length ? visibleGrowthEvents.map((event) => (
               <div key={event.id} className="bg-white dark:bg-[#121212] border border-stone-200 dark:border-stone-800 rounded-sm p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
                   <p className="font-medium text-stone-800 dark:text-stone-200">{event.skillName || event.skillId}</p>
@@ -404,6 +427,17 @@ export function StudentProgress() {
               </div>
             )}
           </div>
+          {recentGrowthEvents.length > 5 && (
+            <div className="mt-5 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setShowAllGrowthEvents((current) => !current)}
+                className="px-4 py-2 border border-stone-200 dark:border-stone-800 rounded-sm text-xs uppercase tracking-widest font-medium text-stone-600 dark:text-stone-300 hover:border-stone-400 dark:hover:border-stone-600 transition-colors"
+              >
+                {showAllGrowthEvents ? "Show fewer events" : `Show ${recentGrowthEvents.length - 5} more events`}
+              </button>
+            </div>
+          )}
         </motion.div>
       </div>
     </div>

@@ -126,6 +126,7 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-ui);
   }
 
   /**
@@ -138,18 +139,21 @@
   }
 
   h1 {
+    font-family: var(--font-display);
     font-size: var(--text-2xl);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
   }
 
   h2 {
+    font-family: var(--font-display);
     font-size: var(--text-xl);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
   }
 
   h3 {
+    font-family: var(--font-display);
     font-size: var(--text-lg);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;

@@ -1,17 +1,42 @@
 import { Outlet, Link, useLocation } from "react-router";
 import { Moon, Sun, Menu, X, Home } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useActiveUser } from "../../hooks/useActiveUser";
 
 export function Layout() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const { user, clearUser } = useActiveUser();
 
   useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!menuRef.current?.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [menuOpen]);
 
   const isTeacherRoute = location.pathname.startsWith('/teacher');
   const isStudentRoute = location.pathname.startsWith('/student');
@@ -20,7 +45,6 @@ export function Layout() {
   return (
     <div 
       className={`${isWorkspaceRoute ? "h-screen overflow-hidden" : "min-h-screen"} bg-[#F4F3F0] dark:bg-[#121212] text-stone-900 dark:text-stone-100 transition-colors duration-500 flex flex-col font-light selection:bg-stone-300 dark:selection:bg-stone-700`}
-      style={{ fontFamily: '"Newsreader", serif' }}
     >
       <header className="shrink-0 flex items-center justify-between p-5 border-b border-stone-200 dark:border-stone-800/60 bg-[#F4F3F0]/90 dark:bg-[#121212]/90 backdrop-blur-md sticky top-0 z-40">
         <div className="flex items-center gap-3">
@@ -39,10 +63,10 @@ export function Layout() {
         </div>
         
         <h1 className="text-2xl font-medium tracking-tight absolute left-1/2 -translate-x-1/2">
-          Logos <span className="hidden sm:inline text-sm font-light text-stone-500 dark:text-stone-400 italic">your stem companion</span>
+          Logos <span className="hidden sm:inline text-sm font-light text-stone-500 dark:text-stone-400 italic">your STEM companion</span>
         </h1>
 
-        <div className="relative flex items-center gap-3">
+        <div ref={menuRef} className="relative flex items-center gap-3">
           {user && (
             <div className="hidden md:block text-right leading-tight">
               <p className="text-[10px] uppercase tracking-widest text-stone-400">{user.role}</p>
@@ -57,11 +81,10 @@ export function Layout() {
           </button>
           
           {menuOpen && (
-            <div className="absolute right-0 mt-3 w-60 bg-[#F4F3F0] dark:bg-[#1A1A1A] border border-stone-200 dark:border-stone-800 rounded-md shadow-2xl overflow-hidden z-50">
+            <div className="absolute right-0 top-0 w-64 bg-[#F4F3F0] dark:bg-[#1A1A1A] border border-stone-200 dark:border-stone-800 rounded-md shadow-2xl overflow-hidden z-50">
               <div className="py-2 flex flex-col text-sm">
-                <Link to="/" onClick={() => setMenuOpen(false)} className="px-5 py-3 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors">Home</Link>
                 {user && (
-                  <div className="px-5 py-3 border-b border-stone-200 dark:border-stone-800">
+                  <div className="px-5 py-4 border-b border-stone-200 dark:border-stone-800">
                     <p className="text-xs uppercase tracking-widest text-stone-400">{user.role}</p>
                     <p className="text-sm text-stone-700 dark:text-stone-300">{user.name}</p>
                   </div>
@@ -76,13 +99,6 @@ export function Layout() {
                   <>
                     <Link to="/teacher/dashboard" onClick={() => setMenuOpen(false)} className="px-5 py-3 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors">Dashboard</Link>
                     <Link to="/teacher/setup" onClick={() => setMenuOpen(false)} className="px-5 py-3 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors">New Module</Link>
-                  </>
-                )}
-                {!isStudentRoute && !isTeacherRoute && (
-                  <>
-                    <div className="px-5 py-2 mt-2 text-[10px] font-medium text-stone-400 uppercase tracking-widest">Quick Links</div>
-                    <Link to="/student/workspace" onClick={() => setMenuOpen(false)} className="px-5 py-3 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors">Demo Student View</Link>
-                    <Link to="/teacher/dashboard" onClick={() => setMenuOpen(false)} className="px-5 py-3 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors">Demo Teacher View</Link>
                   </>
                 )}
                 {user && (

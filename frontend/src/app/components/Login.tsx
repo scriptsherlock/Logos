@@ -22,7 +22,7 @@ export function Login() {
     try {
       const response = await loginUser({ role, name, email });
       saveUser(response.user);
-      navigate(role === "student" ? "/student/path" : "/teacher/dashboard");
+      navigate(role === "student" ? "/student/progress" : "/teacher/dashboard");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unable to continue.");
     } finally {

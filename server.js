@@ -1801,13 +1801,104 @@ function buildAnswerWithLogosHint(criterion) {
   const evidence = criterion.evidenceSummary && !/no direct evidence/i.test(criterion.evidenceSummary)
     ? criterion.evidenceSummary
     : "No strong matching passage was isolated.";
-  const revision = criterion.nextStep || `Add one concrete sentence that directly proves ${criterion.title.toLowerCase()}.`;
+  const sentenceStarters = buildAnswerSentenceStarters(criterion);
+  const selfCheck = buildAnswerSelfCheck(criterion);
   return [
     `Relevant issue: ${issue}`,
     `Current evidence: ${evidence}`,
-    `Suggested revision or insertion: ${revision}`,
-    `Why this helps: it gives the assessor direct evidence for the "${criterion.title}" rubric without rewriting the full answer.`,
+    [
+      "Try adding one or two sentences like these, then adapt them to your own method and results:",
+      ...sentenceStarters.map((starter) => `- ${starter}`),
+    ].join("\n"),
+    `Check yourself: ${selfCheck}`,
+    `Why this helps: it gives the assessor fresh evidence for the "${criterion.title}" rubric while keeping the reasoning in your own words.`,
   ].join("\n\n");
+}
+
+function buildAnswerSentenceStarters(criterion) {
+  const text = `${criterion.title || ""} ${criterion.description || ""} ${criterion.gap || ""} ${criterion.nextStep || ""}`.toLowerCase();
+
+  if (/preprocess|token|stopword|bag-of-words|embedding|feature/.test(text)) {
+    return [
+      "I tokenized each review into word-level features after lowercasing and cleaning extra spacing, so the model could count which terms appeared in each review.",
+      "I kept sentiment-bearing words such as 'not' and 'no' because removing them could change the meaning of phrases like 'not good'.",
+      "Bag-of-Words is useful as an interpretable baseline, but it loses word order and deeper semantic meaning compared with embeddings.",
+    ];
+  }
+
+  if (/dataset|data|label|sample|distribution|edge case/.test(text)) {
+    return [
+      "The dataset contains [number] examples with [label distribution], which matters because imbalance can make accuracy look stronger than it is.",
+      "I inspected examples such as [brief example] to identify edge cases that the model may find difficult.",
+      "One limitation of this dataset is [limitation], so I would be careful about applying the model outside this context.",
+    ];
+  }
+
+  if (/evaluat|metric|accuracy|precision|recall|f1|confusion/.test(text)) {
+    return [
+      "I evaluated the model using [metric] because it shows [what the metric reveals] beyond overall accuracy.",
+      "The confusion matrix shows [pattern], which means the model is more likely to [type of error].",
+      "Compared with the baseline, the improved model [increased/decreased] [metric], suggesting that [interpretation].",
+    ];
+  }
+
+  if (/error|failure|iteration|misclass|improv/.test(text)) {
+    return [
+      "One recurring failure case was [failure pattern], where the model predicted [wrong label] because [reason].",
+      "To address this, I would try [specific change] and compare whether it reduces this error type.",
+      "This error matters because it shows the model is relying on [surface cue] rather than fully capturing [deeper pattern].",
+    ];
+  }
+
+  if (/method|model|technical|baseline|system|implementation/.test(text)) {
+    return [
+      "I used [baseline model] as a reference point because it is simple, interpretable, and gives a clear comparison for later improvements.",
+      "The improved method changes [specific design choice], which should help because [technical reason].",
+      "To make the method reproducible, I used [parameter/split/tool] and kept [controlled condition] the same across models.",
+    ];
+  }
+
+  if (/problem|framing|objective|assumption|constraint/.test(text)) {
+    return [
+      "The task is to predict [target] from [input], which makes it a [type of task] problem.",
+      "I assume [scope or condition], so the model is intended for [use case] rather than [out-of-scope case].",
+      "A successful solution should [measurable outcome], because [reason tied to the project goal].",
+    ];
+  }
+
+  if (/communication|structure|stakeholder|responsible|limitation/.test(text)) {
+    return [
+      "For a non-technical reader, I would summarize the result as: [plain-language result and limitation].",
+      "A key limitation is [limitation], which means the result should be interpreted as [careful claim].",
+      "I organized the report by [structure] so the evidence can be checked against each rubric criterion.",
+    ];
+  }
+
+  return [
+    `This section should add specific evidence for ${criterion.title.toLowerCase()}, rather than only describing the topic generally.`,
+    "A useful sentence pattern is: I chose [decision] because [reason], and this affects [result or limitation].",
+    "Add one concrete example, metric, or comparison that the assessor can directly connect to the rubric.",
+  ];
+}
+
+function buildAnswerSelfCheck(criterion) {
+  const text = `${criterion.title || ""} ${criterion.gap || ""} ${criterion.nextStep || ""}`.toLowerCase();
+  if (/preprocess|token|stopword|bag-of-words|embedding|feature/.test(text)) {
+    return "Did you explain what transformation happened to the text, why you made that choice, and one tradeoff of the feature representation?";
+  }
+  if (/dataset|data|label|sample|distribution|edge case/.test(text)) {
+    return "Did you include at least one concrete dataset detail and explain why it affects model performance or interpretation?";
+  }
+  if (/evaluat|metric|accuracy|precision|recall|f1|confusion/.test(text)) {
+    return "Did you use more than one metric and explain what the numbers mean, not just report them?";
+  }
+  if (/error|failure|iteration|misclass|improv/.test(text)) {
+    return "Did you name a specific failure pattern, show why it happened, and connect it to a concrete next experiment?";
+  }
+  if (/method|model|technical|baseline|system|implementation/.test(text)) {
+    return "Did you compare a baseline with an improvement and explain the technical reason for the change?";
+  }
+  return "Can the assessor point to a specific sentence in your revision as evidence for this rubric?";
 }
 
 function buildScoringDiagnostics(criteriaResults, brainResult) {

@@ -48,7 +48,7 @@ export function StudentSkills() {
     setError(null);
     try {
       await updateStudentSkills(studentId, { selectedPersonalSkillIds: selected });
-      navigate("/student/workspace");
+      navigate("/student/progress");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unable to save selected skills.");
     } finally {
